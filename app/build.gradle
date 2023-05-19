@@ -19,6 +19,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "BASE_URL", '"https://express-ts-production-f6c5.up.railway.app/"')
     }
 
     buildTypes {
@@ -62,6 +63,10 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
     implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.6"
+
+    // Chucker interceptor
+    debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
 
     // Sweet Alert
     implementation 'com.github.f0ris.sweetalert:library:1.6.2'

@@ -1,0 +1,140 @@
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_data"
+    style="@style/CustomCardViewStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/white"
+    android:elevation="2000dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/total_kcal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/day"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1130" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="26dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/total_kcal"
+            app:layout_constraintStart_toStartOf="@id/total_kcal"
+            app:layout_constraintTop_toBottomOf="@id/total_kcal"
+            tools:text="per day" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/kcal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-4dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/total_kcal"
+            app:layout_constraintEnd_toStartOf="@id/spacer"
+            app:layout_constraintStart_toEndOf="@id/total_kcal"
+            app:layout_constraintTop_toTopOf="@id/total_kcal"
+            tools:text="kcal" />
+
+        <View
+            android:id="@+id/spacer"
+            android:layout_width="0.5dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="#535B78"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/height"
+            app:layout_constraintStart_toEndOf="@id/kcal"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/result_height"
+            app:layout_constraintEnd_toStartOf="@id/ibm"
+            app:layout_constraintStart_toEndOf="@id/spacer"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Height" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/result_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/height"
+            app:layout_constraintStart_toStartOf="@id/height"
+            app:layout_constraintTop_toBottomOf="@id/height"
+            tools:text="183cm" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/ibm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/result_ibm"
+            app:layout_constraintEnd_toStartOf="@id/weight"
+            app:layout_constraintStart_toEndOf="@id/height"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="IBM Score" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/result_ibm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/ibm"
+            app:layout_constraintStart_toStartOf="@id/ibm"
+            app:layout_constraintTop_toBottomOf="@id/ibm"
+            tools:text="19.3" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/result_weight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ibm"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Weight" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/result_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/weight"
+            app:layout_constraintStart_toStartOf="@id/weight"
+            app:layout_constraintTop_toBottomOf="@id/weight"
+            tools:text="58kg" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

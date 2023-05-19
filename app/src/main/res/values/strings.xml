@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">TummyFit</string>
+    <string name="set_up_your_profile">Set Up your profile</string>
+    <string name="create_an_account_so_you_can_try_the_product_s">Create an account so you can try the product’s</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="have_an_account">Have an account?</string>
+    <string name="login_your_account">Login your account</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
 </resources>
