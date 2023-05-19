@@ -1,5 +1,6 @@
 package com.capstoneproject.tummyfit.wrapper
 
+import com.capstoneproject.tummyfit.data.remote.model.error.ErrorResponse
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import retrofit2.HttpException
@@ -26,6 +27,18 @@ suspend fun <T> proceed(coroutine: suspend () -> T): Resource<T> {
     return try {
         Resource.Success(coroutine.invoke())
     } catch (exception: Exception) {
-        Resource.Error(exception, exception.message)
+        when (exception) {
+            is HttpException -> {
+                val errorMessageResponseType = object : TypeToken<ErrorResponse>() {}.type
+                val error: ErrorResponse = Gson().fromJson(
+                    exception.response()?.errorBody()?.charStream(),
+                    errorMessageResponseType
+                )
+                Resource.Error(exception, error.message)
+            }
+            else -> {
+                Resource.Error(exception, exception.message)
+            }
+        }
     }
 }
