@@ -10,4 +10,7 @@
     <color name="nav_tummyfit">#464A61</color>
     <color name="blue_tummyfit">#5FBFF5</color>
     <color name="white_smoke">#EAEAEA</color>
+<!--    <color name="transparant">#a09c9c</color>-->
+    <color name="transparent_black">#E8222222</color>
+
 </resources>

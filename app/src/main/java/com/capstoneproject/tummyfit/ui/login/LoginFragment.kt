@@ -61,9 +61,11 @@ class LoginFragment : Fragment() {
             when (it) {
                 is Resource.Loading -> {
                     binding.loadState.isVisible = true
+                    binding.bgView.isVisible = true
                 }
                 is Resource.Error -> {
                     binding.loadState.isVisible = false
+                    binding.bgView.isVisible = false
                     SweetAlertDialog(requireContext(), SweetAlertDialog.ERROR_TYPE)
                         .setContentText(it.message)
                         .setConfirmText("Try Again")
@@ -72,6 +74,7 @@ class LoginFragment : Fragment() {
                 is Resource.Empty -> {}
                 is Resource.Success -> {
                     binding.loadState.isVisible = false
+                    binding.bgView.isVisible = false
                     Toast.makeText(requireContext(), it.data?.message, Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                 }
