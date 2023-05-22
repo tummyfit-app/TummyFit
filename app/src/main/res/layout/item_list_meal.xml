@@ -37,7 +37,8 @@
             android:layout_marginBottom="4dp"
             android:textColor="@color/white"
             android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/button_meal"
+            android:fontFamily="@font/roboto_medium"
+            app:layout_constraintBottom_toTopOf="@id/desc_one_meal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Meatballs With Noodle" />
@@ -50,6 +51,7 @@
             android:layout_marginTop="10dp"
             android:textColor="@color/white"
             android:textSize="12sp"
+            android:fontFamily="@font/roboto_light"
             app:layout_constraintBottom_toTopOf="@id/desc_two_meal"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="gluten free" />
@@ -62,6 +64,7 @@
             android:layout_marginBottom="12dp"
             android:textColor="@color/white"
             android:textSize="12sp"
+            android:fontFamily="@font/roboto_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="vegan" />
@@ -69,16 +72,16 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_meal"
             android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="10dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
             android:backgroundTint="#F5CB5F"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="11sp"
-            app:cornerRadius="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:cornerRadius="6dp"
+            app:layout_constraintStart_toStartOf="@+id/image_meal"
+            app:layout_constraintTop_toTopOf="@+id/image_meal"
             tools:text="324kcal" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

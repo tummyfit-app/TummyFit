@@ -6,7 +6,8 @@ package com.capstoneproject.tummyfit.data.remote.model.auth
  */
 
 data class RegisterRequestBody(
-    val email: String,
     val username: String,
+    val namauser: String,
+    val email: String,
     val password: String
 )

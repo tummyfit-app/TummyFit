@@ -28,6 +28,8 @@
         <item name="cornerSizeTopLeft">10dp</item>
         <item name="cornerSizeBottomRight">10dp</item>
         <item name="cornerSizeBottomLeft">40dp</item>
+        <item name="elevation">20dp</item>
+        <item name="backgroundTint">@color/white</item>
     </style>
 </resources>
 
