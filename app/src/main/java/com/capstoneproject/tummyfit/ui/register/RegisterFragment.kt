@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -32,6 +33,7 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRegisterBinding.inflate(layoutInflater, container, false)
+        handleOnBackPressed()
         return binding.root
     }
 
@@ -134,6 +136,16 @@ class RegisterFragment : Fragment() {
             }
         }
         return flag
+    }
+
+    private fun handleOnBackPressed() {
+        val callbacks: OnBackPressedCallback =
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callbacks)
     }
 
     override fun onDestroy() {
