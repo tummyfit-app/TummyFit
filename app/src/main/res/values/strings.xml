@@ -28,4 +28,6 @@
     <string name="recipes">Recipes</string>
     <string name="ingredients">Ingredients</string>
     <string name="water_intake">Water Intake</string>
+    <string name="join_now">Join Now</string>
+    <string name="skip">Skip</string>
 </resources>

@@ -1,17 +1,14 @@
 package com.capstoneproject.tummyfit.ui.onboarding
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.findNavController
 import com.capstoneproject.tummyfit.R
-import com.capstoneproject.tummyfit.databinding.FragmentLoginBinding
 import com.capstoneproject.tummyfit.databinding.FragmentOnBoardingBinding
-import com.capstoneproject.tummyfit.ui.login.LoginViewModel
 
 class OnBoardingFragment : Fragment() {
 
@@ -28,7 +25,9 @@ class OnBoardingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        findNavController().navigate(R.id.action_onBoardingFragment_to_loginFragment)
+        binding.btnJoinNow.setOnClickListener {
+            it.findNavController().navigate(R.id.action_onBoardingFragment_to_loginFragment)
+        }
     }
 
     override fun onDestroy() {
