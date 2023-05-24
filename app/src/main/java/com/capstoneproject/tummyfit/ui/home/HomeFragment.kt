@@ -35,15 +35,15 @@ class HomeFragment : Fragment() {
         observeData()
     }
 
-    private fun observeData(){
-        viewModel.user.observe(viewLifecycleOwner){
-            when(it){
+    private fun observeData() {
+        viewModel.user.observe(viewLifecycleOwner) {
+            when (it) {
                 is Resource.Loading -> {}
                 is Resource.Empty -> {}
                 is Resource.Success -> {
-                    if (it.data?.data?.userDescription == null){
+                    if (it.data?.data?.userDescription == null) {
                         findNavController().navigate(R.id.action_homeFragment_to_profileSetupBottomSheetDialogFragment)
-                    }else{
+                    } else {
                         bindToView(it.data.data.userDescription)
                     }
                 }
@@ -52,15 +52,19 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun bindToView(userDescriptionGet: UserDescriptionGet){
+    private fun bindToView(userDescriptionGet: UserDescriptionGet) {
         binding.apply {
             username.text = userDescriptionGet.user.namauser
             email.text = userDescriptionGet.user.email
         }
         binding.cardData.apply {
-            resultHeight.text = "${userDescriptionGet.height} cm"
-            resultWeight.text = "${userDescriptionGet.weight} kg"
-            resultIbm.text = scoreIbm(userDescriptionGet.weight, userDescriptionGet.height, userDescriptionGet.sex).toString()
+            resultHeight.text = String.format(resources.getString(R.string.cm_template), userDescriptionGet.height)
+            resultWeight.text = String.format(resources.getString(R.string.kg_template), userDescriptionGet.weight)
+            resultIbm.text = scoreIbm(
+                userDescriptionGet.weight,
+                userDescriptionGet.height,
+                userDescriptionGet.sex
+            ).toString()
         }
     }
 

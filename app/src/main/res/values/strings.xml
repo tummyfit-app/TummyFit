@@ -37,6 +37,8 @@
     <string name="title_menu2">Fulfill your daily needs by Cooking your own Meals</string>
     <string name="title_menu3">Buy Groceries Easier with our Grocery Generator</string>
     <string name="cm">cm</string>
+    <string name="cm_template">%1$s cm</string>
+    <string name="kg_template">%1$s kg</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="birthday">Birthday</string>
