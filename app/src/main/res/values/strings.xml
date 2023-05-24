@@ -30,4 +30,39 @@
     <string name="water_intake">Water Intake</string>
     <string name="join_now">Join Now</string>
     <string name="skip">Skip</string>
+    <string name="kg">kg</string>
+    <string name="complete_your_account">Complete your Account</string>
+    <string name="desc1_profile_setup">to ensure that the recommendation we made for you are correct, please fill this form</string>
+    <string name="title_menu1">Get your daily Meals Plan and run a healthy Life</string>
+    <string name="title_menu2">Fulfill your daily needs by Cooking your own Meals</string>
+    <string name="title_menu3">Buy Groceries Easier with our Grocery Generator</string>
+    <string name="cm">cm</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="birthday">Birthday</string>
+    <string name="purpose">Purpose</string>
+    <string name="daily_activity">Daily Activity</string>
+    <string name="page_profile_setup">1/2</string>
+    <string name="page2_profile_setup">2/2</string>
+    <string name="next">Next</string>
+    <string name="help_us">Help us know ur preferences</string>
+    <string name="desc2_profile_setup">mark the categories that suit you</string>
+    <string name="submit">Submit</string>
+    <string name="dairy_free">Dairy Free</string>
+    <string name="alcohol">Alcohol</string>
+    <string name="vegetarian">Vegetarian</string>
+    <string name="vegan">Vegan</string>
+    <string name="glutten_free">Glutten Free</string>
+    <string name="logout">Logout</string>
+    <string-array name="purpose_item">
+        <item>Maintain weight</item>
+        <item>Weight loss</item>
+    </string-array>
+    <string-array name="daily_activity_item">
+        <item>Sedentary</item>
+        <item>Lightly active</item>
+        <item>Moderately active</item>
+        <item>Very active</item>
+        <item>Extra active</item>
+    </string-array>
 </resources>

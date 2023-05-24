@@ -33,7 +33,8 @@ class MainActivity : AppCompatActivity() {
             R.id.onBoardingFragment,
             R.id.splashScreenFragment,
             R.id.loginFragment,
-            R.id.registerFragment
+            R.id.registerFragment,
+            R.id.profileFragment
         ).build()
 
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.homeFragment -> hideBottomNav(false)
+                R.id.profileFragment -> hideBottomNav(false)
                 else -> hideBottomNav(true)
             }
         }

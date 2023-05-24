@@ -7,9 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.capstoneproject.tummyfit.R
+import com.capstoneproject.tummyfit.data.remote.model.user.UserDescriptionGet
 import com.capstoneproject.tummyfit.databinding.FragmentHomeBinding
+import com.capstoneproject.tummyfit.utils.scoreIbm
+import com.capstoneproject.tummyfit.wrapper.Resource
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
@@ -25,6 +31,37 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.getUser()
+        observeData()
+    }
+
+    private fun observeData(){
+        viewModel.user.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Loading -> {}
+                is Resource.Empty -> {}
+                is Resource.Success -> {
+                    if (it.data?.data?.userDescription == null){
+                        findNavController().navigate(R.id.action_homeFragment_to_profileSetupBottomSheetDialogFragment)
+                    }else{
+                        bindToView(it.data.data.userDescription)
+                    }
+                }
+                is Resource.Error -> {}
+            }
+        }
+    }
+
+    private fun bindToView(userDescriptionGet: UserDescriptionGet){
+        binding.apply {
+            username.text = userDescriptionGet.user.namauser
+            email.text = userDescriptionGet.user.email
+        }
+        binding.cardData.apply {
+            resultHeight.text = "${userDescriptionGet.height} cm"
+            resultWeight.text = "${userDescriptionGet.weight} kg"
+            resultIbm.text = scoreIbm(userDescriptionGet.weight, userDescriptionGet.height, userDescriptionGet.sex).toString()
+        }
     }
 
     override fun onDestroy() {

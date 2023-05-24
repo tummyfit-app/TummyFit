@@ -2,6 +2,8 @@ package com.capstoneproject.tummyfit.di
 
 import com.capstoneproject.tummyfit.data.repository.AuthRepository
 import com.capstoneproject.tummyfit.data.repository.AuthRepositoryImpl
+import com.capstoneproject.tummyfit.data.repository.UserRepository
+import com.capstoneproject.tummyfit.data.repository.UserRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -17,4 +19,7 @@ import dagger.hilt.components.SingletonComponent
 abstract class RepositoryModule {
     @Binds
     abstract fun provideAuthRepository(authRepositoryImpl: AuthRepositoryImpl): AuthRepository
+
+    @Binds
+    abstract fun provideUserRepository(userRepositoryImpl: UserRepositoryImpl): UserRepository
 }

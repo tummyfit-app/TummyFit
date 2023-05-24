@@ -20,6 +20,7 @@ import com.capstoneproject.tummyfit.databinding.FragmentOnBoardingBinding
 import com.capstoneproject.tummyfit.databinding.FragmentRegisterBinding
 import com.capstoneproject.tummyfit.ui.onboarding.OnBoardingViewModel
 import com.capstoneproject.tummyfit.wrapper.Resource
+import com.shashank.sony.fancytoastlib.FancyToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -91,7 +92,13 @@ class RegisterFragment : Fragment() {
                 is Resource.Success -> {
                     binding.loadState.isVisible = false
                     binding.bgView.isVisible = false
-                    Toast.makeText(requireContext(), it.data?.message, Toast.LENGTH_SHORT).show()
+                    FancyToast.makeText(
+                        requireContext(),
+                        it.data?.message,
+                        FancyToast.LENGTH_SHORT,
+                        FancyToast.SUCCESS,
+                        false
+                    ).show()
                     findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
                 }
             }
@@ -121,18 +128,11 @@ class RegisterFragment : Fragment() {
                 tilFirstname.error = getString(R.string.error_field_empty)
                 etFirstname.requestFocus()
             }
-            if (etLastname.text.toString().isEmpty()) {
-                flag = false
-                tilLastname.error = getString(R.string.error_field_empty)
-                etLastname.requestFocus()
-            }
             if (tilUsername.isErrorEnabled) {
                 flag = false
             } else if (tilPw.isErrorEnabled) {
                 flag = false
             } else if (tilFirstname.isErrorEnabled) {
-                flag = false
-            } else if (tilLastname.isErrorEnabled) {
                 flag = false
             } else if (tilEmail.isErrorEnabled) {
                 flag = false

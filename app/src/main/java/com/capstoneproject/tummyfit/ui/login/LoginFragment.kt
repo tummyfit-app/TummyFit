@@ -15,6 +15,7 @@ import com.capstoneproject.tummyfit.R
 import com.capstoneproject.tummyfit.data.remote.model.auth.LoginRequestBody
 import com.capstoneproject.tummyfit.databinding.FragmentLoginBinding
 import com.capstoneproject.tummyfit.wrapper.Resource
+import com.shashank.sony.fancytoastlib.FancyToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -75,7 +76,13 @@ class LoginFragment : Fragment() {
                 is Resource.Success -> {
                     binding.loadState.isVisible = false
                     binding.bgView.isVisible = false
-                    Toast.makeText(requireContext(), it.data?.message, Toast.LENGTH_SHORT).show()
+                    FancyToast.makeText(
+                        requireContext(),
+                        it.data?.message,
+                        FancyToast.LENGTH_SHORT,
+                        FancyToast.SUCCESS,
+                        false
+                    ).show()
                     findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                 }
             }

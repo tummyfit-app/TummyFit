@@ -3,6 +3,7 @@ package com.capstoneproject.tummyfit.di
 import android.content.Context
 import com.capstoneproject.tummyfit.BuildConfig
 import com.capstoneproject.tummyfit.data.remote.service.AuthApiService
+import com.capstoneproject.tummyfit.data.remote.service.UserApiService
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import dagger.Module
 import dagger.Provides
@@ -24,7 +25,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-//    @Provides
+    //    @Provides
 //    @Singleton
 //    fun provideChucker(@ApplicationContext appContext: Context): ChuckerInterceptor =
 //        ChuckerInterceptor.Builder(appContext).build()
@@ -57,4 +58,9 @@ object NetworkModule {
     @Singleton
     fun provideAuthApiService(retrofit: Retrofit): AuthApiService =
         retrofit.create(AuthApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideUserApiService(retrofit: Retrofit): UserApiService =
+        retrofit.create(UserApiService::class.java)
 }

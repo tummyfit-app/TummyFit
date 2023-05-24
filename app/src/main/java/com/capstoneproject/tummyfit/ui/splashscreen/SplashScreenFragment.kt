@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +18,9 @@ import com.capstoneproject.tummyfit.databinding.FragmentRegisterBinding
 import com.capstoneproject.tummyfit.databinding.FragmentSplashScreenBinding
 import com.capstoneproject.tummyfit.ui.register.RegisterViewModel
 import com.capstoneproject.tummyfit.utils.Constants
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 @SuppressLint("CustomSplashScreen")
 class SplashScreenFragment : Fragment() {
 
@@ -36,9 +39,20 @@ class SplashScreenFragment : Fragment() {
     private fun loadScreen() {
         Handler().postDelayed({
             lifecycleScope.launchWhenCreated {
-                findNavController().navigate(R.id.action_splashScreenFragment_to_onBoardingFragment)
+                checkUserSession()
             }
         }, Constants.LOADING_TIME)
+    }
+
+    private fun checkUserSession() {
+        viewModel.session.observe(viewLifecycleOwner) {
+            Log.i("INFO TOKEN", it)
+            if (it.isEmpty()) {
+                findNavController().navigate(R.id.action_splashScreenFragment_to_onBoardingFragment)
+            } else {
+                findNavController().navigate(R.id.action_splashScreenFragment_to_homeFragment)
+            }
+        }
     }
 
     override fun onDestroy() {

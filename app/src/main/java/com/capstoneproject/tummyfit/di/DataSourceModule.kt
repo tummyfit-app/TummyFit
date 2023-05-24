@@ -4,6 +4,8 @@ import com.capstoneproject.tummyfit.data.local.datasource.AuthLocalDataSource
 import com.capstoneproject.tummyfit.data.local.datasource.AuthLocalDataSourceImpl
 import com.capstoneproject.tummyfit.data.remote.datasource.AuthRemoteDataSource
 import com.capstoneproject.tummyfit.data.remote.datasource.AuthRemoteDataSourceImpl
+import com.capstoneproject.tummyfit.data.remote.datasource.UserRemoteDataSource
+import com.capstoneproject.tummyfit.data.remote.datasource.UserRemoteDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -23,4 +25,7 @@ abstract class DataSourceModule {
 
     @Binds
     abstract fun provideAuthRemoteDataSource(authRemoteDataSourceImpl: AuthRemoteDataSourceImpl): AuthRemoteDataSource
+
+    @Binds
+    abstract fun provideUserRemoteDataSource(userRemoteDataSourceImpl: UserRemoteDataSourceImpl): UserRemoteDataSource
 }

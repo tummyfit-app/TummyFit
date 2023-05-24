@@ -38,7 +38,7 @@
         android:id="@+id/logoMenu1"
         android:layout_width="0dp"
         android:layout_height="300dp"
-        android:src="@drawable/vector_on_boarding"
+        android:src="@drawable/menu1"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo_app" />
 
@@ -47,9 +47,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="sans-serif-condensed-light"
+        android:fontFamily="@font/roboto_regular"
         android:gravity="center_horizontal"
-        android:text="@string/create_an_account_so_you_can_try_the_product_s"
+        android:text="@string/title_menu1"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/logoMenu1"
         app:layout_constraintStart_toStartOf="@+id/logoMenu1"
@@ -59,7 +59,7 @@
         android:id="@+id/logoMenu2"
         android:layout_width="0dp"
         android:layout_height="300dp"
-        android:src="@drawable/vector_on_boarding"
+        android:src="@drawable/menu2"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo_app" />
 
@@ -68,9 +68,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="sans-serif-condensed-light"
+        android:fontFamily="@font/roboto_regular"
         android:gravity="center_horizontal"
-        android:text="@string/create_an_account_so_you_can_try_the_product_s"
+        android:text="@string/title_menu2"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/logoMenu2"
         app:layout_constraintStart_toStartOf="@+id/logoMenu2"
@@ -80,7 +80,7 @@
         android:id="@+id/logoMenu3"
         android:layout_width="0dp"
         android:layout_height="300dp"
-        android:src="@drawable/vector_on_boarding"
+        android:src="@drawable/menu3"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo_app" />
 
@@ -89,9 +89,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="sans-serif-condensed-light"
+        android:fontFamily="@font/roboto_regular"
         android:gravity="center_horizontal"
-        android:text="@string/create_an_account_so_you_can_try_the_product_s"
+        android:text="@string/title_menu3"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/logoMenu3"
         app:layout_constraintStart_toStartOf="@+id/logoMenu3"
