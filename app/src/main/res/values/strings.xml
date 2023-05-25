@@ -61,6 +61,17 @@
     <string name="halal">Halal</string>
     <string name="main_dish">Main dish</string>
     <string name="perfect_match">Perfect Match</string>
+    <string name="what_do_you_want_to_eat_today">What do you want to eat today?</string>
+    <string name="search_meals">Search meals</string>
+    <string name="monday">Mon</string>
+    <string name="tuesday">Tue</string>
+    <string name="wednesday">Wed</string>
+    <string name="sunday">Sun</string>
+    <string name="thursday">Thu</string>
+    <string name="friday">Fri</string>
+    <string name="saturday">Sat</string>
+    <string name="generate_groceries_list">Generate Groceries List</string>
+    <string name="update_data_profile">Update data Profile</string>
     <string-array name="purpose_item">
         <item>Maintain weight</item>
         <item>Weight loss</item>

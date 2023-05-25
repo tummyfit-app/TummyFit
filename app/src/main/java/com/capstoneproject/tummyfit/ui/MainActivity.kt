@@ -35,7 +35,8 @@ class MainActivity : AppCompatActivity() {
             R.id.loginFragment,
             R.id.registerFragment,
             R.id.profileFragment,
-            R.id.searchMealsFragment
+            R.id.searchMealsFragment,
+            R.id.mealsRecommendFragment
         ).build()
 
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment -> hideBottomNav(false)
                 R.id.profileFragment -> hideBottomNav(false)
                 R.id.searchMealsFragment -> hideBottomNav(false)
+                R.id.mealsRecommendFragment -> hideBottomNav(false)
                 else -> hideBottomNav(true)
             }
         }

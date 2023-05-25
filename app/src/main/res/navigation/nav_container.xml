@@ -86,4 +86,9 @@
         android:name="com.capstoneproject.tummyfit.ui.search.SearchMealsFragment"
         android:label="fragment_search_meals"
         tools:layout="@layout/fragment_search_meals" />
+    <fragment
+        android:id="@+id/mealsRecommendFragment"
+        android:name="com.capstoneproject.tummyfit.ui.mealsrecommend.MealsRecommendFragment"
+        android:label="fragment_meals_recommend"
+        tools:layout="@layout/fragment_meals_recommend" />
 </navigation>
