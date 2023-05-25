@@ -21,6 +21,7 @@ import com.capstoneproject.tummyfit.databinding.FragmentProfileSetupBottomSheetB
 import com.capstoneproject.tummyfit.databinding.FragmentRegisterBinding
 import com.capstoneproject.tummyfit.ui.register.RegisterViewModel
 import com.capstoneproject.tummyfit.utils.showDatePicker
+import com.capstoneproject.tummyfit.utils.showSnackbar
 import com.capstoneproject.tummyfit.wrapper.Resource
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -124,14 +125,24 @@ class ProfileSetupBottomSheetDialogFragment : BottomSheetDialogFragment() {
         binding.profileSetupContent.apply {
             if (etWeight.text.toString().isEmpty()) {
                 flag = false
+                showSnackbar(requireView(), "Weight cannot be empty!")
+                etWeight.requestFocus()
             } else if (etHeight.text.toString().isEmpty()) {
                 flag = false
+                showSnackbar(requireView(), "Height cannot be empty!")
+                etHeight.requestFocus()
             } else if (etBirthday.text.toString().isEmpty()) {
                 flag = false
+                showSnackbar(requireView(), "Birthday date cannot be empty!")
+                etBirthday.requestFocus()
             } else if (etPurpose.text.toString().isEmpty()) {
                 flag = false
+                showSnackbar(requireView(), "Purpose cannot be empty!")
+                etPurpose.requestFocus()
             } else if (etDailyActivity.text.toString().isEmpty()) {
                 flag = false
+                showSnackbar(requireView(), "Daily activity cannot be empty!")
+                etDailyActivity.requestFocus()
             }
         }
         return flag

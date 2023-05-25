@@ -7,7 +7,7 @@
         android:icon="@drawable/house_chimney_24"
         tools:ignore="MenuTitle" />
     <item
-        android:id="@+id/searchFragment"
+        android:id="@+id/searchMealsFragment"
         android:icon="@drawable/search_24"
         tools:ignore="MenuTitle" />
     <item

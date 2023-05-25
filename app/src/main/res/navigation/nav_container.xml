@@ -81,4 +81,9 @@
             app:popUpTo="@id/nav_container"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/searchMealsFragment"
+        android:name="com.capstoneproject.tummyfit.ui.search.SearchMealsFragment"
+        android:label="fragment_search_meals"
+        tools:layout="@layout/fragment_search_meals" />
 </navigation>

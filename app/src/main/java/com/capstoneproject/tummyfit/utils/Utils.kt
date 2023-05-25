@@ -1,10 +1,14 @@
 package com.capstoneproject.tummyfit.utils
 
+import android.content.Context
+import android.view.View
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.roundToInt
 
 /**
  * @Author: ridhogymnastiar
@@ -31,10 +35,11 @@ fun showDatePicker(fragmentManager: FragmentManager, textInputEditText: TextInpu
     }
 }
 
-fun scoreIbm(weight: Int, height: Int, gender: String): Double {
-    return if (gender.equals("male", true)) {
-        (height - 100) - (0.1 * (height - 100))
-    } else {
-        (height - 100) - (0.15 * (height - 100))
-    }
+fun scoreIbm(weight: Int, height: Int): Double = (weight / ((height * 0.01) * (height * 0.01))).roundToInt()
+    .toDouble()
+
+
+fun showSnackbar(view: View, text: String) {
+    Snackbar.make(view, text, Snackbar.LENGTH_SHORT)
+        .show()
 }

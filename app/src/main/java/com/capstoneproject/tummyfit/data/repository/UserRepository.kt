@@ -1,9 +1,9 @@
 package com.capstoneproject.tummyfit.data.repository
 
 import com.capstoneproject.tummyfit.data.remote.datasource.UserRemoteDataSource
+import com.capstoneproject.tummyfit.data.remote.model.user.GetUserResponse
 import com.capstoneproject.tummyfit.data.remote.model.user.PostUserDescRequestBody
 import com.capstoneproject.tummyfit.data.remote.model.user.PostUserDescResponse
-import com.capstoneproject.tummyfit.data.remote.model.user.UserResponse
 import com.capstoneproject.tummyfit.wrapper.Resource
 import com.capstoneproject.tummyfit.wrapper.proceed
 import javax.inject.Inject
@@ -21,7 +21,7 @@ interface UserRepository {
 
     suspend fun getUserDesc(
         token: String,
-    ): Resource<UserResponse>
+    ): Resource<GetUserResponse>
 }
 
 class UserRepositoryImpl @Inject constructor(private val userRemoteDataSource: UserRemoteDataSource) :
@@ -32,6 +32,6 @@ class UserRepositoryImpl @Inject constructor(private val userRemoteDataSource: U
     ): Resource<PostUserDescResponse> =
         proceed { userRemoteDataSource.postUserDesc(token, postUserDescRequestBody) }
 
-    override suspend fun getUserDesc(token: String): Resource<UserResponse> =
+    override suspend fun getUserDesc(token: String): Resource<GetUserResponse> =
         proceed { userRemoteDataSource.getUserDesc(token) }
 }
