@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -11,6 +12,7 @@ import com.capstoneproject.tummyfit.R
 import com.capstoneproject.tummyfit.data.remote.model.user.UserDescription
 import com.capstoneproject.tummyfit.databinding.FragmentHomeBinding
 import com.capstoneproject.tummyfit.utils.scoreIbm
+import com.capstoneproject.tummyfit.utils.showSnackbar
 import com.capstoneproject.tummyfit.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,27 +34,59 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getUser()
         observeData()
+        binding.listTodayMeals.shimmerTodayMeals.startShimmer()
+        binding.listTryIt.shimmerTryIt.startShimmer()
     }
 
     private fun observeData() {
         viewModel.user.observe(viewLifecycleOwner) {
             when (it) {
-                is Resource.Loading -> {}
-                is Resource.Empty -> {}
+                is Resource.Loading -> {
+                    showLoading(true)
+                }
+
+                is Resource.Empty -> {
+                    showLoading(false)
+                }
+
                 is Resource.Success -> {
                     if (it.data?.data?.userDescription == null) {
+                        showLoading(true)
                         findNavController().navigate(R.id.action_homeFragment_to_profileSetupBottomSheetDialogFragment)
+                        binding.shimmerCardData.startShimmer()
+                        binding.shimmerHomeHeader.startShimmer()
                     } else {
+                        showLoading(false)
                         bindToView(it.data.data.userDescription)
+                        binding.shimmerCardData.stopShimmer()
+                        binding.shimmerHomeHeader.stopShimmer()
                     }
                 }
-                is Resource.Error -> {}
+
+                is Resource.Error -> {
+                    showLoading(true)
+                    showSnackbar(requireView(), it.message.toString())
+                }
             }
         }
     }
 
-    private fun bindToView(userDescription: UserDescription) {
+    private fun showLoading(boolean: Boolean) {
         binding.apply {
+            shimmerHomeHeader.isVisible = boolean
+            shimmerCardData.isVisible = boolean
+            cardData.cardData.isVisible = !boolean
+            homeHeader.homeHeader.isVisible = !boolean
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.getUser()
+    }
+
+    private fun bindToView(userDescription: UserDescription) {
+        binding.homeHeader.apply {
             username.text = userDescription.user.username
             email.text = userDescription.user.email
         }

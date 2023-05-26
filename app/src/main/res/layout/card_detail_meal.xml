@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.Material3.CardView.Outlined"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ic_fav"
+            app:layout_constraintEnd_toStartOf="@id/ic_fav"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ic_fav"
+            tools:text="Caesar Salad &amp; Meatballs" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_fav"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/baseline_star_outline_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_title"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/desc_one_meal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:text="Halal" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_meal"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="6dp"
+            android:backgroundTint="@color/yellow_tummyfit"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="11sp"
+            app:cornerRadius="6dp"
+            app:layout_constraintStart_toStartOf="@+id/desc_one_meal"
+            app:layout_constraintTop_toBottomOf="@id/desc_one_meal"
+            tools:text="324kcal" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/fat_g"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/protein"
+            app:layout_constraintStart_toStartOf="@+id/button_meal"
+            app:layout_constraintTop_toBottomOf="@id/button_meal" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/protein"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/protein_g"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/carbo"
+            app:layout_constraintStart_toEndOf="@id/fat"
+            app:layout_constraintTop_toBottomOf="@id/button_meal" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/carbo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/carbo_g"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/ready_in"
+            app:layout_constraintStart_toEndOf="@id/protein"
+            app:layout_constraintTop_toBottomOf="@id/button_meal" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/ready_in"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/ready_in"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/ic_fav"
+            app:layout_constraintStart_toEndOf="@id/carbo"
+            app:layout_constraintTop_toBottomOf="@id/button_meal" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/result_fat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:padding="2dp"
+            android:text="@string/_183cm"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/fat"
+            app:layout_constraintStart_toStartOf="@+id/fat"
+            app:layout_constraintTop_toBottomOf="@id/fat" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/result_protein"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:padding="2dp"
+            android:text="@string/_19_3"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/protein"
+            app:layout_constraintStart_toStartOf="@+id/protein"
+            app:layout_constraintTop_toBottomOf="@id/protein" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/result_carbo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:padding="2dp"
+            android:text="@string/_58kg"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/carbo"
+            app:layout_constraintStart_toStartOf="@+id/carbo"
+            app:layout_constraintTop_toBottomOf="@id/carbo" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/result_ready_in"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:padding="2dp"
+            android:text="@string/_30_nminutes"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/ready_in"
+            app:layout_constraintStart_toStartOf="@+id/ready_in"
+            app:layout_constraintTop_toBottomOf="@id/ready_in" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -6,19 +6,20 @@
     android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_today_meals"
+        android:id="@+id/rv_perfect_match"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:itemCount="3"
-        tools:listitem="@layout/item_list_meal_horizontal" />
+        app:spanCount="2"
+        tools:itemCount="2"
+        tools:listitem="@layout/item_list_meal_vertical" />
 
     <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmer_today_meals"
+        android:id="@+id/shimmer_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,12 +29,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <include layout="@layout/item_list_meal_horizontal_shimmer" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-            <include layout="@layout/item_list_meal_horizontal_shimmer" />
+                <include layout="@layout/item_list_meal_horizontal_shimmer" />
 
+                <include layout="@layout/item_list_meal_horizontal_shimmer" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <include layout="@layout/item_list_meal_horizontal_shimmer" />
+
+                <include layout="@layout/item_list_meal_horizontal_shimmer" />
+            </LinearLayout>
         </LinearLayout>
 
     </com.facebook.shimmer.ShimmerFrameLayout>

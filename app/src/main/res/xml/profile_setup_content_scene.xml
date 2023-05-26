@@ -7,7 +7,9 @@
         motion:constraintSetStart="@id/start"
         motion:duration="@integer/material_motion_duration_short_1">
         <KeyFrameSet />
-        <OnSwipe motion:dragDirection="dragLeft" />
+        <OnSwipe
+            motion:dragDirection="dragLeft"
+            motion:touchAnchorSide="left" />
         <OnClick
             motion:clickAction="jumpToEnd"
             motion:targetId="@id/btn_next" />
@@ -18,7 +20,9 @@
         motion:constraintSetStart="@id/end"
         motion:duration="@integer/material_motion_duration_short_1">
         <KeyFrameSet />
-        <OnSwipe motion:dragDirection="dragRight" />
+        <OnSwipe
+            motion:dragDirection="dragRight"
+            motion:touchAnchorSide="right" />
     </Transition>
 
     <ConstraintSet android:id="@+id/start">

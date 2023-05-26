@@ -7,7 +7,7 @@
     tools:context=".ui.profile.ProfileFragment">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/shapeableImageView"
+        android:id="@+id/bg_header_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/bg_header_profile"
@@ -29,6 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_name"
         android:layout_width="0dp"
@@ -45,7 +46,7 @@
         tools:text="Ridho Gymnastiar Al Rasyid" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_username"
+        android:id="@+id/tv_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -69,7 +70,21 @@
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_username" />
+        app:layout_constraintTop_toBottomOf="@id/tv_email" />
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/profile_shimmer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shimmer_auto_start="true"
+        app:shimmer_colored="true">
+
+        <include layout="@layout/profile_shimmer" />
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_edit_profile"
@@ -77,13 +92,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="20dp"
-        android:text="Edit Profile"
+        android:text="@string/edit_profile"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_data" />
+        app:layout_constraintTop_toBottomOf="@+id/bg_header_detail" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_update_data_profile"

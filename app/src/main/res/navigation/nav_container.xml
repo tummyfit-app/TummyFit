@@ -90,5 +90,19 @@
         android:id="@+id/mealsRecommendFragment"
         android:name="com.capstoneproject.tummyfit.ui.mealsrecommend.MealsRecommendFragment"
         android:label="fragment_meals_recommend"
-        tools:layout="@layout/fragment_meals_recommend" />
+        tools:layout="@layout/fragment_meals_recommend" >
+        <action
+            android:id="@+id/action_mealsRecommendFragment_to_grocerieListFragment"
+            app:destination="@id/grocerieListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailMealFragment"
+        android:name="com.capstoneproject.tummyfit.ui.detailmeal.DetailMealFragment"
+        android:label="fragment_detail_meal"
+        tools:layout="@layout/fragment_detail_meal" />
+    <fragment
+        android:id="@+id/grocerieListFragment"
+        android:name="com.capstoneproject.tummyfit.ui.grocerielist.GrocerieListFragment"
+        android:label="fragment_grocerie_list"
+        tools:layout="@layout/fragment_grocerie_list" />
 </navigation>

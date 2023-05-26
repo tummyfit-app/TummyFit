@@ -72,6 +72,18 @@
     <string name="saturday">Sat</string>
     <string name="generate_groceries_list">Generate Groceries List</string>
     <string name="update_data_profile">Update data Profile</string>
+    <string name="fat_g">fat/g</string>
+    <string name="protein_g">protein/g</string>
+    <string name="carbo_g">carbo/g</string>
+    <string name="ready_in">Ready in</string>
+    <string name="step_by_step">Step-by-Step</string>
+    <string name="_183cm">183cm</string>
+    <string name="_19_3">19.3</string>
+    <string name="_58kg">58kg</string>
+    <string name="_30_nminutes">30\nminutes</string>
+    <string name="favorite">Favorite</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="daily_meals_nrecommendation">Daily Meals\nRecommendation</string>
     <string-array name="purpose_item">
         <item>Maintain weight</item>
         <item>Weight loss</item>

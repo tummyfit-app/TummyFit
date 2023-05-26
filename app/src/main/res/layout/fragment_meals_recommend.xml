@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
-        android:text="Daily Meals\nRecommendation"
+        android:text="@string/daily_meals_nrecommendation"
         android:textAlignment="textStart"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="vertical"
-        app:layout_constraintEnd_toStartOf="@id/rv_perfect_match"
+        app:layout_constraintEnd_toStartOf="@id/list_meals_recommend"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_recommend">
 
@@ -95,19 +95,16 @@
 
     </com.google.android.material.chip.ChipGroup>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_perfect_match"
+    <include
+        android:id="@+id/list_meals_recommend"
+        layout="@layout/list_meals_recommend"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/chip_group_day"
-        app:layout_constraintTop_toBottomOf="@id/tv_recommend"
-        tools:itemCount="4"
-        tools:listitem="@layout/item_meal_recommend" />
+        app:layout_constraintTop_toBottomOf="@id/tv_recommend" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fab_add_story"

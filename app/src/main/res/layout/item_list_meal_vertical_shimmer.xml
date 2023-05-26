@@ -2,81 +2,88 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="180dp"
-    android:layout_marginTop="4dp"
+    android:layout_width="180dp"
+    android:layout_height="240dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
     app:cardCornerRadius="14dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/image_meal"
-            android:layout_width="match_parent"
+            android:layout_width="180dp"
             android:layout_height="240dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/baso"
+            android:src="@color/background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@drawable/gradient"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/title_meal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginBottom="4dp"
+            android:background="@color/background"
             android:fontFamily="@font/roboto_medium"
-            android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@id/desc_one_meal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Meatballs With Noodle" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/desc_one_meal"
-            android:layout_width="0dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:background="@color/background"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/desc_two_meal"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/desc_two_meal"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/background"
             android:fontFamily="@font/roboto_light"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="gluten free" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_meal"
-            style="@style/Widget.Material3.Button"
             android:layout_width="0dp"
             android:layout_height="35dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/yellow_tummyfit"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="?attr/colorOnPrimary"
             android:paddingStart="0dp"
             android:paddingEnd="20dp"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="11sp"
             app:cornerRadius="6dp"
-            app:icon="@drawable/baseline_fire_24"
             app:iconGravity="start"
             app:iconPadding="0dp"
             app:iconTint="@color/black"
             app:layout_constraintStart_toStartOf="@+id/image_meal"
-            app:layout_constraintTop_toTopOf="@+id/image_meal"
-            tools:text="324kcal" />
+            app:layout_constraintTop_toTopOf="@+id/image_meal" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
