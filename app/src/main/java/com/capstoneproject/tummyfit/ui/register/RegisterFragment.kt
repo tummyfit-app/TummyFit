@@ -57,13 +57,14 @@ class RegisterFragment : Fragment() {
                 val username = etUsername.text.toString().trim()
                 val email = etEmail.text.toString().trim()
                 val pw = etPw.text.toString().trim()
-                val name =
-                    "${etFirstname.text.toString().trim()} ${etLastname.text.toString().trim()}"
+                val firstName = etFirstname.text.toString().trim()
+                val lastName = etLastname.text.toString().trim()
                 if (validateInput()) {
                     viewModel.register(
                         RegisterRequestBody(
                             username = username,
-                            namauser = name,
+                            firstname = firstName,
+                            lastname = lastName,
                             email = email,
                             password = pw
                         )

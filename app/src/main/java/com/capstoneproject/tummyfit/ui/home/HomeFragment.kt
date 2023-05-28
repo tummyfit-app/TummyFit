@@ -55,22 +55,13 @@ class HomeFragment : Fragment() {
                 }
 
                 is Resource.Success -> {
-                    if (it.data?.data?.userDescription == null) {
-                        showLoading(true)
-                        binding.shimmerCardData.startShimmer()
-                        binding.shimmerHomeHeader.startShimmer()
-                        findNavController().navigate(R.id.action_homeFragment_to_profileSetupBottomSheetDialogFragment)
-                    } else {
-                        showLoading(false)
-                        binding.shimmerCardData.stopShimmer()
-                        binding.shimmerHomeHeader.stopShimmer()
-                        bindToView(it.data.data.userDescription)
-                    }
+                    showLoading(false)
+                    it.data?.data?.userDescription?.let { it1 -> bindToView(it1) }
                 }
 
                 is Resource.Error -> {
                     showLoading(true)
-                    showSnackbar(requireView(), it.message.toString())
+                    findNavController().navigate(R.id.action_homeFragment_to_profileSetupBottomSheetDialogFragment)
                 }
             }
         }
@@ -118,7 +109,7 @@ class HomeFragment : Fragment() {
 
     private fun bindToView(userDescription: UserDescription) {
         binding.homeHeader.apply {
-            username.text = userDescription.user.username
+            username.text = "${userDescription.user.firstname} ${userDescription.user.lastname}"
             email.text = userDescription.user.email
         }
         binding.cardData.apply {

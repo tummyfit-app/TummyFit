@@ -7,7 +7,8 @@ package com.capstoneproject.tummyfit.data.remote.model.auth
 
 data class UpdateUserRequestBody(
     val username: String,
-    val namauser: String,
+    val firstname: String,
+    val lastname: String,
     val email: String,
     val password: String
 )

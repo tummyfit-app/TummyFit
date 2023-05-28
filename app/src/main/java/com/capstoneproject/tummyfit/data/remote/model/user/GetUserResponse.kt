@@ -60,6 +60,12 @@ data class UserDescription(
 
 data class User(
 
+    @field:SerializedName("firstname")
+    val firstname: String,
+
+    @field:SerializedName("lastname")
+    val lastname: String,
+
     @field:SerializedName("email")
     val email: String,
 

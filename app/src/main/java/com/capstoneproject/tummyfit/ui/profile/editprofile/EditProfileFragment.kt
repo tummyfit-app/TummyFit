@@ -51,11 +51,11 @@ class EditProfileFragment : Fragment() {
                 val username = etUsername.text.toString().trim()
                 val email = etEmail.text.toString().trim()
                 val pw = etPw.text.toString().trim()
-                val name =
-                    "${etFirstname.text.toString().trim()} ${etLastname.text.toString().trim()}"
+                val firstName = etFirstname.text.toString().trim()
+                val lastName = etLastname.text.toString().trim()
                 if (validateInput()) {
                     viewModel.updateUser(
-                        UpdateUserRequestBody(username, name, email, pw)
+                        UpdateUserRequestBody(username, firstName, lastName, email, pw)
                     )
                 }
             }
@@ -116,6 +116,8 @@ class EditProfileFragment : Fragment() {
 
     private fun bindToView(userDescription: UserDescription) {
         binding.apply {
+            etFirstname.setText(userDescription.user.firstname)
+            etLastname.setText(userDescription.user.lastname)
             etUsername.setText(userDescription.user.username)
             etEmail.setText(userDescription.user.email)
         }
