@@ -3,6 +3,8 @@ package com.capstoneproject.tummyfit.utils
 import android.content.Context
 import android.view.View
 import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.DiffUtil
+import com.capstoneproject.tummyfit.data.remote.model.food.FoodsItem
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
@@ -35,11 +37,26 @@ fun showDatePicker(fragmentManager: FragmentManager, textInputEditText: TextInpu
     }
 }
 
-fun scoreIbm(weight: Int, height: Int): Double = (weight / ((height * 0.01) * (height * 0.01))).roundToInt()
-    .toDouble()
+fun scoreIbm(weight: Int, height: Int): Double =
+    (weight / ((height * 0.01) * (height * 0.01))).roundToInt()
+        .toDouble()
 
 
 fun showSnackbar(view: View, text: String) {
     Snackbar.make(view, text, Snackbar.LENGTH_SHORT)
         .show()
+}
+
+val callbackFoodDiffUtil = object : DiffUtil.ItemCallback<FoodsItem>() {
+    override fun areItemsTheSame(
+        oldItem: FoodsItem,
+        newItem: FoodsItem
+    ): Boolean =
+        oldItem.id == newItem.id
+
+    override fun areContentsTheSame(
+        oldItem: FoodsItem,
+        newItem: FoodsItem
+    ): Boolean =
+        oldItem == newItem
 }

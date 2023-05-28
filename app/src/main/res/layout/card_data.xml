@@ -41,14 +41,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="-5dp"
-            android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/kcal"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/total_kcal"
+            app:layout_constraintBaseline_toBaselineOf="@+id/total_kcal"
             app:layout_constraintEnd_toStartOf="@id/spacer"
-            app:layout_constraintStart_toEndOf="@id/total_kcal"
-            app:layout_constraintTop_toTopOf="@id/total_kcal" />
+            app:layout_constraintStart_toEndOf="@id/total_kcal" />
 
         <View
             android:id="@+id/spacer"

@@ -39,6 +39,20 @@ class ProfileFragment : Fragment() {
         viewModel.getUser()
         observeData()
         logout()
+        toEditProfile()
+        toUpdateDataProfile()
+    }
+
+    private fun toEditProfile() {
+        binding.btnEditProfile.setOnClickListener {
+            it.findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment)
+        }
+    }
+
+    private fun toUpdateDataProfile(){
+        binding.btnUpdateDataProfile.setOnClickListener {
+            it.findNavController().navigate(R.id.action_profileFragment_to_updateDataProfileFragment)
+        }
     }
 
     private fun observeData() {

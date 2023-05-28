@@ -39,6 +39,7 @@
     <string name="cm">cm</string>
     <string name="cm_template">%1$s cm</string>
     <string name="kg_template">%1$s kg</string>
+    <string name="kcal_template">%1$s kcal</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="birthday">Birthday</string>
@@ -76,7 +77,7 @@
     <string name="protein_g">protein/g</string>
     <string name="carbo_g">carbo/g</string>
     <string name="ready_in">Ready in</string>
-    <string name="step_by_step">Step-by-Step</string>
+    <string name="instructions">Instructions</string>
     <string name="_183cm">183cm</string>
     <string name="_19_3">19.3</string>
     <string name="_58kg">58kg</string>
@@ -84,6 +85,8 @@
     <string name="favorite">Favorite</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="daily_meals_nrecommendation">Daily Meals\nRecommendation</string>
+    <string name="your_food_preferences">Your Food Preferences</string>
+    <string name="your_data_profile">Your Data Profile</string>
     <string-array name="purpose_item">
         <item>Maintain weight</item>
         <item>Weight loss</item>

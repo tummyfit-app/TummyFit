@@ -69,7 +69,13 @@
         android:id="@+id/profileSetupBottomSheetDialogFragment"
         android:name="com.capstoneproject.tummyfit.ui.home.profilesetup.ProfileSetupBottomSheetDialogFragment"
         android:label="fragment_profile_setup_bottom_sheet"
-        tools:layout="@layout/fragment_profile_setup_bottom_sheet" />
+        tools:layout="@layout/fragment_profile_setup_bottom_sheet" >
+        <action
+            android:id="@+id/action_profileSetupBottomSheetDialogFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/nav_container"
+            app:popUpToInclusive="true" />
+    </dialog>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.capstoneproject.tummyfit.ui.profile.ProfileFragment"
@@ -80,6 +86,12 @@
             app:destination="@id/loginFragment"
             app:popUpTo="@id/nav_container"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_updateDataProfileFragment"
+            app:destination="@id/updateDataProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchMealsFragment"
@@ -105,4 +117,22 @@
         android:name="com.capstoneproject.tummyfit.ui.grocerielist.GrocerieListFragment"
         android:label="fragment_grocerie_list"
         tools:layout="@layout/fragment_grocerie_list" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.capstoneproject.tummyfit.ui.profile.editprofile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateDataProfileFragment"
+        android:name="com.capstoneproject.tummyfit.ui.profile.updatedataprofile.UpdateDataProfileFragment"
+        android:label="fragment_update_data_profile"
+        tools:layout="@layout/fragment_update_data_profile" >
+        <action
+            android:id="@+id/action_updateDataProfileFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 </navigation>

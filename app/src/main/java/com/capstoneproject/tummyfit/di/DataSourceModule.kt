@@ -4,6 +4,8 @@ import com.capstoneproject.tummyfit.data.local.datasource.AuthLocalDataSource
 import com.capstoneproject.tummyfit.data.local.datasource.AuthLocalDataSourceImpl
 import com.capstoneproject.tummyfit.data.remote.datasource.AuthRemoteDataSource
 import com.capstoneproject.tummyfit.data.remote.datasource.AuthRemoteDataSourceImpl
+import com.capstoneproject.tummyfit.data.remote.datasource.FoodRemoteDataSource
+import com.capstoneproject.tummyfit.data.remote.datasource.FoodRemoteDataSourceImpl
 import com.capstoneproject.tummyfit.data.remote.datasource.UserRemoteDataSource
 import com.capstoneproject.tummyfit.data.remote.datasource.UserRemoteDataSourceImpl
 import dagger.Binds
@@ -28,4 +30,7 @@ abstract class DataSourceModule {
 
     @Binds
     abstract fun provideUserRemoteDataSource(userRemoteDataSourceImpl: UserRemoteDataSourceImpl): UserRemoteDataSource
+
+    @Binds
+    abstract fun provideFoodRemoteDataSource(foodRemoteDataSourceImpl: FoodRemoteDataSourceImpl): FoodRemoteDataSource
 }

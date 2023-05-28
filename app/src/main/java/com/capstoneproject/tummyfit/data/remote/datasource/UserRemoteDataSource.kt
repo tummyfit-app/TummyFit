@@ -1,9 +1,15 @@
 package com.capstoneproject.tummyfit.data.remote.datasource
 
+import com.capstoneproject.tummyfit.data.remote.model.auth.UpdateUserRequestBody
 import com.capstoneproject.tummyfit.data.remote.model.user.GetUserResponse
 import com.capstoneproject.tummyfit.data.remote.model.user.PostUserDescRequestBody
 import com.capstoneproject.tummyfit.data.remote.model.user.PostUserDescResponse
+import com.capstoneproject.tummyfit.data.remote.model.user.UpdateUserDescRequestBody
+import com.capstoneproject.tummyfit.data.remote.model.user.UpdateUserDescResponse
 import com.capstoneproject.tummyfit.data.remote.service.UserApiService
+import retrofit2.http.Body
+import retrofit2.http.Header
+import retrofit2.http.Path
 import javax.inject.Inject
 
 /**
@@ -20,6 +26,12 @@ interface UserRemoteDataSource {
     suspend fun getUserDesc(
         token: String,
     ): GetUserResponse
+
+    suspend fun updateUserDesc(
+        token: String,
+        id: String,
+        updateUserDescRequestBody: UpdateUserDescRequestBody
+    ): UpdateUserDescResponse
 }
 
 class UserRemoteDataSourceImpl @Inject constructor(private val apiService: UserApiService) :
@@ -30,5 +42,10 @@ class UserRemoteDataSourceImpl @Inject constructor(private val apiService: UserA
     ): PostUserDescResponse = apiService.postUserDesc(token, postUserDescRequestBody)
 
     override suspend fun getUserDesc(token: String): GetUserResponse = apiService.getUserDesc(token)
+    override suspend fun updateUserDesc(
+        token: String,
+        id: String,
+        updateUserDescRequestBody: UpdateUserDescRequestBody
+    ): UpdateUserDescResponse = apiService.updateUserDesc(token, id, updateUserDescRequestBody)
 
 }

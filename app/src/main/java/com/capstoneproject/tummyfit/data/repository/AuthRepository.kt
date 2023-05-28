@@ -6,9 +6,12 @@ import com.capstoneproject.tummyfit.data.remote.model.auth.LoginRequestBody
 import com.capstoneproject.tummyfit.data.remote.model.auth.LoginResponse
 import com.capstoneproject.tummyfit.data.remote.model.auth.RegisterRequestBody
 import com.capstoneproject.tummyfit.data.remote.model.auth.RegisterResponse
+import com.capstoneproject.tummyfit.data.remote.model.auth.UpdateUserRequestBody
+import com.capstoneproject.tummyfit.data.remote.model.auth.UpdateUserResponse
 import com.capstoneproject.tummyfit.wrapper.Resource
 import com.capstoneproject.tummyfit.wrapper.proceed
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
 /**
@@ -22,6 +25,10 @@ interface AuthRepository {
     suspend fun clear()
     suspend fun login(loginRequestBody: LoginRequestBody): Resource<LoginResponse>
     suspend fun register(registerRequestBody: RegisterRequestBody): Resource<RegisterResponse>
+    suspend fun updateUser(
+        token: String,
+        updateUserRequestBody: UpdateUserRequestBody
+    ): Resource<UpdateUserResponse>
 }
 
 class AuthRepositoryImpl @Inject constructor(
@@ -44,4 +51,16 @@ class AuthRepositoryImpl @Inject constructor(
         proceed {
             authRemoteDataSource.register(registerRequestBody)
         }
+
+    override suspend fun updateUser(
+        token: String,
+        updateUserRequestBody: UpdateUserRequestBody
+    ): Resource<UpdateUserResponse> =
+        proceed {
+            authRemoteDataSource.updateUser(
+                token,
+                updateUserRequestBody
+            )
+        }
+
 }

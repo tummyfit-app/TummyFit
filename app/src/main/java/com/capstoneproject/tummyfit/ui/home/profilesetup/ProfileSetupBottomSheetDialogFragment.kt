@@ -104,7 +104,7 @@ class ProfileSetupBottomSheetDialogFragment : BottomSheetDialogFragment() {
                         FancyToast.SUCCESS,
                         false
                     ).show()
-                    dismiss()
+                   findNavController().navigate(R.id.action_profileSetupBottomSheetDialogFragment_to_homeFragment)
                 }
                 is Resource.Empty -> {}
             }

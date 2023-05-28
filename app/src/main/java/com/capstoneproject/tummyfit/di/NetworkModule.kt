@@ -3,6 +3,7 @@ package com.capstoneproject.tummyfit.di
 import android.content.Context
 import com.capstoneproject.tummyfit.BuildConfig
 import com.capstoneproject.tummyfit.data.remote.service.AuthApiService
+import com.capstoneproject.tummyfit.data.remote.service.FoodApiService
 import com.capstoneproject.tummyfit.data.remote.service.UserApiService
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import dagger.Module
@@ -63,4 +64,9 @@ object NetworkModule {
     @Singleton
     fun provideUserApiService(retrofit: Retrofit): UserApiService =
         retrofit.create(UserApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideFoodApiService(retrofit: Retrofit): FoodApiService =
+        retrofit.create(FoodApiService::class.java)
 }
