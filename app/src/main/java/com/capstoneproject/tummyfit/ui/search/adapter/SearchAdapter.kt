@@ -20,6 +20,11 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.ListViewHolder>() {
 
     val differ = AsyncListDiffer(this, callbackFoodDiffUtil)
 
+    private lateinit var listener: SearchAdapter.OnItemClickListener
+    fun setOnClickListener(listener: SearchAdapter.OnItemClickListener) {
+        this.listener = listener
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
@@ -51,6 +56,10 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.ListViewHolder>() {
                 descTwoMeal.text = if (item.halal.equals("True", true)) "halal" else "non-halal"
             }
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClicked(item: FoodsItem)
     }
 
 }

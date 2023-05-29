@@ -37,44 +37,52 @@
                 android:id="@+id/chip_group_filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal"
                 android:padding="6dp"
                 app:singleLine="true">
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_all"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    android:id="@+id/chip_main_course"
+                    style="@style/Widget.Material3.Chip.Suggestion.Elevated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/all" />
+                    android:text="@string/main_course" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_appetizer"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    style="@style/Widget.Material3.Chip.Suggestion.Elevated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/appetizer" />
+                    android:text="@string/appetizer_lower" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_halal"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    android:id="@+id/chip_side_dish"
+                    style="@style/Widget.Material3.Chip.Suggestion.Elevated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/halal" />
+                    android:text="@string/side_dish" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_vegan"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    android:id="@+id/chip_salad"
+                    style="@style/Widget.Material3.Chip.Suggestion.Elevated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/alcohol" />
+                    android:text="@string/salad" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_main_dish"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    android:id="@+id/chip_condiment_sauce"
+                    style="@style/Widget.Material3.Chip.Suggestion.Elevated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/main_dish" />
+                    android:text="@string/condiment_sauce" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_soup"
+                    style="@style/Widget.Material3.Chip.Suggestion.Elevated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/soup" />
             </com.google.android.material.chip.ChipGroup>
         </HorizontalScrollView>
 
@@ -93,16 +101,41 @@
         <include
             android:id="@+id/list_search"
             layout="@layout/list_search"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_perfect_match" />
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/not_found_animation"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_perfect_match"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/search_not_found" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_not_found"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/search_not_found"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@id/not_found_animation"
+            app:layout_constraintStart_toStartOf="@id/not_found_animation"
+            app:layout_constraintTop_toBottomOf="@id/not_found_animation" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.core.widget.NestedScrollView>

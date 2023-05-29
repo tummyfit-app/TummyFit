@@ -25,10 +25,25 @@ class SearchMealsViewModel @Inject constructor(
     init {
         getPerfectMatch()
     }
+
     private fun getPerfectMatch() = viewModelScope.launch(Dispatchers.IO) {
         _search.postValue(Resource.Loading())
         viewModelScope.launch(Dispatchers.Main) {
             _search.postValue(foodRepository.getListFoods(authRepository.getToken().first()))
+        }
+    }
+
+    fun searchFoods(name: String) = viewModelScope.launch(Dispatchers.IO) {
+        _search.postValue(Resource.Loading())
+        val data = foodRepository.searchFoods(authRepository.getToken().first(), name)
+        viewModelScope.launch(Dispatchers.Main) {
+            data.payload?.data?.foods?.let {
+                if (it.isNotEmpty()) {
+                    _search.postValue(data)
+                } else {
+                    _search.postValue(Resource.Empty())
+                }
+            }
         }
     }
 }

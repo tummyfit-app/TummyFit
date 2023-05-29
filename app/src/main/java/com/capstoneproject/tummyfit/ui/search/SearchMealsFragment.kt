@@ -6,12 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.capstoneproject.tummyfit.R
+import com.capstoneproject.tummyfit.data.remote.model.food.FoodsItem
 import com.capstoneproject.tummyfit.databinding.FragmentProfileBinding
 import com.capstoneproject.tummyfit.databinding.FragmentSearchMealsBinding
+import com.capstoneproject.tummyfit.ui.home.HomeFragmentDirections
 import com.capstoneproject.tummyfit.ui.home.adapter.TryItAdapter
 import com.capstoneproject.tummyfit.ui.profile.ProfileViewModel
 import com.capstoneproject.tummyfit.ui.search.adapter.SearchAdapter
@@ -38,6 +42,30 @@ class SearchMealsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initSearchList()
         observeData()
+        searchFoods()
+    }
+
+    private fun searchFoods() {
+        binding.apply {
+            cardSearch.searchView.setIconifiedByDefault(false)
+            cardSearch.searchView.queryHint = resources.getString(R.string.search_meals)
+            cardSearch.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+                androidx.appcompat.widget.SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    query?.let {
+                        viewModel.searchFoods(it.replaceFirstChar { char -> char.uppercase() })
+                    }
+                    return false
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    if (newText?.length == 0) {
+                        cardSearch.searchView.clearFocus()
+                    }
+                    return true
+                }
+            })
+        }
     }
 
     private fun observeData() {
@@ -46,22 +74,30 @@ class SearchMealsFragment : Fragment() {
                 is Resource.Loading -> {
                     binding.listSearch.shimmerSearch.isVisible = true
                     binding.listSearch.rvPerfectMatch.isVisible = false
+                    binding.notFoundAnimation.isVisible = false
+                    binding.tvNotFound.isVisible = false
                 }
 
                 is Resource.Empty -> {
                     binding.listSearch.shimmerSearch.isVisible = false
                     binding.listSearch.rvPerfectMatch.isVisible = false
+                    binding.notFoundAnimation.isVisible = true
+                    binding.tvNotFound.isVisible = true
                 }
 
                 is Resource.Success -> {
                     binding.listSearch.shimmerSearch.isVisible = false
                     binding.listSearch.rvPerfectMatch.isVisible = true
+                    binding.notFoundAnimation.isVisible = false
+                    binding.tvNotFound.isVisible = false
                     searchAdapter.differ.submitList(it.data?.data?.foods)
                 }
 
                 is Resource.Error -> {
                     binding.listSearch.shimmerSearch.isVisible = true
                     binding.listSearch.rvPerfectMatch.isVisible = false
+                    binding.notFoundAnimation.isVisible = false
+                    binding.tvNotFound.isVisible = false
                     showSnackbar(requireView(), it.message.toString())
                 }
             }
@@ -75,6 +111,14 @@ class SearchMealsFragment : Fragment() {
             layoutManager = GridLayoutManager(requireContext(), 2)
             setHasFixedSize(true)
         }
+
+        searchAdapter.setOnClickListener(object : SearchAdapter.OnItemClickListener {
+            override fun onItemClicked(item: FoodsItem) {
+                val directions =
+                    SearchMealsFragmentDirections.actionSearchMealsFragmentToDetailMealFragment(item.id)
+                findNavController().navigate(directions)
+            }
+        })
     }
 
     override fun onDestroy() {

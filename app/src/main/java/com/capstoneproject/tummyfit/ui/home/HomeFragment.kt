@@ -1,5 +1,6 @@
 package com.capstoneproject.tummyfit.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +8,12 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstoneproject.tummyfit.R
+import com.capstoneproject.tummyfit.data.remote.model.food.FoodsItem
 import com.capstoneproject.tummyfit.data.remote.model.user.UserDescription
 import com.capstoneproject.tummyfit.databinding.FragmentHomeBinding
 import com.capstoneproject.tummyfit.ui.home.adapter.TryItAdapter
@@ -131,6 +134,13 @@ class HomeFragment : Fragment() {
             layoutManager = GridLayoutManager(requireContext(), 2)
             setHasFixedSize(true)
         }
+
+        tryItAdapter.setOnClickListener(object : TryItAdapter.OnItemClickListener {
+            override fun onItemClicked(item: FoodsItem) {
+                val directions = HomeFragmentDirections.actionHomeFragmentToDetailMealFragment(item.id)
+                findNavController().navigate(directions)
+            }
+        })
     }
 
     override fun onDestroy() {

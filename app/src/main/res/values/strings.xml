@@ -81,12 +81,21 @@
     <string name="_183cm">183cm</string>
     <string name="_19_3">19.3</string>
     <string name="_58kg">58kg</string>
-    <string name="_30_nminutes">30\nminutes</string>
+    <string name="minutes">30</string>
     <string name="favorite">Favorite</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="daily_meals_nrecommendation">Daily Meals\nRecommendation</string>
     <string name="your_food_preferences">Your Food Preferences</string>
     <string name="your_data_profile">Your Data Profile</string>
+    <string name="main_course">main course</string>
+    <string name="appetizer_lower">appetizer</string>
+    <string name="side_dish">side dish</string>
+    <string name="salad">salad</string>
+    <string name="condiment_sauce">condiment sauce</string>
+    <string name="soup">soup</string>
+    <string name="minute">Minute</string>
+    <string name="grocery_list">Grocery List</string>
+    <string name="search_not_found">No results found\nWe couldnt find any animations based on your search</string>
     <string-array name="purpose_item">
         <item>Maintain weight</item>
         <item>Weight loss</item>

@@ -64,6 +64,9 @@
         <action
             android:id="@+id/action_homeFragment_to_profileSetupBottomSheetDialogFragment"
             app:destination="@id/profileSetupBottomSheetDialogFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailMealFragment"
+            app:destination="@id/detailMealFragment" />
     </fragment>
     <dialog
         android:id="@+id/profileSetupBottomSheetDialogFragment"
@@ -97,7 +100,11 @@
         android:id="@+id/searchMealsFragment"
         android:name="com.capstoneproject.tummyfit.ui.search.SearchMealsFragment"
         android:label="fragment_search_meals"
-        tools:layout="@layout/fragment_search_meals" />
+        tools:layout="@layout/fragment_search_meals" >
+        <action
+            android:id="@+id/action_searchMealsFragment_to_detailMealFragment"
+            app:destination="@id/detailMealFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mealsRecommendFragment"
         android:name="com.capstoneproject.tummyfit.ui.mealsrecommend.MealsRecommendFragment"
@@ -111,7 +118,13 @@
         android:id="@+id/detailMealFragment"
         android:name="com.capstoneproject.tummyfit.ui.detailmeal.DetailMealFragment"
         android:label="fragment_detail_meal"
-        tools:layout="@layout/fragment_detail_meal" />
+        tools:layout="@layout/fragment_detail_meal" >
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
+    </fragment>
     <fragment
         android:id="@+id/grocerieListFragment"
         android:name="com.capstoneproject.tummyfit.ui.grocerielist.GrocerieListFragment"

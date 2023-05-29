@@ -73,6 +73,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/yellow_tummyfit"
+            android:clickable="false"
+            android:focusable="false"
             android:paddingStart="0dp"
             android:paddingEnd="20dp"
             android:textAllCaps="false"
