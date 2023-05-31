@@ -158,7 +158,7 @@ class UpdateDataProfileFragment : Fragment() {
     }
 
     private fun back() {
-        binding.topAppBar.setNavigationOnClickListener {
+        binding.icBackBtn.setOnClickListener {
             it.findNavController().popBackStack()
         }
     }

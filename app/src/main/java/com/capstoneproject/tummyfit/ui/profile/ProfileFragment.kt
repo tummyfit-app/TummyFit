@@ -49,9 +49,10 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun toUpdateDataProfile(){
+    private fun toUpdateDataProfile() {
         binding.btnUpdateDataProfile.setOnClickListener {
-            it.findNavController().navigate(R.id.action_profileFragment_to_updateDataProfileFragment)
+            it.findNavController()
+                .navigate(R.id.action_profileFragment_to_updateDataProfileFragment)
         }
     }
 
@@ -84,14 +85,14 @@ class ProfileFragment : Fragment() {
             profileShimmer.isVisible = boolean
             cardData.cardData.isVisible = !boolean
             tvName.isVisible = !boolean
-            tvEmail.isVisible = !boolean
+            tvUsername.isVisible = !boolean
             pictUser.isVisible = !boolean
         }
     }
 
     private fun bindToView(userDescription: UserDescription) {
-        binding.tvName.text = userDescription.user.username
-        binding.tvEmail.text = userDescription.user.email
+        binding.tvName.text = userDescription.user.firstname + " " + userDescription.user.lastname
+        binding.tvUsername.text = userDescription.user.username
         binding.cardData.apply {
             resultHeight.text =
                 String.format(resources.getString(R.string.cm_template), userDescription.height)
@@ -106,7 +107,7 @@ class ProfileFragment : Fragment() {
 
     private fun logout() {
         binding.btnLogout.setOnClickListener {
-            viewModel.clearToken()
+            viewModel.clearSession()
             it.findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
         }
     }

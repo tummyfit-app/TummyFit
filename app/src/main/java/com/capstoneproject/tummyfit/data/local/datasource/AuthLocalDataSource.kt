@@ -13,6 +13,10 @@ interface AuthLocalDataSource {
     fun getToken(): Flow<String>
     suspend fun setToken(token: String)
     suspend fun clearToken()
+
+    fun getId(): Flow<String>
+    suspend fun setId(id: String)
+    suspend fun clearId()
 }
 
 class AuthLocalDataSourceImpl @Inject constructor(private val authDataStoreManager: AuthDataStoreManager) :
@@ -22,4 +26,9 @@ class AuthLocalDataSourceImpl @Inject constructor(private val authDataStoreManag
     override suspend fun setToken(token: String) = authDataStoreManager.setToken(token)
 
     override suspend fun clearToken() = authDataStoreManager.clearToken()
+    override fun getId(): Flow<String> = authDataStoreManager.getId
+
+    override suspend fun setId(id: String) = authDataStoreManager.setId(id)
+
+    override suspend fun clearId() = authDataStoreManager.clearId()
 }

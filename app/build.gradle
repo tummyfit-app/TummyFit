@@ -107,4 +107,7 @@ dependencies {
 
     // Fancy Toast
     implementation 'io.github.shashank02051997:FancyToast:2.0.2'
+
+    // Circular loader
+    implementation 'com.mikhaellopez:circularfillableloaders:1.4.0'
 }

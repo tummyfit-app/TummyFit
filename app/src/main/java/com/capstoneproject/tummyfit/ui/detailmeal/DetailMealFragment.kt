@@ -1,29 +1,25 @@
 package com.capstoneproject.tummyfit.ui.detailmeal
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.StringRes
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.capstoneproject.tummyfit.R
-import com.capstoneproject.tummyfit.data.remote.model.food.DataFood
 import com.capstoneproject.tummyfit.data.remote.model.food.Food
 import com.capstoneproject.tummyfit.databinding.FragmentDetailMealBinding
-import com.capstoneproject.tummyfit.databinding.FragmentSearchMealsBinding
 import com.capstoneproject.tummyfit.ui.detailmeal.adapter.SectionsPagerAdapter
-import com.capstoneproject.tummyfit.ui.search.SearchMealsViewModel
-import com.capstoneproject.tummyfit.ui.search.adapter.SearchAdapter
 import com.capstoneproject.tummyfit.utils.Constants
+import com.capstoneproject.tummyfit.utils.showSnackbar
 import com.capstoneproject.tummyfit.wrapper.Resource
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.ArrayList
+import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class DetailMealFragment : Fragment() {
@@ -32,6 +28,7 @@ class DetailMealFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: DetailMealViewModel by viewModels()
     private val navArgs: DetailMealFragmentArgs by navArgs()
+    private var isFavorite by Delegates.notNull<Boolean>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -43,6 +40,7 @@ class DetailMealFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getDetailFood(navArgs.id.toString())
+        viewModel.isFavorite(navArgs.id.toString())
         observeData()
         back()
     }
@@ -50,18 +48,74 @@ class DetailMealFragment : Fragment() {
     private fun observeData() {
         viewModel.detail.observe(viewLifecycleOwner) {
             when (it) {
-                is Resource.Loading -> {
-                }
+                is Resource.Loading -> {}
 
-                is Resource.Error -> {
-                }
+                is Resource.Error -> {}
 
                 is Resource.Success -> {
-                    it.data?.data?.food?.let { it1 -> bindToView(it1) }
+                    it.data?.data?.food?.let { it1 ->
+                        bindToView(it1)
+                        selectFavorite(
+                            it1
+                        )
+                    }
                 }
 
-                is Resource.Empty -> {
+                is Resource.Empty -> {}
+            }
+        }
+        viewModel.isFavorite.observe(viewLifecycleOwner) {
+            binding.cardDetailMeal.icFav.apply {
+                if (it == true) {
+                    setImageResource(R.drawable.baseline_star_24)
+                } else {
+                    setImageResource(R.drawable.baseline_star_outline_24)
+                }
+                isFavorite = it
+            }
 
+        }
+    }
+
+    private fun selectFavorite(food: Food) {
+        binding.cardDetailMeal.apply {
+            icFav.setOnClickListener {
+                if (!isFavorite) {
+                    viewModel.addFavorite(
+                        food.id,
+                        food.name,
+                        food.image,
+                        food.calories,
+                        "${food.dishType} | ${
+                            if (food.halal.equals(
+                                    "True",
+                                    true
+                                )
+                            ) "halal" else "non-halal"
+                        }",
+                        true
+                    )
+                    icFav.setImageResource(R.drawable.baseline_star_24)
+                    isFavorite = true
+                    showSnackbar(requireView(), "Success add to Favorite")
+                } else {
+                    viewModel.removeFavorite(
+                        food.id,
+                        food.name,
+                        food.image,
+                        food.calories,
+                        "${food.dishType} | ${
+                            if (food.halal.equals(
+                                    "True",
+                                    true
+                                )
+                            ) "halal" else "non-halal"
+                        }",
+                        true
+                    )
+                    icFav.setImageResource(R.drawable.baseline_star_outline_24)
+                    isFavorite = false
+                    showSnackbar(requireView(), "Success delete from Favorite")
                 }
             }
         }
@@ -73,7 +127,8 @@ class DetailMealFragment : Fragment() {
             cardDetailMeal.apply {
                 tvTitle.text = food.name
                 descOneMeal.text = if (food.halal.equals("True", true)) "halal" else "non-halal"
-                buttonMeal.text = String.format(resources.getString(R.string.kcal_template), food.calories)
+                buttonMeal.text =
+                    String.format(resources.getString(R.string.kcal_template), food.calories)
                 resultFat.text = food.fat
                 resultProtein.text = food.protein
                 resultCarbo.text = food.carbo

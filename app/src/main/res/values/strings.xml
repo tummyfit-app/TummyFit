@@ -91,11 +91,14 @@
     <string name="appetizer_lower">appetizer</string>
     <string name="side_dish">side dish</string>
     <string name="salad">salad</string>
-    <string name="condiment_sauce">condiment sauce</string>
+    <string name="condiment">condiment</string>
+    <string name="sauce">sauce</string>
     <string name="soup">soup</string>
     <string name="minute">Minute</string>
     <string name="grocery_list">Grocery List</string>
-    <string name="search_not_found">No results found\nWe couldnt find any animations based on your search</string>
+    <string name="search_not_found">No results found\nWe couldnt find meals based on your search</string>
+    <string name="favorite_meals">Favorite Meals</string>
+    <string name="empty_favorite">There\'s No Favorite Meals\nClick ☆ to add Meals In Favorites</string>
     <string-array name="purpose_item">
         <item>Maintain weight</item>
         <item>Weight loss</item>

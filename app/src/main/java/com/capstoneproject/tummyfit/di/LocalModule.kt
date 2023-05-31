@@ -4,6 +4,9 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.room.Room
+import com.capstoneproject.tummyfit.data.local.database.AppDatabase
+import com.capstoneproject.tummyfit.data.local.database.dao.FavoriteMealDao
 import com.capstoneproject.tummyfit.data.local.preference.AuthDataStoreManager
 import com.capstoneproject.tummyfit.utils.Constants
 import dagger.Module
@@ -25,6 +28,20 @@ private val Context.dataStorePreferences by preferencesDataStore(
 @Module
 @InstallIn(SingletonComponent::class)
 object LocalModule {
+
+    @Singleton
+    @Provides
+    fun providesDatabase(@ApplicationContext context: Context): AppDatabase =
+        Room.databaseBuilder(
+            context,
+            AppDatabase::class.java,
+            Constants.DB_NAME
+        ).fallbackToDestructiveMigration().build()
+
+    @Provides
+    fun provideFavoriteMealDao(appDatabase: AppDatabase): FavoriteMealDao =
+        appDatabase.favoriteMealDao()
+
     @Singleton
     @Provides
     fun provideDataStore(@ApplicationContext context: Context): DataStore<Preferences> =

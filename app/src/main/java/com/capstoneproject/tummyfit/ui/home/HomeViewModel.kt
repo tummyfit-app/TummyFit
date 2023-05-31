@@ -42,4 +42,8 @@ class HomeViewModel @Inject constructor(
             _foodTryIt.postValue(foodRepository.getListFoods(authRepository.getToken().first()))
         }
     }
+
+    fun setId(id: String) = viewModelScope.launch {
+        if (authRepository.getToken().first().isEmpty()) authRepository.setId(id)
+    }
 }

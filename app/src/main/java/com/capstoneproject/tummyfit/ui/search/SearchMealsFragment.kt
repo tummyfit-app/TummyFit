@@ -21,6 +21,7 @@ import com.capstoneproject.tummyfit.ui.profile.ProfileViewModel
 import com.capstoneproject.tummyfit.ui.search.adapter.SearchAdapter
 import com.capstoneproject.tummyfit.utils.showSnackbar
 import com.capstoneproject.tummyfit.wrapper.Resource
+import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,6 +31,7 @@ class SearchMealsFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: SearchMealsViewModel by viewModels()
     private lateinit var searchAdapter: SearchAdapter
+    private var category: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -43,6 +45,19 @@ class SearchMealsFragment : Fragment() {
         initSearchList()
         observeData()
         searchFoods()
+        selectedCategory()
+    }
+
+    private fun selectedCategory() {
+        binding.chipGroupFilter.setOnCheckedChangeListener { group, checkedId ->
+            val chip: Chip? = group.findViewById(checkedId)
+            if (chip != null) {
+                category = chip.text.toString()
+                viewModel.searchFoodsByCategory(category = category)
+            } else {
+                category = null
+            }
+        }
     }
 
     private fun searchFoods() {
@@ -53,7 +68,14 @@ class SearchMealsFragment : Fragment() {
                 androidx.appcompat.widget.SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     query?.let {
-                        viewModel.searchFoods(it.replaceFirstChar { char -> char.uppercase() })
+                        if (category != null){
+                            viewModel.searchFoodsByCategory(
+                                it.replaceFirstChar { char -> char.uppercase() },
+                                category
+                            )
+                        }else {
+                            viewModel.searchFoodsByCategory(it.replaceFirstChar { char -> char.uppercase() })
+                        }
                     }
                     return false
                 }

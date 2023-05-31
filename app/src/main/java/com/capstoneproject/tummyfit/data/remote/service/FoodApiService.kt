@@ -20,9 +20,10 @@ interface FoodApiService {
     ): GetFoodResponse
 
     @GET("/api/v1/foods?")
-    suspend fun searchFoods(
+    suspend fun searchFoodsByCategory(
         @Header("Authorization") token: String,
-        @Query("name") q: String,
+        @Query("name") q: String? = null,
+        @Query("dishtype") category: String? = null,
     ): GetFoodResponse
 
     @GET("api/v1/foods/{id}")

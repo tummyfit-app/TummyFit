@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.DiffUtil
+import com.capstoneproject.tummyfit.data.local.database.entity.FavoriteMealEntity
 import com.capstoneproject.tummyfit.data.remote.model.food.FoodsItem
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.snackbar.Snackbar
@@ -71,6 +72,20 @@ val callbackStringDiffUtil = object : DiffUtil.ItemCallback<String>() {
     override fun areContentsTheSame(
         oldItem: String,
         newItem: String
+    ): Boolean =
+        oldItem == newItem
+}
+
+val callbackFavoriteMealEntityDiffUtil = object : DiffUtil.ItemCallback<FavoriteMealEntity>() {
+    override fun areItemsTheSame(
+        oldItem: FavoriteMealEntity,
+        newItem: FavoriteMealEntity
+    ): Boolean =
+        oldItem.id_meal == newItem.id_meal
+
+    override fun areContentsTheSame(
+        oldItem: FavoriteMealEntity,
+        newItem: FavoriteMealEntity
     ): Boolean =
         oldItem == newItem
 }

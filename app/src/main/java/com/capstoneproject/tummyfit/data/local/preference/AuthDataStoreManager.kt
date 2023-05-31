@@ -26,9 +26,25 @@ class AuthDataStoreManager @Inject constructor(private val dataStore: DataStore<
         }
     }
 
+    val getId: Flow<String> = dataStore.data.map {
+        it[stringPreferencesKey(Constants.ID_USER_KEY)] ?: ""
+    }
+
+    suspend fun setId(id: String) {
+        dataStore.edit {
+            it[stringPreferencesKey(Constants.ID_USER_KEY)] = id
+        }
+    }
+
     suspend fun clearToken() {
         dataStore.edit {
             it.remove(stringPreferencesKey(Constants.TOKEN_USER_KEY))
+        }
+    }
+
+    suspend fun clearId() {
+        dataStore.edit {
+            it.remove(stringPreferencesKey(Constants.ID_USER_KEY))
         }
     }
 }

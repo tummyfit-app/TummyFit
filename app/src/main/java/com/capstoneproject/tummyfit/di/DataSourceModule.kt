@@ -2,6 +2,8 @@ package com.capstoneproject.tummyfit.di
 
 import com.capstoneproject.tummyfit.data.local.datasource.AuthLocalDataSource
 import com.capstoneproject.tummyfit.data.local.datasource.AuthLocalDataSourceImpl
+import com.capstoneproject.tummyfit.data.local.datasource.FavoriteLocalDataSource
+import com.capstoneproject.tummyfit.data.local.datasource.FavoriteLocalDataSourceImpl
 import com.capstoneproject.tummyfit.data.remote.datasource.AuthRemoteDataSource
 import com.capstoneproject.tummyfit.data.remote.datasource.AuthRemoteDataSourceImpl
 import com.capstoneproject.tummyfit.data.remote.datasource.FoodRemoteDataSource
@@ -33,4 +35,7 @@ abstract class DataSourceModule {
 
     @Binds
     abstract fun provideFoodRemoteDataSource(foodRemoteDataSourceImpl: FoodRemoteDataSourceImpl): FoodRemoteDataSource
+
+    @Binds
+    abstract fun provideFavoriteLocalDataSource(favoriteLocalDataSourceImpl: FavoriteLocalDataSourceImpl): FavoriteLocalDataSource
 }

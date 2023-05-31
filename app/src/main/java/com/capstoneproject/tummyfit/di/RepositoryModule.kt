@@ -2,6 +2,8 @@ package com.capstoneproject.tummyfit.di
 
 import com.capstoneproject.tummyfit.data.repository.AuthRepository
 import com.capstoneproject.tummyfit.data.repository.AuthRepositoryImpl
+import com.capstoneproject.tummyfit.data.repository.FavoriteRepository
+import com.capstoneproject.tummyfit.data.repository.FavoriteRepositoryImpl
 import com.capstoneproject.tummyfit.data.repository.FoodRepository
 import com.capstoneproject.tummyfit.data.repository.FoodRepositoryImpl
 import com.capstoneproject.tummyfit.data.repository.UserRepository
@@ -27,4 +29,7 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun provideFoodRepository(foodRepositoryImpl: FoodRepositoryImpl): FoodRepository
+
+    @Binds
+    abstract fun provideFavoriteRepository(favoriteRepositoryImpl: FavoriteRepositoryImpl): FavoriteRepository
 }

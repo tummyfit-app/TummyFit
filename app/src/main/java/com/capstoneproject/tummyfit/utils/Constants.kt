@@ -11,4 +11,6 @@ object Constants {
     const val LOADING_TIME = 2000L
     const val INGREDIENT = "INGREDIENT"
     const val INSTRUCTIONS = "INSTRUCTIONS"
+    const val DB_NAME = "TummyFit.db"
+    const val ID_USER_KEY = "ID_USER_KEY"
 }

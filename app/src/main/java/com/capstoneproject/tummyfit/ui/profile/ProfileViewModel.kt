@@ -23,7 +23,11 @@ class ProfileViewModel @Inject constructor(
     private val _user = MutableLiveData<Resource<GetUserResponse>>()
     val user: LiveData<Resource<GetUserResponse>> get() = _user
 
-    fun clearToken() = viewModelScope.launch { authRepository.clear() }
+    fun clearSession() = viewModelScope.launch {
+        authRepository.clear()
+        authRepository.clearId()
+    }
+
     fun getUser() = viewModelScope.launch(Dispatchers.IO) {
         _user.postValue(Resource.Loading())
         delay(1000L)

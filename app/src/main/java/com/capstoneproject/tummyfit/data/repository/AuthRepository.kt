@@ -23,6 +23,13 @@ interface AuthRepository {
     fun getToken(): Flow<String>
     suspend fun setToken(token: String)
     suspend fun clear()
+
+    fun getId(): Flow<String>
+
+    suspend fun setId(id: String)
+
+    suspend fun clearId()
+
     suspend fun login(loginRequestBody: LoginRequestBody): Resource<LoginResponse>
     suspend fun register(registerRequestBody: RegisterRequestBody): Resource<RegisterResponse>
     suspend fun updateUser(
@@ -40,6 +47,11 @@ class AuthRepositoryImpl @Inject constructor(
     override suspend fun setToken(token: String) = authLocalDataSource.setToken(token)
 
     override suspend fun clear() = authLocalDataSource.clearToken()
+    override fun getId(): Flow<String> = authLocalDataSource.getId()
+
+    override suspend fun setId(id: String) = authLocalDataSource.setId(id)
+
+    override suspend fun clearId() = authLocalDataSource.clearId()
 
     override suspend fun login(loginRequestBody: LoginRequestBody): Resource<LoginResponse> {
         val response = proceed { authRemoteDataSource.login(loginRequestBody) }

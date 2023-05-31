@@ -33,9 +33,9 @@ class SearchMealsViewModel @Inject constructor(
         }
     }
 
-    fun searchFoods(name: String) = viewModelScope.launch(Dispatchers.IO) {
+    fun searchFoodsByCategory(name: String? = null, category: String? = null) = viewModelScope.launch(Dispatchers.IO) {
         _search.postValue(Resource.Loading())
-        val data = foodRepository.searchFoods(authRepository.getToken().first(), name)
+        val data = foodRepository.searchFoodsByCategory(authRepository.getToken().first(), name, category)
         viewModelScope.launch(Dispatchers.Main) {
             data.payload?.data?.foods?.let {
                 if (it.isNotEmpty()) {

@@ -43,7 +43,14 @@ class HomeFragment : Fragment() {
         viewModel.getFoodsTryIt()
         initTryItList()
         observeData()
+        toFavorite()
         binding.listTodayMeals.shimmerTodayMeals.startShimmer()
+    }
+
+    private fun toFavorite() {
+        binding.listMenu.favorite.setOnClickListener {
+            it.findNavController().navigate(R.id.action_homeFragment_to_favoriteMealsFragment)
+        }
     }
 
     private fun observeData() {
@@ -111,6 +118,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun bindToView(userDescription: UserDescription) {
+        viewModel.setId(userDescription.userId)
         binding.homeHeader.apply {
             username.text = "${userDescription.user.firstname} ${userDescription.user.lastname}"
             email.text = userDescription.user.email
@@ -137,7 +145,8 @@ class HomeFragment : Fragment() {
 
         tryItAdapter.setOnClickListener(object : TryItAdapter.OnItemClickListener {
             override fun onItemClicked(item: FoodsItem) {
-                val directions = HomeFragmentDirections.actionHomeFragmentToDetailMealFragment(item.id)
+                val directions =
+                    HomeFragmentDirections.actionHomeFragmentToDetailMealFragment(item.id)
                 findNavController().navigate(directions)
             }
         })

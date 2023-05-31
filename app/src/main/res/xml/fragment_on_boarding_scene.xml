@@ -239,16 +239,16 @@
     </Transition>
     <Transition
         motion:constraintSetEnd="@+id/menu3"
-        motion:constraintSetStart="@+id/menu1">
+        motion:constraintSetStart="@id/menu1">
         <OnClick
-            motion:clickAction="transitionToEnd"
+            motion:clickAction="jumpToEnd"
             motion:targetId="@id/tv_skip" />
     </Transition>
     <Transition
         motion:constraintSetEnd="@+id/menu3"
-        motion:constraintSetStart="@+id/menu2">
+        motion:constraintSetStart="@id/menu2">
         <OnClick
-            motion:clickAction="transitionToEnd"
+            motion:clickAction="jumpToEnd"
             motion:targetId="@id/tv_skip" />
     </Transition>
 </MotionScene>

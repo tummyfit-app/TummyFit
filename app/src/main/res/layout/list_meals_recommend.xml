@@ -16,6 +16,21 @@
         tools:itemCount="4"
         tools:listitem="@layout/item_meal_recommend" />
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/empty_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/empty_favorite"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmer_today_meals"
         android:layout_width="match_parent"

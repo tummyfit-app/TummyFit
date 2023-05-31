@@ -5,6 +5,8 @@ import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodDetailResponse
 import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodResponse
 import com.capstoneproject.tummyfit.wrapper.Resource
 import com.capstoneproject.tummyfit.wrapper.proceed
+import retrofit2.http.Header
+import retrofit2.http.Query
 import javax.inject.Inject
 
 /**
@@ -17,12 +19,14 @@ interface FoodRepository {
         token: String
     ): Resource<GetFoodResponse>
 
-    suspend fun searchFoods(token: String, name: String): Resource<GetFoodResponse>
-
     suspend fun getDetailFood(
         token: String,
         id: String
     ): Resource<GetFoodDetailResponse>
+
+    suspend fun searchFoodsByCategory(
+        token: String, q: String?, category: String?,
+    ): Resource<GetFoodResponse>
 
 }
 
@@ -33,11 +37,13 @@ class FoodRepositoryImpl @Inject constructor(private val foodRemoteDataSource: F
             foodRemoteDataSource.getListFoods(token)
         }
 
-    override suspend fun searchFoods(token: String, name: String): Resource<GetFoodResponse> =
-        proceed {
-            foodRemoteDataSource.searchFoods(token, name)
-        }
-
     override suspend fun getDetailFood(token: String, id: String): Resource<GetFoodDetailResponse> =
         proceed { foodRemoteDataSource.getDetailFood(token, id) }
+
+    override suspend fun searchFoodsByCategory(
+        token: String,
+        q: String?,
+        category: String?
+    ): Resource<GetFoodResponse> =
+        proceed { foodRemoteDataSource.searchFoodsByCategory(token, q, category) }
 }

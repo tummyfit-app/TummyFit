@@ -5,10 +5,11 @@
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
-        motion:duration="@integer/material_motion_duration_short_1">
+        motion:motionInterpolator="linear">
         <KeyFrameSet />
         <OnSwipe
             motion:dragDirection="dragLeft"
+            motion:maxAcceleration="10000"
             motion:touchAnchorSide="left" />
         <OnClick
             motion:clickAction="jumpToEnd"
@@ -18,10 +19,11 @@
     <Transition
         motion:constraintSetEnd="@+id/start"
         motion:constraintSetStart="@id/end"
-        motion:duration="@integer/material_motion_duration_short_1">
+        motion:motionInterpolator="linear">
         <KeyFrameSet />
         <OnSwipe
             motion:dragDirection="dragRight"
+            motion:maxAcceleration="10000"
             motion:touchAnchorSide="right" />
     </Transition>
 

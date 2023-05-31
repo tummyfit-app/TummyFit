@@ -18,12 +18,14 @@ interface FoodRemoteDataSource {
         token: String
     ): GetFoodResponse
 
-    suspend fun searchFoods(token: String, name: String): GetFoodResponse
-
     suspend fun getDetailFood(
         token: String,
         id: String
     ): GetFoodDetailResponse
+
+    suspend fun searchFoodsByCategory(
+        token: String, q: String?, category: String?,
+    ): GetFoodResponse
 }
 
 class FoodRemoteDataSourceImpl @Inject constructor(private val apiService: FoodApiService) :
@@ -31,9 +33,12 @@ class FoodRemoteDataSourceImpl @Inject constructor(private val apiService: FoodA
     override suspend fun getListFoods(token: String): GetFoodResponse =
         apiService.getListFoods(token)
 
-    override suspend fun searchFoods(token: String, name: String): GetFoodResponse =
-        apiService.searchFoods(token, name)
-
     override suspend fun getDetailFood(token: String, id: String): GetFoodDetailResponse =
         apiService.getDetailFood(token, id)
+
+    override suspend fun searchFoodsByCategory(
+        token: String,
+        q: String?,
+        category: String?
+    ): GetFoodResponse = apiService.searchFoodsByCategory(token, q, category)
 }
