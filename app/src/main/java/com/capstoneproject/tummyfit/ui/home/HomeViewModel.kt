@@ -1,5 +1,6 @@
 package com.capstoneproject.tummyfit.ui.home
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -31,8 +32,10 @@ class HomeViewModel @Inject constructor(
 
     fun getUser() = viewModelScope.launch(Dispatchers.IO) {
         _user.postValue(Resource.Loading())
+        val data = userRepository.getUserDesc(authRepository.getToken().first())
         viewModelScope.launch(Dispatchers.Main) {
-            _user.postValue(userRepository.getUserDesc(authRepository.getToken().first()))
+            _user.postValue(data)
+            authRepository.setId(data.payload?.data?.userDescription?.userId.toString())
         }
     }
 
@@ -41,9 +44,5 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.Main) {
             _foodTryIt.postValue(foodRepository.getListFoods(authRepository.getToken().first()))
         }
-    }
-
-    fun setId(id: String) = viewModelScope.launch {
-        if (authRepository.getToken().first().isEmpty()) authRepository.setId(id)
     }
 }

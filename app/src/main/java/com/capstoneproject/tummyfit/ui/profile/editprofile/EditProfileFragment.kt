@@ -103,7 +103,9 @@ class EditProfileFragment : Fragment() {
 
                 is Resource.Success -> {
                     showLoading(false)
-                    it.payload?.data?.userDescription?.let { it1 -> bindToView(it1) }
+                    it.payload?.data?.userDescription?.let { it1 ->
+                        bindToView(it1)
+                    }
                 }
 
                 is Resource.Error -> {

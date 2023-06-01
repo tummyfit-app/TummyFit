@@ -36,12 +36,12 @@
         <item name="cornerSizeBottomRight">100dp</item>
     </style>
 
-    <style name="CustomSearchBarStyle" parent="@style/Widget.Material3.SearchBar.Outlined">
+    <style name="CustomSearchBarStyle" parent="">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopRight">10dp</item>
-        <item name="cornerSizeTopLeft">10dp</item>
-        <item name="cornerSizeBottomRight">10dp</item>
-        <item name="cornerSizeBottomLeft">10dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeBottomRight">25dp</item>
+        <item name="cornerSizeBottomLeft">25dp</item>
         <item name="backgroundTintMode">?attr/colorOnPrimary</item>
     </style>
 
@@ -50,6 +50,19 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
+
+    <style name="DividerHorizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/dividerColor</item>
+    </style>
+
+    <style name="DividerVertical">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/dividerColor</item>
+    </style>
+
 
 </resources>
 

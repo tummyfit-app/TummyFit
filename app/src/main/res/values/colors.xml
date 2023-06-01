@@ -13,7 +13,8 @@
     <color name="transparent">#00DCDCDC</color>
     <color name="yellow_tummyfit">#FFDD84</color>
     <color name="background">#dddddd</color>
-    <!--    <color name="transparant">#a09c9c</color>-->
+    <color name="colorSecondaryLight">#6A91DE</color>
+    <color name="dividerColor">#F5F5F5</color>
     <color name="transparent_black">#E8222222</color>
 
 </resources>

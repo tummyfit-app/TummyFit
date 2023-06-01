@@ -36,7 +36,14 @@ class MainActivity : AppCompatActivity() {
             R.id.registerFragment,
             R.id.profileFragment,
             R.id.searchMealsFragment,
-            R.id.mealsRecommendFragment
+            R.id.mealsRecommendFragment,
+            R.id.updateDataProfileFragment,
+            R.id.editProfileFragment,
+            R.id.favoriteMealsFragment,
+            R.id.detailMealFragment,
+            R.id.profileSetupBottomSheetDialogFragment,
+            R.id.grocerieListFragment,
+            R.id.waterIntakeFragment
         ).build()
 
         setupActionBarWithNavController(navController, appBarConfiguration)

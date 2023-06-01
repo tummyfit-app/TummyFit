@@ -44,7 +44,14 @@ class HomeFragment : Fragment() {
         initTryItList()
         observeData()
         toFavorite()
+        toWaterIntake()
         binding.listTodayMeals.shimmerTodayMeals.startShimmer()
+    }
+
+    private fun toWaterIntake() {
+        binding.listMenu.waterIntake.setOnClickListener {
+            it.findNavController().navigate(R.id.action_homeFragment_to_waterIntakeFragment)
+        }
     }
 
     private fun toFavorite() {
@@ -66,7 +73,9 @@ class HomeFragment : Fragment() {
 
                 is Resource.Success -> {
                     showLoading(false)
-                    it.data?.data?.userDescription?.let { it1 -> bindToView(it1) }
+                    it.data?.data?.userDescription?.let { it1 ->
+                        bindToView(it1)
+                    }
                 }
 
                 is Resource.Error -> {
@@ -111,14 +120,13 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
         viewModel.getUser()
         viewModel.getFoodsTryIt()
     }
 
     private fun bindToView(userDescription: UserDescription) {
-        viewModel.setId(userDescription.userId)
         binding.homeHeader.apply {
             username.text = "${userDescription.user.firstname} ${userDescription.user.lastname}"
             email.text = userDescription.user.email
