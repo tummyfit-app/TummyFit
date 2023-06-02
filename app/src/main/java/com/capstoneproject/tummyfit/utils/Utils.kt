@@ -1,17 +1,21 @@
 package com.capstoneproject.tummyfit.utils
 
 import android.content.Context
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.DiffUtil
 import com.capstoneproject.tummyfit.data.local.database.entity.FavoriteMealEntity
+import com.capstoneproject.tummyfit.data.local.database.entity.WaterIntakeEntity
 import com.capstoneproject.tummyfit.data.remote.model.food.FoodsItem
+import com.capstoneproject.tummyfit.utils.receiver.AlarmReceiver
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.MaterialTimePicker.INPUT_MODE_CLOCK
 import com.google.android.material.timepicker.TimeFormat
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt
@@ -41,15 +45,22 @@ fun showDatePicker(fragmentManager: FragmentManager, textInputEditText: TextInpu
     }
 }
 
-fun showTimePickerNotification(fragmentManager: FragmentManager) {
+fun showTimePickerNotification(fragmentManager: FragmentManager, context: Context) {
     val timePicker = MaterialTimePicker.Builder().setInputMode(INPUT_MODE_CLOCK)
         .setHour(Calendar.getInstance().get(Calendar.HOUR))
         .setMinute(Calendar.getInstance().get(Calendar.MINUTE))
-        .setTimeFormat(TimeFormat.CLOCK_24H).setTitleText("Set Time").build()
+        .setTitleText("Set Time").build()
     timePicker.show(fragmentManager, "TIME_DIALOG")
     timePicker.addOnPositiveButtonClickListener {
-
+        AlarmReceiver().setOneTimeAlarm(
+            context,
+            AlarmReceiver.TYPE_ONE_TIME,
+            getCurrentDate(),
+            "${timePicker.hour}:${timePicker.minute}",
+            "Hey… It's time to drink some water…"
+        )
     }
+
     timePicker.addOnNegativeButtonClickListener {
         timePicker.dismiss()
     }
@@ -70,8 +81,14 @@ fun showSnackbar(view: View, text: String) {
 
 fun getCurrentDate(): String {
     val c = Calendar.getInstance().time
-    val df = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+    val df = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     return df.format(c)
+}
+
+fun String.withDateFormat(): String {
+    val format = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    val date = format.parse(this) as Date
+    return DateFormat.getDateInstance(DateFormat.FULL).format(date)
 }
 
 val callbackFoodDiffUtil = object : DiffUtil.ItemCallback<FoodsItem>() {
@@ -112,6 +129,20 @@ val callbackFavoriteMealEntityDiffUtil = object : DiffUtil.ItemCallback<Favorite
     override fun areContentsTheSame(
         oldItem: FavoriteMealEntity,
         newItem: FavoriteMealEntity
+    ): Boolean =
+        oldItem == newItem
+}
+
+val callbackWaterIntakeDiffUtil = object : DiffUtil.ItemCallback<WaterIntakeEntity>() {
+    override fun areItemsTheSame(
+        oldItem: WaterIntakeEntity,
+        newItem: WaterIntakeEntity
+    ): Boolean =
+        oldItem.id == newItem.id
+
+    override fun areContentsTheSame(
+        oldItem: WaterIntakeEntity,
+        newItem: WaterIntakeEntity
     ): Boolean =
         oldItem == newItem
 }

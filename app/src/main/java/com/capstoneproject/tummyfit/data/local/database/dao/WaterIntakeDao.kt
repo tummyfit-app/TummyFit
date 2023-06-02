@@ -23,4 +23,7 @@ interface WaterIntakeDao {
 
     @Query("SELECT EXISTS(SELECT id_user, date FROM water_intake WHERE date = :date AND id_user = :id_user)")
     suspend fun isUserExist(date: String, id_user: String): Boolean
+
+    @Query("SELECT * FROM water_intake WHERE id_user=:id")
+    suspend fun getListWaterIntake(id: String): List<WaterIntakeEntity>
 }

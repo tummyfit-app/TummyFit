@@ -6,14 +6,22 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.capstoneproject.tummyfit.R
 import com.capstoneproject.tummyfit.databinding.FragmentWaterIntakeBinding
+import com.capstoneproject.tummyfit.ui.home.adapter.TryItAdapter
+import com.capstoneproject.tummyfit.ui.waterintake.adapter.WaterIntakeAdapter
 import com.capstoneproject.tummyfit.utils.showSnackbar
 import com.capstoneproject.tummyfit.utils.showTimePickerNotification
+import com.capstoneproject.tummyfit.wrapper.Resource
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,6 +33,7 @@ class WaterIntakeFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: WaterIntakeViewModel by viewModels()
     private var selectedOption: Int? = null
+    private lateinit var waterIntakeAdapter: WaterIntakeAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -38,6 +47,8 @@ class WaterIntakeFragment : Fragment() {
         toBack()
         selectOption()
         notification()
+        history()
+        waterIntakeAdapter = WaterIntakeAdapter()
     }
 
     override fun onStart() {
@@ -45,29 +56,50 @@ class WaterIntakeFragment : Fragment() {
         observeData()
     }
 
+    private fun history() {
+        binding.fabHistory.setOnClickListener {
+            viewModel.getListWaterIntake()
+            showHistoryDialog()
+        }
+    }
+
     private fun notification() {
         binding.fabNotif.setOnClickListener {
-            showTimePickerNotification(parentFragmentManager)
+            showTimePickerNotification(parentFragmentManager, requireContext())
         }
     }
 
     private fun observeData() {
         viewModel.getStatsWaterIntake()
+        viewModel.getListWaterIntake()
         viewModel.water.observe(viewLifecycleOwner) {
-            binding.apply {
-                waterWave.setAnimationSpeed(50)
-                waterWave.progress =
-                    if (it.now_intake > it.total_intake) 100 else it.now_intake * 100 / it.total_intake
-                waterWave.max = 100
-                waterWave.startAnimation()
-                resultRemaining.text = String.format(
-                    resources.getString(R.string.ml_template),
-                    it.now_intake.toString()
-                )
-                resultTarget.text = String.format(
-                    resources.getString(R.string.ml_template),
-                    it.total_intake.toString()
-                )
+            if (it != null) {
+                binding.apply {
+                    waterWave.setAnimationSpeed(50)
+                    waterWave.progress =
+                        if (it.now_intake > it.total_intake) 100 else it.now_intake * 100 / it.total_intake
+                    waterWave.max = 100
+                    waterWave.startAnimation()
+                    resultRemaining.text = String.format(
+                        resources.getString(R.string.ml_template),
+                        it.now_intake.toString()
+                    )
+                    resultTarget.text = String.format(
+                        resources.getString(R.string.ml_template),
+                        it.total_intake.toString()
+                    )
+                }
+            }
+        }
+        viewModel.listWater.observe(viewLifecycleOwner) {
+            when (it) {
+                is Resource.Success -> {
+                    waterIntakeAdapter.differ.submitList(it.data)
+                }
+
+                is Resource.Empty -> {}
+                is Resource.Error -> {}
+                is Resource.Loading -> {}
             }
         }
     }
@@ -178,6 +210,32 @@ class WaterIntakeFragment : Fragment() {
             selectedOption = null
             dialog.cancel()
         }.show()
+    }
+
+    private fun showHistoryDialog() {
+        val content = LayoutInflater.from(
+            requireContext()
+        ).inflate(R.layout.custom_history_water_intake, null)
+        val rv = content.findViewById<RecyclerView>(R.id.rv_water_intake)
+        val empty = content.findViewById<TextView>(R.id.empty_history)
+        rv.apply {
+            adapter = waterIntakeAdapter
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            setHasFixedSize(true)
+        }
+        if (waterIntakeAdapter.itemCount > 0) {
+            rv.isVisible = true
+            empty.isVisible = false
+        } else {
+            rv.isVisible = false
+            empty.isVisible = true
+        }
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Your history of daily drinking")
+            .setIcon(R.drawable.baseline_history_24)
+            .setView(content)
+            .show()
     }
 
     private fun toBack() {

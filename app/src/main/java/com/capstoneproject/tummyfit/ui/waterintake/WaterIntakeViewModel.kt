@@ -12,6 +12,8 @@ import com.capstoneproject.tummyfit.data.repository.WaterIntakeRepository
 import com.capstoneproject.tummyfit.utils.getCurrentDate
 import com.capstoneproject.tummyfit.wrapper.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,9 +26,13 @@ class WaterIntakeViewModel @Inject constructor(
     private val _water = MutableLiveData<WaterIntakeEntity>()
     val water: LiveData<WaterIntakeEntity> get() = _water
 
+    private val _listWater = MutableLiveData<Resource<List<WaterIntakeEntity>>>()
+    val listWater: LiveData<Resource<List<WaterIntakeEntity>>> get() = _listWater
+
     init {
         insertWaterIntake()
     }
+
     private fun insertWaterIntake() = viewModelScope.launch {
         waterIntakeRepository.insertWaterIntake(
             WaterIntakeEntity(
@@ -46,11 +52,20 @@ class WaterIntakeViewModel @Inject constructor(
     }
 
     fun getStatsWaterIntake() = viewModelScope.launch {
+        delay(500L)
         _water.postValue(
             waterIntakeRepository.getStatsWaterIntake(
                 authRepository.getId().first(), getCurrentDate()
             )
         )
+    }
+
+    fun getListWaterIntake() = viewModelScope.launch(Dispatchers.IO) {
+        _listWater.postValue(Resource.Loading())
+        val data = waterIntakeRepository.getListWaterIntake(authRepository.getId().first())
+        viewModelScope.launch(Dispatchers.Main) {
+            _listWater.postValue(data)
+        }
     }
 
 }

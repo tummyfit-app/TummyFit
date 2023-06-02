@@ -16,6 +16,7 @@ interface WaterIntakeLocalDataSource {
     suspend fun getStatsWaterIntake(id: String, date: String): WaterIntakeEntity
     suspend fun updateIntake(now_intake: Int, id: String, date: String)
     suspend fun isUserExist(date: String, id_user: String): Boolean
+    suspend fun getListWaterIntake(id: String): List<WaterIntakeEntity>
 }
 
 class WaterIntakeLocalDataSourceImpl @Inject constructor(private val waterIntakeDao: WaterIntakeDao) :
@@ -31,5 +32,8 @@ class WaterIntakeLocalDataSourceImpl @Inject constructor(private val waterIntake
 
     override suspend fun isUserExist(date: String, id_user: String): Boolean =
         waterIntakeDao.isUserExist(date, id_user)
+
+    override suspend fun getListWaterIntake(id: String): List<WaterIntakeEntity> =
+        waterIntakeDao.getListWaterIntake(id)
 
 }
