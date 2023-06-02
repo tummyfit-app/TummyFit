@@ -42,6 +42,7 @@ class WaterIntakeViewModel @Inject constructor(
                 total_intake = 3000
             )
         )
+        getListWaterIntake()
     }
 
     fun updateIntake(now_intake: Int) = viewModelScope.launch {
