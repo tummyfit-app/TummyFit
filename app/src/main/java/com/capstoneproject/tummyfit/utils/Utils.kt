@@ -9,6 +9,9 @@ import com.capstoneproject.tummyfit.data.remote.model.food.FoodsItem
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.MaterialTimePicker.INPUT_MODE_CLOCK
+import com.google.android.material.timepicker.TimeFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt
@@ -38,6 +41,23 @@ fun showDatePicker(fragmentManager: FragmentManager, textInputEditText: TextInpu
     }
 }
 
+fun showTimePickerNotification(fragmentManager: FragmentManager) {
+    val timePicker = MaterialTimePicker.Builder().setInputMode(INPUT_MODE_CLOCK)
+        .setHour(Calendar.getInstance().get(Calendar.HOUR))
+        .setMinute(Calendar.getInstance().get(Calendar.MINUTE))
+        .setTimeFormat(TimeFormat.CLOCK_24H).setTitleText("Set Time").build()
+    timePicker.show(fragmentManager, "TIME_DIALOG")
+    timePicker.addOnPositiveButtonClickListener {
+
+    }
+    timePicker.addOnNegativeButtonClickListener {
+        timePicker.dismiss()
+    }
+    timePicker.addOnCancelListener {
+        timePicker.dismiss()
+    }
+}
+
 fun scoreIbm(weight: Int, height: Int): Double =
     (weight / ((height * 0.01) * (height * 0.01))).roundToInt()
         .toDouble()
@@ -46,6 +66,12 @@ fun scoreIbm(weight: Int, height: Int): Double =
 fun showSnackbar(view: View, text: String) {
     Snackbar.make(view, text, Snackbar.LENGTH_SHORT)
         .show()
+}
+
+fun getCurrentDate(): String {
+    val c = Calendar.getInstance().time
+    val df = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+    return df.format(c)
 }
 
 val callbackFoodDiffUtil = object : DiffUtil.ItemCallback<FoodsItem>() {

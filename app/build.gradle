@@ -108,6 +108,10 @@ dependencies {
     // Fancy Toast
     implementation 'io.github.shashank02051997:FancyToast:2.0.2'
 
-    // Circular loader
-    implementation 'com.mikhaellopez:circularfillableloaders:1.4.0'
+    // Wave View
+    implementation 'com.yangpingapps:ypwaveview:1.0.4'
+
+    // Animations
+    implementation 'com.daimajia.easing:library:2.0@aar'
+    implementation 'com.daimajia.androidanimations:library:2.3@aar'
 }

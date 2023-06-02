@@ -8,6 +8,8 @@ import com.capstoneproject.tummyfit.data.repository.FoodRepository
 import com.capstoneproject.tummyfit.data.repository.FoodRepositoryImpl
 import com.capstoneproject.tummyfit.data.repository.UserRepository
 import com.capstoneproject.tummyfit.data.repository.UserRepositoryImpl
+import com.capstoneproject.tummyfit.data.repository.WaterIntakeRepository
+import com.capstoneproject.tummyfit.data.repository.WaterIntakeRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -32,4 +34,7 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun provideFavoriteRepository(favoriteRepositoryImpl: FavoriteRepositoryImpl): FavoriteRepository
+
+    @Binds
+    abstract fun provideWaterIntakeRepository(waterIntakeRepositoryImpl: WaterIntakeRepositoryImpl): WaterIntakeRepository
 }

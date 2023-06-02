@@ -50,7 +50,9 @@ class DetailMealFragment : Fragment() {
             when (it) {
                 is Resource.Loading -> {}
 
-                is Resource.Error -> {}
+                is Resource.Error -> {
+                    showSnackbar(requireView(), it.message.toString())
+                }
 
                 is Resource.Success -> {
                     it.data?.data?.food?.let { it1 ->

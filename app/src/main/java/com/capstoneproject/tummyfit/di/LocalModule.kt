@@ -7,6 +7,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.room.Room
 import com.capstoneproject.tummyfit.data.local.database.AppDatabase
 import com.capstoneproject.tummyfit.data.local.database.dao.FavoriteMealDao
+import com.capstoneproject.tummyfit.data.local.database.dao.WaterIntakeDao
 import com.capstoneproject.tummyfit.data.local.preference.AuthDataStoreManager
 import com.capstoneproject.tummyfit.utils.Constants
 import dagger.Module
@@ -41,6 +42,10 @@ object LocalModule {
     @Provides
     fun provideFavoriteMealDao(appDatabase: AppDatabase): FavoriteMealDao =
         appDatabase.favoriteMealDao()
+
+    @Provides
+    fun provideWaterIntakeDao(appDatabase: AppDatabase): WaterIntakeDao =
+        appDatabase.waterIntakeDao()
 
     @Singleton
     @Provides

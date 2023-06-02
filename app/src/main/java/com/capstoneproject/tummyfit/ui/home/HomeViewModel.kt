@@ -35,7 +35,7 @@ class HomeViewModel @Inject constructor(
         val data = userRepository.getUserDesc(authRepository.getToken().first())
         viewModelScope.launch(Dispatchers.Main) {
             _user.postValue(data)
-            authRepository.setId(data.payload?.data?.userDescription?.userId.toString())
+            if (data.payload?.status.equals("success", true)) authRepository.setId(data.payload?.data?.userDescription?.userId.toString())
         }
     }
 

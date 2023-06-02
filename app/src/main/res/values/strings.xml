@@ -40,6 +40,7 @@
     <string name="cm_template">%1$s cm</string>
     <string name="kg_template">%1$s kg</string>
     <string name="kcal_template">%1$s kcal</string>
+    <string name="ml_template">%1$s ml</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="birthday">Birthday</string>
@@ -111,6 +112,7 @@
     <string name="add_water">Add water</string>
     <string name="settings">Settings</string>
     <string name="notification">Notification</string>
+    <string name="enter_custom_input">Enter Custom Input</string>
     <string-array name="purpose_item">
         <item>Maintain weight</item>
         <item>Weight loss</item>
