@@ -80,7 +80,8 @@ class HomeFragment : Fragment() {
 
                 is Resource.Error -> {
                     showLoading(true)
-                    view?.findNavController()?.navigate(R.id.action_homeFragment_to_profileSetupBottomSheetDialogFragment)
+                    if (findNavController().currentDestination?.id == R.id.homeFragment)
+                        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileSetupBottomSheetDialogFragment())
                 }
             }
         }
