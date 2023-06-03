@@ -1,15 +1,11 @@
 package com.capstoneproject.tummyfit.data.remote.datasource
 
-import com.capstoneproject.tummyfit.data.remote.model.auth.UpdateUserRequestBody
 import com.capstoneproject.tummyfit.data.remote.model.user.GetUserResponse
 import com.capstoneproject.tummyfit.data.remote.model.user.PostUserDescRequestBody
 import com.capstoneproject.tummyfit.data.remote.model.user.PostUserDescResponse
 import com.capstoneproject.tummyfit.data.remote.model.user.UpdateUserDescRequestBody
 import com.capstoneproject.tummyfit.data.remote.model.user.UpdateUserDescResponse
 import com.capstoneproject.tummyfit.data.remote.service.UserApiService
-import retrofit2.http.Body
-import retrofit2.http.Header
-import retrofit2.http.Path
 import javax.inject.Inject
 
 /**

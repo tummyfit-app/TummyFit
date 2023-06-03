@@ -1,7 +1,5 @@
 package com.capstoneproject.tummyfit.data.local.datasource
 
-import androidx.room.Delete
-import androidx.room.Query
 import com.capstoneproject.tummyfit.data.local.database.dao.FavoriteMealDao
 import com.capstoneproject.tummyfit.data.local.database.entity.FavoriteMealEntity
 import javax.inject.Inject

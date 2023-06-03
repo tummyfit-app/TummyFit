@@ -1,13 +1,10 @@
 package com.capstoneproject.tummyfit.ui.home.adapter
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.capstoneproject.tummyfit.R
 import com.capstoneproject.tummyfit.data.remote.model.food.FoodsItem
 import com.capstoneproject.tummyfit.databinding.ItemListMealVerticalBinding

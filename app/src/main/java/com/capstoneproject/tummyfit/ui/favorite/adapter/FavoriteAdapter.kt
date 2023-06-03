@@ -7,13 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.capstoneproject.tummyfit.R
 import com.capstoneproject.tummyfit.data.local.database.entity.FavoriteMealEntity
-import com.capstoneproject.tummyfit.data.remote.model.food.FoodsItem
-import com.capstoneproject.tummyfit.databinding.ItemIngredientsBinding
 import com.capstoneproject.tummyfit.databinding.ItemMealRecommendBinding
-import com.capstoneproject.tummyfit.ui.detailmeal.adapter.IngredientAdapter
-import com.capstoneproject.tummyfit.ui.home.adapter.TryItAdapter
 import com.capstoneproject.tummyfit.utils.callbackFavoriteMealEntityDiffUtil
-import com.capstoneproject.tummyfit.utils.callbackStringDiffUtil
 
 /**
  * @Author: ridhogymnastiar

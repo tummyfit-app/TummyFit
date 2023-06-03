@@ -15,6 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import okhttp3.MultipartBody
 import javax.inject.Inject
 
 @HiltViewModel
@@ -23,6 +24,9 @@ class EditProfileViewModel @Inject constructor(
 ) : ViewModel() {
     private val _response = MutableLiveData<Resource<UpdateUserResponse>>()
     val response: LiveData<Resource<UpdateUserResponse>> get() = _response
+
+    private val _updatePhoto = MutableLiveData<Resource<UpdateUserResponse>>()
+    val updatePhoto: LiveData<Resource<UpdateUserResponse>> get() = _updatePhoto
 
     private val _user = MutableLiveData<Resource<GetUserResponse>>()
     val user: LiveData<Resource<GetUserResponse>> get() = _user
@@ -47,4 +51,12 @@ class EditProfileViewModel @Inject constructor(
                 )
             }
         }
+
+    fun updatePhotoUser(file: MultipartBody.Part) = viewModelScope.launch(Dispatchers.IO) {
+        _updatePhoto.postValue(Resource.Loading())
+        val response = authRepository.updatePhotoUser(authRepository.getToken().first(), file)
+        viewModelScope.launch(Dispatchers.Main) {
+            _updatePhoto.postValue(response)
+        }
+    }
 }

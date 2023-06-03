@@ -1,15 +1,12 @@
 package com.capstoneproject.tummyfit.di
 
-import android.content.Context
 import com.capstoneproject.tummyfit.BuildConfig
 import com.capstoneproject.tummyfit.data.remote.service.AuthApiService
 import com.capstoneproject.tummyfit.data.remote.service.FoodApiService
 import com.capstoneproject.tummyfit.data.remote.service.UserApiService
-import com.chuckerteam.chucker.api.ChuckerInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -26,20 +23,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-    //    @Provides
-//    @Singleton
-//    fun provideChucker(@ApplicationContext appContext: Context): ChuckerInterceptor =
-//        ChuckerInterceptor.Builder(appContext).build()
-//
-//    @Provides
-//    @Singleton
-//    fun provideOkHttpClient(
-//        chuckerInterceptor: ChuckerInterceptor,
-//    ): OkHttpClient = OkHttpClient.Builder()
-//        .addInterceptor(chuckerInterceptor)
-//        .connectTimeout(120, TimeUnit.SECONDS)
-//        .readTimeout(120, TimeUnit.SECONDS)
-//        .build()
     @Provides
     @Singleton
     fun provideRetrofit(): Retrofit {

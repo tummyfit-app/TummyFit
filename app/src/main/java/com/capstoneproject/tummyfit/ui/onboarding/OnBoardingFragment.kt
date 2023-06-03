@@ -14,7 +14,6 @@ class OnBoardingFragment : Fragment() {
 
     private var _binding: FragmentOnBoardingBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: OnBoardingViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

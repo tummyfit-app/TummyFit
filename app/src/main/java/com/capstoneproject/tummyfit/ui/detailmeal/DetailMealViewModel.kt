@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.capstoneproject.tummyfit.data.local.database.entity.FavoriteMealEntity
 import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodDetailResponse
-import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodResponse
 import com.capstoneproject.tummyfit.data.repository.AuthRepository
 import com.capstoneproject.tummyfit.data.repository.FavoriteRepository
 import com.capstoneproject.tummyfit.data.repository.FoodRepository

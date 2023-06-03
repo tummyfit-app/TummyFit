@@ -11,7 +11,7 @@ import com.capstoneproject.tummyfit.data.remote.model.auth.UpdateUserResponse
 import com.capstoneproject.tummyfit.wrapper.Resource
 import com.capstoneproject.tummyfit.wrapper.proceed
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
+import okhttp3.MultipartBody
 import javax.inject.Inject
 
 /**
@@ -23,18 +23,19 @@ interface AuthRepository {
     fun getToken(): Flow<String>
     suspend fun setToken(token: String)
     suspend fun clear()
-
     fun getId(): Flow<String>
-
     suspend fun setId(id: String)
-
     suspend fun clearId()
-
     suspend fun login(loginRequestBody: LoginRequestBody): Resource<LoginResponse>
     suspend fun register(registerRequestBody: RegisterRequestBody): Resource<RegisterResponse>
     suspend fun updateUser(
         token: String,
         updateUserRequestBody: UpdateUserRequestBody
+    ): Resource<UpdateUserResponse>
+
+    suspend fun updatePhotoUser(
+        token: String,
+        file: MultipartBody.Part,
     ): Resource<UpdateUserResponse>
 }
 
@@ -74,5 +75,12 @@ class AuthRepositoryImpl @Inject constructor(
                 updateUserRequestBody
             )
         }
+
+    override suspend fun updatePhotoUser(
+        token: String,
+        file: MultipartBody.Part
+    ): Resource<UpdateUserResponse> = proceed {
+        authRemoteDataSource.updatePhotoUser(token, file)
+    }
 
 }

@@ -1,20 +1,17 @@
 package com.capstoneproject.tummyfit.ui.profile
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.capstoneproject.tummyfit.R
 import com.capstoneproject.tummyfit.data.remote.model.user.UserDescription
-import com.capstoneproject.tummyfit.databinding.FragmentOnBoardingBinding
 import com.capstoneproject.tummyfit.databinding.FragmentProfileBinding
-import com.capstoneproject.tummyfit.ui.onboarding.OnBoardingViewModel
 import com.capstoneproject.tummyfit.utils.scoreIbm
 import com.capstoneproject.tummyfit.utils.showSnackbar
 import com.capstoneproject.tummyfit.wrapper.Resource
@@ -91,17 +88,20 @@ class ProfileFragment : Fragment() {
     }
 
     private fun bindToView(userDescription: UserDescription) {
-        binding.tvName.text = userDescription.user.firstname + " " + userDescription.user.lastname
-        binding.tvUsername.text = userDescription.user.username
-        binding.cardData.apply {
-            resultHeight.text =
-                String.format(resources.getString(R.string.cm_template), userDescription.height)
-            resultWeight.text =
-                String.format(resources.getString(R.string.kg_template), userDescription.weight)
-            resultIbm.text = scoreIbm(
-                userDescription.weight,
-                userDescription.height
-            ).toString()
+        with(binding){
+            Glide.with(pictUser).load(userDescription.user.urlprofile).into(pictUser)
+            tvName.text = userDescription.user.firstname + " " + userDescription.user.lastname
+            tvUsername.text = userDescription.user.username
+            cardData.apply {
+                resultHeight.text =
+                    String.format(resources.getString(R.string.cm_template), userDescription.height)
+                resultWeight.text =
+                    String.format(resources.getString(R.string.kg_template), userDescription.weight)
+                resultIbm.text = scoreIbm(
+                    userDescription.weight,
+                    userDescription.height
+                ).toString()
+            }
         }
     }
 

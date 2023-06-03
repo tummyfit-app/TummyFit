@@ -4,14 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.capstoneproject.tummyfit.R
 import com.capstoneproject.tummyfit.data.local.database.entity.WaterIntakeEntity
-import com.capstoneproject.tummyfit.data.remote.model.food.FoodsItem
 import com.capstoneproject.tummyfit.databinding.ItemHistoryWaterBinding
-import com.capstoneproject.tummyfit.databinding.ItemListMealVerticalBinding
-import com.capstoneproject.tummyfit.ui.home.adapter.TryItAdapter
-import com.capstoneproject.tummyfit.utils.callbackFoodDiffUtil
 import com.capstoneproject.tummyfit.utils.callbackWaterIntakeDiffUtil
 import com.capstoneproject.tummyfit.utils.withDateFormat
 

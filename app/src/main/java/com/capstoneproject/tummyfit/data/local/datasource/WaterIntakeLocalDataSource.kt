@@ -1,7 +1,5 @@
 package com.capstoneproject.tummyfit.data.local.datasource
 
-import androidx.room.Insert
-import androidx.room.Query
 import com.capstoneproject.tummyfit.data.local.database.dao.WaterIntakeDao
 import com.capstoneproject.tummyfit.data.local.database.entity.WaterIntakeEntity
 import javax.inject.Inject

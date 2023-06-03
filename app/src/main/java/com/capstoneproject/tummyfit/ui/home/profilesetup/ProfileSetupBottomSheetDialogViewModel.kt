@@ -4,8 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.capstoneproject.tummyfit.data.remote.model.auth.LoginRequestBody
-import com.capstoneproject.tummyfit.data.remote.model.auth.LoginResponse
 import com.capstoneproject.tummyfit.data.remote.model.user.PostUserDescRequestBody
 import com.capstoneproject.tummyfit.data.remote.model.user.PostUserDescResponse
 import com.capstoneproject.tummyfit.data.repository.AuthRepository

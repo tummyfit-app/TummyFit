@@ -7,8 +7,7 @@ import com.capstoneproject.tummyfit.data.remote.model.auth.RegisterResponse
 import com.capstoneproject.tummyfit.data.remote.model.auth.UpdateUserRequestBody
 import com.capstoneproject.tummyfit.data.remote.model.auth.UpdateUserResponse
 import com.capstoneproject.tummyfit.data.remote.service.AuthApiService
-import retrofit2.http.Body
-import retrofit2.http.Header
+import okhttp3.MultipartBody
 import javax.inject.Inject
 
 /**
@@ -22,6 +21,11 @@ interface AuthRemoteDataSource {
     suspend fun updateUser(
         token: String,
         updateUserRequestBody: UpdateUserRequestBody
+    ): UpdateUserResponse
+
+    suspend fun updatePhotoUser(
+        token: String,
+        file: MultipartBody.Part,
     ): UpdateUserResponse
 }
 
@@ -37,4 +41,9 @@ class AuthRemoteDataSourceImpl @Inject constructor(private val apiService: AuthA
         token: String,
         updateUserRequestBody: UpdateUserRequestBody
     ): UpdateUserResponse = apiService.updateUser(token, updateUserRequestBody)
+
+    override suspend fun updatePhotoUser(
+        token: String,
+        file: MultipartBody.Part
+    ): UpdateUserResponse = apiService.updatePhotoUser(token, file)
 }

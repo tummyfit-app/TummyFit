@@ -3,9 +3,6 @@ package com.capstoneproject.tummyfit.data.remote.datasource
 import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodDetailResponse
 import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodResponse
 import com.capstoneproject.tummyfit.data.remote.service.FoodApiService
-import retrofit2.http.Header
-import retrofit2.http.Path
-import retrofit2.http.Query
 import javax.inject.Inject
 
 /**

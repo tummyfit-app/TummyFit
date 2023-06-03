@@ -1,7 +1,5 @@
 package com.capstoneproject.tummyfit.data.remote.service
 
-import com.capstoneproject.tummyfit.data.remote.model.auth.UpdateUserRequestBody
-import com.capstoneproject.tummyfit.data.remote.model.auth.UpdateUserResponse
 import com.capstoneproject.tummyfit.data.remote.model.user.GetUserResponse
 import com.capstoneproject.tummyfit.data.remote.model.user.PostUserDescRequestBody
 import com.capstoneproject.tummyfit.data.remote.model.user.PostUserDescResponse

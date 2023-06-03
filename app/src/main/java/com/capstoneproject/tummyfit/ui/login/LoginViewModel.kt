@@ -6,9 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.capstoneproject.tummyfit.data.remote.model.auth.LoginRequestBody
 import com.capstoneproject.tummyfit.data.remote.model.auth.LoginResponse
-import com.capstoneproject.tummyfit.data.remote.model.auth.RegisterRequestBody
-import com.capstoneproject.tummyfit.data.remote.model.auth.RegisterResponse
-import com.capstoneproject.tummyfit.data.remote.service.AuthApiService
 import com.capstoneproject.tummyfit.data.repository.AuthRepository
 import com.capstoneproject.tummyfit.wrapper.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel

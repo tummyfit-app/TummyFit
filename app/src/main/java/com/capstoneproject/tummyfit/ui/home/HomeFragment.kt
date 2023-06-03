@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.capstoneproject.tummyfit.R
 import com.capstoneproject.tummyfit.data.remote.model.food.FoodsItem
 import com.capstoneproject.tummyfit.data.remote.model.user.UserDescription
@@ -128,19 +129,22 @@ class HomeFragment : Fragment() {
     }
 
     private fun bindToView(userDescription: UserDescription) {
-        binding.homeHeader.apply {
-            username.text = "${userDescription.user.firstname} ${userDescription.user.lastname}"
-            email.text = userDescription.user.email
-        }
-        binding.cardData.apply {
-            resultHeight.text =
-                String.format(resources.getString(R.string.cm_template), userDescription.height)
-            resultWeight.text =
-                String.format(resources.getString(R.string.kg_template), userDescription.weight)
-            resultIbm.text = scoreIbm(
-                userDescription.weight,
-                userDescription.height
-            ).toString()
+        with(binding){
+            homeHeader.apply {
+                Glide.with(pictUser).load(userDescription.user.urlprofile).into(pictUser)
+                username.text = "${userDescription.user.firstname} ${userDescription.user.lastname}"
+                email.text = userDescription.user.email
+            }
+            cardData.apply {
+                resultHeight.text =
+                    String.format(resources.getString(R.string.cm_template), userDescription.height)
+                resultWeight.text =
+                    String.format(resources.getString(R.string.kg_template), userDescription.weight)
+                resultIbm.text = scoreIbm(
+                    userDescription.weight,
+                    userDescription.height
+                ).toString()
+            }
         }
     }
 

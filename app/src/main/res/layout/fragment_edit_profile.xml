@@ -72,6 +72,8 @@
             android:backgroundTint="?attr/colorOnPrimary"
             android:elevation="20dp"
             android:padding="10dp"
+            android:clickable="true"
+            android:focusable="true"
             android:scaleType="centerCrop"
             android:src="@drawable/baseline_edit_24"
             app:civ_border_overlay="true"

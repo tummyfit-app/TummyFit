@@ -70,7 +70,10 @@ data class User(
     val email: String,
 
     @field:SerializedName("username")
-    val username: String
+    val username: String,
+
+    @field:SerializedName("urlprofile")
+    val urlprofile: String
 )
 
 data class Data(

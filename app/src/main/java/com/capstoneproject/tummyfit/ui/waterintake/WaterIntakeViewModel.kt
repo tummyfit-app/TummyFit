@@ -4,9 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.airbnb.lottie.utils.Utils
 import com.capstoneproject.tummyfit.data.local.database.entity.WaterIntakeEntity
-import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodResponse
 import com.capstoneproject.tummyfit.data.repository.AuthRepository
 import com.capstoneproject.tummyfit.data.repository.WaterIntakeRepository
 import com.capstoneproject.tummyfit.utils.getCurrentDate
