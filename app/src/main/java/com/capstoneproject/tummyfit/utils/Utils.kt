@@ -2,33 +2,30 @@ package com.capstoneproject.tummyfit.utils
 
 import android.content.ContentResolver
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Environment
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.DiffUtil
 import com.capstoneproject.tummyfit.data.local.database.entity.FavoriteMealEntity
 import com.capstoneproject.tummyfit.data.local.database.entity.WaterIntakeEntity
 import com.capstoneproject.tummyfit.data.remote.model.food.FoodsItem
+import com.capstoneproject.tummyfit.data.remote.model.food.MenuItem
 import com.capstoneproject.tummyfit.utils.receiver.AlarmReceiver
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.MaterialTimePicker.INPUT_MODE_CLOCK
-import com.google.android.material.timepicker.TimeFormat
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
 import java.io.OutputStream
 import java.text.DateFormat
+import java.text.DateFormatSymbols
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt
@@ -104,6 +101,7 @@ val timeStamp: String = SimpleDateFormat(
     FILENAME_FORMAT,
     Locale.US
 ).format(System.currentTimeMillis())
+
 fun createCustomTempFile(context: Context): File {
     val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
     return File.createTempFile(timeStamp, ".jpg", storageDir)
@@ -113,6 +111,34 @@ fun String.withDateFormat(): String {
     val format = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     val date = format.parse(this) as Date
     return DateFormat.getDateInstance(DateFormat.FULL).format(date)
+}
+
+fun getDayFormat(): Int {
+    val dayNames: Array<String> = DateFormatSymbols().weekdays
+    val date = Calendar.getInstance()
+    val dayNow = dayNames[date[Calendar.DAY_OF_WEEK]]
+    if (dayNow.equals("Monday", true)) return 0
+    else if (dayNow.equals("Tuesday", true)) return 1
+    else if (dayNow.equals("Wednesday", true)) return 2
+    else if (dayNow.equals("Thursday", true)) return 3
+    else if (dayNow.equals("Friday", true)) return 4
+    else if (dayNow.equals("Saturday", true)) return 5
+    else if (dayNow.equals("Sunday", true)) return 6
+    return 0
+}
+
+fun getChipDayFormat(): String {
+    val dayNames: Array<String> = DateFormatSymbols().weekdays
+    val date = Calendar.getInstance()
+    val dayNow = dayNames[date[Calendar.DAY_OF_WEEK]]
+    if (dayNow.equals("Monday", true)) return "Mon"
+    else if (dayNow.equals("Tuesday", true)) return "Tue"
+    else if (dayNow.equals("Wednesday", true)) return "Wed"
+    else if (dayNow.equals("Thursday", true)) return "Thu"
+    else if (dayNow.equals("Friday", true)) return "Fri"
+    else if (dayNow.equals("Saturday", true)) return "Sat"
+    else if (dayNow.equals("Sunday", true)) return "Sun"
+    return ""
 }
 
 fun uriToFile(selectedImg: Uri, context: Context): File {
@@ -131,31 +157,12 @@ fun uriToFile(selectedImg: Uri, context: Context): File {
 }
 
 fun imageMultipart(getFile: File): MultipartBody.Part {
-    val requestImageFile = reduceFileImage(getFile).asRequestBody("image/jpeg".toMediaTypeOrNull())
+    val requestImageFile = getFile.asRequestBody("image/jpeg".toMediaTypeOrNull())
     return MultipartBody.Part.createFormData(
         "file",
         getFile.name,
         requestImageFile
     )
-}
-
-fun reduceFileImage(file: File): File {
-    val bitmap = BitmapFactory.decodeFile(file.path)
-
-    var compressQuality = 100
-    var streamLength: Int
-
-    do {
-        val bmpStream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, bmpStream)
-        val bmpPicByteArray = bmpStream.toByteArray()
-        streamLength = bmpPicByteArray.size
-        compressQuality -= 5
-    } while (streamLength > 1000000)
-
-    bitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, FileOutputStream(file))
-
-    return file
 }
 
 val callbackFoodDiffUtil = object : DiffUtil.ItemCallback<FoodsItem>() {
@@ -168,6 +175,20 @@ val callbackFoodDiffUtil = object : DiffUtil.ItemCallback<FoodsItem>() {
     override fun areContentsTheSame(
         oldItem: FoodsItem,
         newItem: FoodsItem
+    ): Boolean =
+        oldItem == newItem
+}
+
+val callbackFoodPredictionDiffUtil = object : DiffUtil.ItemCallback<MenuItem>() {
+    override fun areItemsTheSame(
+        oldItem: MenuItem,
+        newItem: MenuItem
+    ): Boolean =
+        oldItem == newItem
+
+    override fun areContentsTheSame(
+        oldItem: MenuItem,
+        newItem: MenuItem
     ): Boolean =
         oldItem == newItem
 }

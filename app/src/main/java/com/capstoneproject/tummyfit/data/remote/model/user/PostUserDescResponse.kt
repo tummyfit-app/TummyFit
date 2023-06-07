@@ -19,8 +19,8 @@ data class PostUserDescResponse(
 
 data class UserDescriptionPost(
 
-	@field:SerializedName("alcohol")
-	val alcohol: String,
+	@field:SerializedName("halal")
+	val halal: String,
 
 	@field:SerializedName("purpose")
 	val purpose: String,

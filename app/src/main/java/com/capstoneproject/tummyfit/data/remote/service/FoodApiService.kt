@@ -1,6 +1,7 @@
 package com.capstoneproject.tummyfit.data.remote.service
 
 import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodDetailResponse
+import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodPredictResponse
 import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodResponse
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -18,6 +19,11 @@ interface FoodApiService {
     suspend fun getListFoods(
         @Header("Authorization") token: String
     ): GetFoodResponse
+
+    @GET("/api/v1/foods/predict")
+    suspend fun getFoodPredict(
+        @Header("Authorization") token: String
+    ): GetFoodPredictResponse
 
     @GET("/api/v1/foods?")
     suspend fun searchFoodsByCategory(

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.Material3.CardView.Outlined"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="4dp"
     android:padding="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,13 +18,13 @@
             app:animatorEnable="true"
             app:behideColor="@color/colorSecondaryLight"
             app:borderColor="@color/colorSecondaryLight"
-            app:borderWidthSize="6dp"
+            app:borderWidthSize="2dp"
             app:frontColor="@color/colorSecondaryLight"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapePadding="20dp"
+            app:shapePadding="10dp"
             app:shapeType="circle"
-            app:textColor="?attr/colorOnPrimary" />
+            app:textColor="?attr/colorOnSecondary" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_date"
@@ -52,15 +52,5 @@
             app:layout_constraintStart_toEndOf="@id/water_wave"
             app:layout_constraintTop_toBottomOf="@id/tv_date" />
 
-        <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/div"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/water_wave" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

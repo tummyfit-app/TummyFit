@@ -2,9 +2,11 @@ package com.capstoneproject.tummyfit.data.repository
 
 import com.capstoneproject.tummyfit.data.remote.datasource.FoodRemoteDataSource
 import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodDetailResponse
+import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodPredictResponse
 import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodResponse
 import com.capstoneproject.tummyfit.wrapper.Resource
 import com.capstoneproject.tummyfit.wrapper.proceed
+import retrofit2.http.Header
 import javax.inject.Inject
 
 /**
@@ -26,6 +28,9 @@ interface FoodRepository {
         token: String, q: String?, category: String?,
     ): Resource<GetFoodResponse>
 
+    suspend fun getFoodPredict(
+        token: String
+    ): Resource<GetFoodPredictResponse>
 }
 
 class FoodRepositoryImpl @Inject constructor(private val foodRemoteDataSource: FoodRemoteDataSource) :
@@ -44,4 +49,8 @@ class FoodRepositoryImpl @Inject constructor(private val foodRemoteDataSource: F
         category: String?
     ): Resource<GetFoodResponse> =
         proceed { foodRemoteDataSource.searchFoodsByCategory(token, q, category) }
+
+    override suspend fun getFoodPredict(token: String): Resource<GetFoodPredictResponse> = proceed {
+        foodRemoteDataSource.getFoodPredict(token)
+    }
 }

@@ -26,9 +26,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="vertical"
-        app:layout_constraintEnd_toStartOf="@id/list_meals_recommend"
+        app:layout_constraintEnd_toStartOf="@id/sv_meals"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_recommend">
+        app:layout_constraintTop_toBottomOf="@id/tv_recommend"
+        app:selectionRequired="true"
+        app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_sun"
@@ -95,30 +97,22 @@
 
     </com.google.android.material.chip.ChipGroup>
 
-    <include
-        android:id="@+id/list_meals_recommend"
-        layout="@layout/list_meals_recommend"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/sv_meals"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/chip_group_day"
-        app:layout_constraintTop_toBottomOf="@id/tv_recommend" />
-
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fab_add_story"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:backgroundTint="?attr/colorPrimary"
-        android:text="@string/generate_groceries_list"
-        android:textColor="?attr/colorOnPrimary"
-        app:icon="@drawable/notes_24"
-        app:iconTint="?attr/colorOnPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Material3.FloatingActionButton" />
+        app:layout_constraintStart_toEndOf="@id/chip_group_day"
+        app:layout_constraintTop_toTopOf="@id/chip_group_day">
+
+        <include
+            android:id="@+id/list_meals_recommend"
+            layout="@layout/list_meals_recommend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.core.widget.NestedScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,8 +16,8 @@ data class UpdateUserDescResponse(
 
 data class DataUserDesc(
 
-	@field:SerializedName("alcohol")
-	val alcohol: String,
+	@field:SerializedName("halal")
+	val halal: String,
 
 	@field:SerializedName("purpose")
 	val purpose: String,

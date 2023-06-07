@@ -14,7 +14,7 @@ import com.capstoneproject.tummyfit.data.local.database.entity.WaterIntakeEntity
 
 @Database(
     entities = [FavoriteMealEntity::class, WaterIntakeEntity::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

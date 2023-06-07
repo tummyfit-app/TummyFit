@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName
 
 data class PostUserDescRequestBody(
 
-	@field:SerializedName("alcohol")
-	val alcohol: String,
+	@field:SerializedName("halal")
+	val halal: String,
 
 	@field:SerializedName("purpose")
 	val purpose: String,

@@ -14,4 +14,5 @@ object Constants {
     const val DB_NAME = "TummyFit.db"
     const val ID_USER_KEY = "ID_USER_KEY"
     const val MY_PACKAGE = "com.capstoneproject.tummyfit"
+    const val SEARCH_QUERY_SEGARI = "https://segari.id/search?query="
 }

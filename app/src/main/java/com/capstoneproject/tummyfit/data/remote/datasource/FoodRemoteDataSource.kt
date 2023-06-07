@@ -1,6 +1,7 @@
 package com.capstoneproject.tummyfit.data.remote.datasource
 
 import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodDetailResponse
+import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodPredictResponse
 import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodResponse
 import com.capstoneproject.tummyfit.data.remote.service.FoodApiService
 import javax.inject.Inject
@@ -23,6 +24,10 @@ interface FoodRemoteDataSource {
     suspend fun searchFoodsByCategory(
         token: String, q: String?, category: String?,
     ): GetFoodResponse
+
+    suspend fun getFoodPredict(
+        token: String
+    ): GetFoodPredictResponse
 }
 
 class FoodRemoteDataSourceImpl @Inject constructor(private val apiService: FoodApiService) :
@@ -38,4 +43,6 @@ class FoodRemoteDataSourceImpl @Inject constructor(private val apiService: FoodA
         q: String?,
         category: String?
     ): GetFoodResponse = apiService.searchFoodsByCategory(token, q, category)
+
+    override suspend fun getFoodPredict(token: String): GetFoodPredictResponse = apiService.getFoodPredict(token)
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodPredictResponse
 import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodResponse
 import com.capstoneproject.tummyfit.data.remote.model.user.GetUserResponse
 import com.capstoneproject.tummyfit.data.repository.AuthRepository
@@ -29,12 +30,19 @@ class HomeViewModel @Inject constructor(
     private val _foodTryIt = MutableLiveData<Resource<GetFoodResponse>>()
     val foodTryIt: LiveData<Resource<GetFoodResponse>> get() = _foodTryIt
 
+    private val _foodPredict = MutableLiveData<Resource<GetFoodPredictResponse>>()
+    val foodPredict: LiveData<Resource<GetFoodPredictResponse>> get() = _foodPredict
+
     fun getUser() = viewModelScope.launch(Dispatchers.IO) {
         _user.postValue(Resource.Loading())
         val data = userRepository.getUserDesc(authRepository.getToken().first())
         viewModelScope.launch(Dispatchers.Main) {
             _user.postValue(data)
-            if (data.payload?.status.equals("success", true)) authRepository.setId(data.payload?.data?.userDescription?.userId.toString())
+            if (data.payload?.status.equals(
+                    "success",
+                    true
+                )
+            ) authRepository.setId(data.payload?.data?.userDescription?.userId.toString())
         }
     }
 
@@ -42,6 +50,14 @@ class HomeViewModel @Inject constructor(
         _foodTryIt.postValue(Resource.Loading())
         viewModelScope.launch(Dispatchers.Main) {
             _foodTryIt.postValue(foodRepository.getListFoods(authRepository.getToken().first()))
+        }
+    }
+
+    fun getFoodPredict() = viewModelScope.launch(Dispatchers.IO) {
+        _foodPredict.postValue(Resource.Loading())
+        val data = foodRepository.getFoodPredict(authRepository.getToken().first())
+        viewModelScope.launch(Dispatchers.Main) {
+            _foodPredict.postValue(data)
         }
     }
 }

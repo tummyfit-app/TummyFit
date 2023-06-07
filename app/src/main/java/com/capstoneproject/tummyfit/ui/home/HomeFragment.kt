@@ -2,6 +2,7 @@ package com.capstoneproject.tummyfit.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,9 +16,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.capstoneproject.tummyfit.R
 import com.capstoneproject.tummyfit.data.remote.model.food.FoodsItem
+import com.capstoneproject.tummyfit.data.remote.model.food.MenuItem
+import com.capstoneproject.tummyfit.data.remote.model.food.PredictionItem
 import com.capstoneproject.tummyfit.data.remote.model.user.UserDescription
 import com.capstoneproject.tummyfit.databinding.FragmentHomeBinding
+import com.capstoneproject.tummyfit.ui.home.adapter.TodayMealAdapter
 import com.capstoneproject.tummyfit.ui.home.adapter.TryItAdapter
+import com.capstoneproject.tummyfit.utils.getDayFormat
 import com.capstoneproject.tummyfit.utils.scoreIbm
 import com.capstoneproject.tummyfit.utils.showSnackbar
 import com.capstoneproject.tummyfit.wrapper.Resource
@@ -30,6 +35,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var tryItAdapter: TryItAdapter
+    private lateinit var todayMealAdapter: TodayMealAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -40,13 +46,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getUser()
-        viewModel.getFoodsTryIt()
         initTryItList()
+        initTodayMealList()
         observeData()
         toFavorite()
         toWaterIntake()
-        binding.listTodayMeals.shimmerTodayMeals.startShimmer()
     }
 
     private fun toWaterIntake() {
@@ -73,7 +77,6 @@ class HomeFragment : Fragment() {
                 }
 
                 is Resource.Success -> {
-                    showLoading(false)
                     it.data?.data?.userDescription?.let { it1 ->
                         bindToView(it1)
                     }
@@ -81,8 +84,37 @@ class HomeFragment : Fragment() {
 
                 is Resource.Error -> {
                     showLoading(true)
-                    if (findNavController().currentDestination?.id == R.id.homeFragment)
-                        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileSetupBottomSheetDialogFragment())
+                    if (it.message.equals("No Data found", true)) {
+                        if (findNavController().currentDestination?.id == R.id.homeFragment)
+                            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileSetupBottomSheetDialogFragment())
+                    } else {
+                        showSnackbar(requireView(), it.message.toString())
+                    }
+                }
+            }
+        }
+        viewModel.foodPredict.observe(viewLifecycleOwner) {
+            when (it) {
+                is Resource.Loading -> {
+                    binding.listTodayMeals.shimmerTodayMeals.isVisible = true
+                    binding.listTodayMeals.rvTodayMeals.isVisible = false
+                }
+
+                is Resource.Empty -> {}
+
+                is Resource.Success -> {
+                    showLoading(false)
+                    binding.listTodayMeals.shimmerTodayMeals.isVisible = false
+                    binding.listTodayMeals.rvTodayMeals.isVisible = true
+                    todayMealAdapter.differ.submitList(it.data?.prediction?.get(getDayFormat())?.menu)
+                    binding.cardData.totalKcal.text =
+                        it.data?.prediction?.get(7)?.requirement.toString()
+                }
+
+                is Resource.Error -> {
+                    binding.listTodayMeals.shimmerTodayMeals.isVisible = true
+                    binding.listTodayMeals.rvTodayMeals.isVisible = false
+                    showSnackbar(requireView(), it.message.toString())
                 }
             }
         }
@@ -126,10 +158,11 @@ class HomeFragment : Fragment() {
         super.onResume()
         viewModel.getUser()
         viewModel.getFoodsTryIt()
+        viewModel.getFoodPredict()
     }
 
     private fun bindToView(userDescription: UserDescription) {
-        with(binding){
+        with(binding) {
             homeHeader.apply {
                 Glide.with(pictUser).load(userDescription.user.urlprofile).into(pictUser)
                 username.text = "${userDescription.user.firstname} ${userDescription.user.lastname}"
@@ -163,6 +196,24 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(directions)
             }
         })
+    }
+
+    private fun initTodayMealList() {
+        todayMealAdapter = TodayMealAdapter()
+        binding.listTodayMeals.rvTodayMeals.apply {
+            adapter = todayMealAdapter
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            setHasFixedSize(true)
+        }
+
+//        todayMealAdapter.setOnClickListener(object : TodayMealAdapter.OnItemClickListener {
+//            override fun onItemClicked(item: MenuItem) {
+//                val directions =
+//                    HomeFragmentDirections.actionHomeFragmentToDetailMealFragment(item.id)
+//                findNavController().navigate(directions)
+//            }
+//        })
     }
 
     override fun onDestroy() {

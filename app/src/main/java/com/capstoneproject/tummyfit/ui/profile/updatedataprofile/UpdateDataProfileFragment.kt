@@ -112,7 +112,7 @@ class UpdateDataProfileFragment : Fragment() {
             tilDailyActivity.helperText =
                 "Your last daily activity is ${userDescription.dailyActivity}"
             chipGluttenFree.isChecked = userDescription.glutenFree.equals("yes", true)
-            chipAlcohol.isChecked = userDescription.alcohol.equals("yes", true)
+            chipHalal.isChecked = userDescription.halal.equals("yes", true)
             chipDairyFree.isChecked = userDescription.dairyFree.equals("yes", true)
             chipVegan.isChecked = userDescription.vegan.equals("yes", true)
             chipVegetarian.isChecked = userDescription.vegetarian.equals("yes", true)
@@ -129,14 +129,14 @@ class UpdateDataProfileFragment : Fragment() {
                 val dailyActivity =
                     etDailyActivity.text.toString().trim().ifEmpty { userDescription.dailyActivity }
                 val dairy = if (chipDairyFree.isChecked) "yes" else "no"
-                val alcohol = if (chipAlcohol.isChecked) "yes" else "no"
+                val halal = if (chipHalal.isChecked) "yes" else "no"
                 val vegetarian = if (chipVegetarian.isChecked) "yes" else "no"
                 val vegan = if (chipVegan.isChecked) "yes" else "no"
                 val glutten = if (chipGluttenFree.isChecked) "yes" else "no"
                 viewModel.updateUserDesc(
                     userDescription.id,
                     UpdateUserDescRequestBody(
-                        alcohol,
+                        halal,
                         purpose,
                         vegetarian,
                         weight,

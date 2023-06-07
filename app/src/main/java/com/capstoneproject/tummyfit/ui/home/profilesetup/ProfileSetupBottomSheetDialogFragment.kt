@@ -66,13 +66,13 @@ class ProfileSetupBottomSheetDialogFragment : BottomSheetDialogFragment() {
                     val purpose = etPurpose.text.toString().trim()
                     val daily = etDailyActivity.text.toString().trim()
                     val dairy = if (chipDairyFree.isChecked) "yes" else "no"
-                    val alcohol = if (chipAlcohol.isChecked) "yes" else "no"
+                    val halal = if (chipHalal.isChecked) "yes" else "no"
                     val vegetarian = if (chipVegetarian.isChecked) "yes" else "no"
                     val vegan = if (chipVegan.isChecked) "yes" else "no"
                     val glutten = if (chipGluttenFree.isChecked) "yes" else "no"
                     viewModel.postUser(
                         PostUserDescRequestBody(
-                            alcohol = alcohol,
+                            halal = halal,
                             purpose = purpose,
                             sex = gender,
                             vegetarian = vegetarian,

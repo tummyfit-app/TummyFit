@@ -262,11 +262,11 @@
                     android:text="@string/vegetarian" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_alcohol"
+                    android:id="@+id/chip_halal"
                     style="@style/Widget.Material3.Chip.Filter.Elevated"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="@string/alcohol" />
+                    android:text="@string/halal" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_dairy_free"

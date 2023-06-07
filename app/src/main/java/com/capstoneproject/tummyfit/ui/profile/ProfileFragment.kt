@@ -34,6 +34,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getUser()
+        viewModel.getFoodPredict()
         observeData()
         logout()
         toEditProfile()
@@ -67,6 +68,27 @@ class ProfileFragment : Fragment() {
                 is Resource.Success -> {
                     showLoading(false)
                     it.payload?.data?.userDescription?.let { user -> bindToView(user) }
+                }
+
+                is Resource.Error -> {
+                    showLoading(true)
+                    showSnackbar(requireView(), it.message.toString())
+                }
+            }
+        }
+        viewModel.foodPredict.observe(viewLifecycleOwner) {
+            when (it) {
+                is Resource.Loading -> {
+                    showLoading(true)
+                }
+
+                is Resource.Empty -> {
+                    showLoading(false)
+                }
+
+                is Resource.Success -> {
+                    showLoading(false)
+                    binding.cardData.totalKcal.text = it.data?.prediction?.get(7)?.requirement.toString()
                 }
 
                 is Resource.Error -> {

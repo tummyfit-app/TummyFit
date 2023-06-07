@@ -125,7 +125,7 @@ class DetailMealFragment : Fragment() {
 
     private fun bindToView(food: Food) {
         binding.apply {
-            Glide.with(requireContext()).load(food.image).into(imageMeal)
+            Glide.with(requireContext()).load(food.image).error(R.drawable.load_img_error).centerCrop().into(imageMeal)
             cardDetailMeal.apply {
                 tvTitle.text = food.name
                 descOneMeal.text = if (food.halal.equals("True", true)) "halal" else "non-halal"
