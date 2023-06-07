@@ -66,7 +66,6 @@ class ProfileFragment : Fragment() {
                 }
 
                 is Resource.Success -> {
-                    showLoading(false)
                     it.payload?.data?.userDescription?.let { user -> bindToView(user) }
                 }
 

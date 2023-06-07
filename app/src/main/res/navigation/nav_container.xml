@@ -116,9 +116,6 @@
         android:name="com.capstoneproject.tummyfit.ui.mealsrecommend.MealsRecommendFragment"
         android:label="fragment_meals_recommend"
         tools:layout="@layout/fragment_meals_recommend" >
-        <action
-            android:id="@+id/action_mealsRecommendFragment_to_grocerieListFragment"
-            app:destination="@id/grocerieListFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailMealFragment"
@@ -131,11 +128,6 @@
             app:nullable="true"
             android:defaultValue="null" />
     </fragment>
-    <fragment
-        android:id="@+id/grocerieListFragment"
-        android:name="com.capstoneproject.tummyfit.ui.grocerielist.GrocerieListFragment"
-        android:label="fragment_grocerie_list"
-        tools:layout="@layout/fragment_grocerie_list" />
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.capstoneproject.tummyfit.ui.profile.editprofile.EditProfileFragment"

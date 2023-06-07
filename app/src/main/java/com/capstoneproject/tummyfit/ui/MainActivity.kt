@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity() {
             R.id.favoriteMealsFragment,
             R.id.detailMealFragment,
             R.id.profileSetupBottomSheetDialogFragment,
-            R.id.grocerieListFragment,
             R.id.waterIntakeFragment
         ).build()
 
