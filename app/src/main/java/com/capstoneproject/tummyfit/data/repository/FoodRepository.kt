@@ -31,6 +31,14 @@ interface FoodRepository {
     suspend fun getFoodPredict(
         token: String
     ): Resource<GetFoodPredictResponse>
+
+    suspend fun recipeFoodsByCategory(
+        token: String,
+        popular: String?,
+        halal: String?,
+        price: String?,
+        minutes: String?,
+    ): Resource<GetFoodResponse>
 }
 
 class FoodRepositoryImpl @Inject constructor(private val foodRemoteDataSource: FoodRemoteDataSource) :
@@ -52,5 +60,15 @@ class FoodRepositoryImpl @Inject constructor(private val foodRemoteDataSource: F
 
     override suspend fun getFoodPredict(token: String): Resource<GetFoodPredictResponse> = proceed {
         foodRemoteDataSource.getFoodPredict(token)
+    }
+
+    override suspend fun recipeFoodsByCategory(
+        token: String,
+        popular: String?,
+        halal: String?,
+        price: String?,
+        minutes: String?
+    ): Resource<GetFoodResponse> = proceed {
+        foodRemoteDataSource.recipeFoodsByCategory(token, popular, halal, price, minutes)
     }
 }

@@ -51,6 +51,13 @@ class HomeFragment : Fragment() {
         observeData()
         toFavorite()
         toWaterIntake()
+        toRecipe()
+    }
+
+    private fun toRecipe(){
+        binding.listMenu.recipe.setOnClickListener {
+            it.findNavController().navigate(R.id.action_homeFragment_to_recipeFragment)
+        }
     }
 
     private fun toWaterIntake() {
@@ -207,17 +214,17 @@ class HomeFragment : Fragment() {
             setHasFixedSize(true)
         }
 
-//        todayMealAdapter.setOnClickListener(object : TodayMealAdapter.OnItemClickListener {
-//            override fun onItemClicked(item: MenuItem) {
-//                val directions =
-//                    HomeFragmentDirections.actionHomeFragmentToDetailMealFragment(item.id)
-//                findNavController().navigate(directions)
-//            }
-//        })
+        todayMealAdapter.setOnClickListener(object : TodayMealAdapter.OnItemClickListener {
+            override fun onItemClicked(item: MenuItem) {
+                val directions =
+                    HomeFragmentDirections.actionHomeFragmentToDetailMealFragment(item.recipeTitle)
+                findNavController().navigate(directions)
+            }
+        })
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 

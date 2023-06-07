@@ -73,6 +73,9 @@
         <action
             android:id="@+id/action_homeFragment_to_waterIntakeFragment"
             app:destination="@id/waterIntakeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_recipeFragment"
+            app:destination="@id/recipeFragment" />
     </fragment>
     <dialog
         android:id="@+id/profileSetupBottomSheetDialogFragment"
@@ -116,6 +119,9 @@
         android:name="com.capstoneproject.tummyfit.ui.mealsrecommend.MealsRecommendFragment"
         android:label="fragment_meals_recommend"
         tools:layout="@layout/fragment_meals_recommend" >
+        <action
+            android:id="@+id/action_mealsRecommendFragment_to_detailMealFragment"
+            app:destination="@id/detailMealFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailMealFragment"
@@ -160,4 +166,13 @@
         android:name="com.capstoneproject.tummyfit.ui.waterintake.WaterIntakeFragment"
         android:label="fragment_water_intake"
         tools:layout="@layout/fragment_water_intake" />
+    <fragment
+        android:id="@+id/recipeFragment"
+        android:name="com.capstoneproject.tummyfit.ui.recipe.RecipeFragment"
+        android:label="fragment_recipe"
+        tools:layout="@layout/fragment_recipe" >
+        <action
+            android:id="@+id/action_recipeFragment_to_detailMealFragment"
+            app:destination="@id/detailMealFragment" />
+    </fragment>
 </navigation>

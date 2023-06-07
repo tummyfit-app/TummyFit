@@ -37,4 +37,13 @@ interface FoodApiService {
         @Header("Authorization") token: String,
         @Path("id") id: String
     ): GetFoodDetailResponse
+
+    @GET("/api/v1/foods?")
+    suspend fun recipeFoodsByCategory(
+        @Header("Authorization") token: String,
+        @Query("popular") popular: String? = null,
+        @Query("halal") halal: String? = null,
+        @Query("price") price: String? = null,
+        @Query("minutes") minutes: String? = null,
+    ): GetFoodResponse
 }

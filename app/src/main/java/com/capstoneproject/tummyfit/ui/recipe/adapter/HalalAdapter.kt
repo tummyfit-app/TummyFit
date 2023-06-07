@@ -1,4 +1,4 @@
-package com.capstoneproject.tummyfit.ui.mealsrecommend.adapter
+package com.capstoneproject.tummyfit.ui.recipe.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,19 +6,19 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.capstoneproject.tummyfit.R
-import com.capstoneproject.tummyfit.data.remote.model.food.MenuItem
-import com.capstoneproject.tummyfit.data.remote.model.food.PredictionItem
-import com.capstoneproject.tummyfit.databinding.ItemMealRecommendBinding
-import com.capstoneproject.tummyfit.utils.callbackFoodPredictionDiffUtil
+import com.capstoneproject.tummyfit.data.remote.model.food.FoodsItem
+import com.capstoneproject.tummyfit.databinding.ItemListMealHorizontalBinding
+import com.capstoneproject.tummyfit.databinding.ItemListMealVerticalBinding
+import com.capstoneproject.tummyfit.utils.callbackFoodDiffUtil
 
 /**
  * @Author: ridhogymnastiar
  * Github: https://github.com/ridhogaa
  */
 
-class MealsAdapter : RecyclerView.Adapter<MealsAdapter.ListViewHolder>() {
+class HalalAdapter : RecyclerView.Adapter<HalalAdapter.ListViewHolder>() {
 
-    val differ = AsyncListDiffer(this, callbackFoodPredictionDiffUtil)
+    val differ = AsyncListDiffer(this, callbackFoodDiffUtil)
 
     private lateinit var listener: OnItemClickListener
     fun setOnClickListener(listener: OnItemClickListener) {
@@ -30,7 +30,7 @@ class MealsAdapter : RecyclerView.Adapter<MealsAdapter.ListViewHolder>() {
         viewType: Int,
     ): ListViewHolder =
         ListViewHolder(
-            ItemMealRecommendBinding.inflate(
+            ItemListMealHorizontalBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -42,18 +42,19 @@ class MealsAdapter : RecyclerView.Adapter<MealsAdapter.ListViewHolder>() {
 
     override fun getItemCount(): Int = differ.currentList.size
 
-    inner class ListViewHolder(private val binding: ItemMealRecommendBinding) :
+    inner class ListViewHolder(private val binding: ItemListMealHorizontalBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: MenuItem) {
+        fun bind(item: FoodsItem) {
             binding.apply {
-                Glide.with(imageMeal).load(item.image).error(R.drawable.load_img_error)
+                Glide.with(itemView).load(item.image).error(R.drawable.load_img_error)
                     .optionalCenterCrop().into(imageMeal)
-                titleMeal.text = item.recipeTitle
                 buttonMeal.text = String.format(
                     itemView.resources.getString(R.string.kcal_template),
                     item.calories
                 )
-                descOneMeal.text = item.category
+                titleMeal.text = item.name
+                descOneMeal.text = item.dishType
+                descTwoMeal.text = if (item.halal.equals("True", true)) "halal" else "non-halal"
                 root.setOnClickListener {
                     listener.onItemClicked(item)
                 }
@@ -62,7 +63,7 @@ class MealsAdapter : RecyclerView.Adapter<MealsAdapter.ListViewHolder>() {
     }
 
     interface OnItemClickListener {
-        fun onItemClicked(item: MenuItem)
+        fun onItemClicked(item: FoodsItem)
     }
 
 }

@@ -4,6 +4,8 @@ import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodDetailResponse
 import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodPredictResponse
 import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodResponse
 import com.capstoneproject.tummyfit.data.remote.service.FoodApiService
+import retrofit2.http.Header
+import retrofit2.http.Query
 import javax.inject.Inject
 
 /**
@@ -28,6 +30,14 @@ interface FoodRemoteDataSource {
     suspend fun getFoodPredict(
         token: String
     ): GetFoodPredictResponse
+
+    suspend fun recipeFoodsByCategory(
+        token: String,
+        popular: String?,
+        halal: String?,
+        price: String?,
+        minutes: String?,
+    ): GetFoodResponse
 }
 
 class FoodRemoteDataSourceImpl @Inject constructor(private val apiService: FoodApiService) :
@@ -44,5 +54,14 @@ class FoodRemoteDataSourceImpl @Inject constructor(private val apiService: FoodA
         category: String?
     ): GetFoodResponse = apiService.searchFoodsByCategory(token, q, category)
 
-    override suspend fun getFoodPredict(token: String): GetFoodPredictResponse = apiService.getFoodPredict(token)
+    override suspend fun getFoodPredict(token: String): GetFoodPredictResponse =
+        apiService.getFoodPredict(token)
+
+    override suspend fun recipeFoodsByCategory(
+        token: String,
+        popular: String?,
+        halal: String?,
+        price: String?,
+        minutes: String?
+    ): GetFoodResponse = apiService.recipeFoodsByCategory(token, popular, halal, price)
 }

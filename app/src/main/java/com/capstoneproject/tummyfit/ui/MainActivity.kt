@@ -42,7 +42,8 @@ class MainActivity : AppCompatActivity() {
             R.id.favoriteMealsFragment,
             R.id.detailMealFragment,
             R.id.profileSetupBottomSheetDialogFragment,
-            R.id.waterIntakeFragment
+            R.id.waterIntakeFragment,
+            R.id.recipeFragment
         ).build()
 
         setupActionBarWithNavController(navController, appBarConfiguration)

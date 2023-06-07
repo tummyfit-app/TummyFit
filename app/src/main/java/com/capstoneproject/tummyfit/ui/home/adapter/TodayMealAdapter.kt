@@ -55,15 +55,15 @@ class TodayMealAdapter : RecyclerView.Adapter<TodayMealAdapter.ListViewHolder>()
                 )
                 descOneMeal.text = item.category
                 descTwoMeal.text = if (item.halal.equals("True", true)) "halal" else "non-halal"
-//                root.setOnClickListener {
-//                    listener.onItemClicked(PredictionItem)
-//                }
+                root.setOnClickListener {
+                    listener.onItemClicked(item)
+                }
             }
         }
     }
 
     interface OnItemClickListener {
-        fun onItemClicked(item: PredictionItem)
+        fun onItemClicked(item: MenuItem)
     }
 
 }

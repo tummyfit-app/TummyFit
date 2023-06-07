@@ -110,8 +110,8 @@ class LoginFragment : Fragment() {
         return flag
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 

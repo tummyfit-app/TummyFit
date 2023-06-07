@@ -23,13 +23,12 @@ class InstructionsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.i("INFO INS", arguments?.getString(Constants.INSTRUCTIONS).toString())
         binding.tvInstructions.text =
             arguments?.getString(Constants.INSTRUCTIONS)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 

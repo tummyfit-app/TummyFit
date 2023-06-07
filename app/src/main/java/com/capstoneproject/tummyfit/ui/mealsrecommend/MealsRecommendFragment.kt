@@ -14,10 +14,13 @@ import androidx.core.view.get
 import androidx.core.view.isVisible
 import androidx.core.view.size
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstoneproject.tummyfit.R
+import com.capstoneproject.tummyfit.data.remote.model.food.MenuItem
 import com.capstoneproject.tummyfit.databinding.FragmentMealsRecommendBinding
 import com.capstoneproject.tummyfit.databinding.FragmentProfileBinding
+import com.capstoneproject.tummyfit.ui.home.HomeFragmentDirections
 import com.capstoneproject.tummyfit.ui.home.adapter.TodayMealAdapter
 import com.capstoneproject.tummyfit.ui.mealsrecommend.adapter.MealsAdapter
 import com.capstoneproject.tummyfit.ui.profile.ProfileViewModel
@@ -106,13 +109,12 @@ class MealsRecommendFragment : Fragment() {
             setHasFixedSize(true)
         }
 
-//        todayMealAdapter.setOnClickListener(object : TodayMealAdapter.OnItemClickListener {
-//            override fun onItemClicked(item: MenuItem) {
-//                val directions =
-//                    HomeFragmentDirections.actionHomeFragmentToDetailMealFragment(item.id)
-//                findNavController().navigate(directions)
-//            }
-//        })
+        mealsAdapter.setOnClickListener(object : MealsAdapter.OnItemClickListener {
+            override fun onItemClicked(item: MenuItem) {
+                val directions = MealsRecommendFragmentDirections.actionMealsRecommendFragmentToDetailMealFragment(item.recipeTitle)
+                findNavController().navigate(directions)
+            }
+        })
     }
 
     override fun onDestroyView() {

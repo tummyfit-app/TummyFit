@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/groceries"
+        android:id="@+id/recipe"
         android:layout_width="62dp"
         android:layout_height="60dp"
         android:layout_marginStart="10dp"
@@ -15,7 +15,7 @@
         android:focusable="true"
         android:padding="22dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/cart"
+        android:src="@drawable/recipe"
         app:cardCornerRadius="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,11 +25,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_regular"
-        android:text="@string/grocery_list"
+        android:text="@string/recipes"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@id/groceries"
-        app:layout_constraintStart_toStartOf="@id/groceries"
-        app:layout_constraintTop_toBottomOf="@id/groceries" />
+        app:layout_constraintEnd_toEndOf="@id/recipe"
+        app:layout_constraintStart_toStartOf="@id/recipe"
+        app:layout_constraintTop_toBottomOf="@id/recipe" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/water_intake"
@@ -44,7 +44,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/water_intake"
         app:cardCornerRadius="20dp"
-        app:layout_constraintStart_toEndOf="@id/groceries"
+        app:layout_constraintStart_toEndOf="@id/recipe"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
