@@ -9,6 +9,7 @@ import com.capstoneproject.tummyfit.data.local.database.AppDatabase
 import com.capstoneproject.tummyfit.data.local.database.dao.FavoriteMealDao
 import com.capstoneproject.tummyfit.data.local.database.dao.WaterIntakeDao
 import com.capstoneproject.tummyfit.data.local.preference.AuthDataStoreManager
+import com.capstoneproject.tummyfit.data.local.preference.OnBoardingDataStoreManager
 import com.capstoneproject.tummyfit.utils.Constants
 import dagger.Module
 import dagger.Provides
@@ -56,4 +57,9 @@ object LocalModule {
     @Provides
     fun provideAuthDataStoreManager(dataStore: DataStore<Preferences>): AuthDataStoreManager =
         AuthDataStoreManager(dataStore)
+
+    @Singleton
+    @Provides
+    fun provideOnBoardingDataStoreManager(dataStore: DataStore<Preferences>): OnBoardingDataStoreManager =
+        OnBoardingDataStoreManager(dataStore)
 }

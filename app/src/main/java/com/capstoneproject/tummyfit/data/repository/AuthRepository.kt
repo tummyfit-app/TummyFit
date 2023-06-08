@@ -32,11 +32,12 @@ interface AuthRepository {
         token: String,
         updateUserRequestBody: UpdateUserRequestBody
     ): Resource<UpdateUserResponse>
-
     suspend fun updatePhotoUser(
         token: String,
         file: MultipartBody.Part,
     ): Resource<UpdateUserResponse>
+    suspend fun saveOnBoarding(isFinished: Boolean)
+    fun getOnBoarding(): Flow<Boolean?>
 }
 
 class AuthRepositoryImpl @Inject constructor(
@@ -82,5 +83,9 @@ class AuthRepositoryImpl @Inject constructor(
     ): Resource<UpdateUserResponse> = proceed {
         authRemoteDataSource.updatePhotoUser(token, file)
     }
+
+    override suspend fun saveOnBoarding(isFinished: Boolean) = authLocalDataSource.saveOnBoarding(isFinished)
+
+    override fun getOnBoarding(): Flow<Boolean?> = authLocalDataSource.getOnBoarding()
 
 }

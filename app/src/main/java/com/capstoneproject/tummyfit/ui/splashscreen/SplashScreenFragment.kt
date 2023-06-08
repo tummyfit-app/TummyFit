@@ -42,9 +42,14 @@ class SplashScreenFragment : Fragment() {
 
     private fun checkUserSession() {
         viewModel.session.observe(viewLifecycleOwner) {
-            Log.i("INFO TOKEN", it)
             if (it.isEmpty()) {
-                findNavController().navigate(R.id.action_splashScreenFragment_to_onBoardingFragment)
+                viewModel.getOnBoarding.observe(viewLifecycleOwner){isFinish ->
+                    if (isFinish == true){
+                        findNavController().navigate(R.id.action_splashScreenFragment_to_loginFragment)
+                    }else {
+                        findNavController().navigate(R.id.action_splashScreenFragment_to_onBoardingFragment)
+                    }
+                }
             } else {
                 findNavController().navigate(R.id.action_splashScreenFragment_to_homeFragment)
             }

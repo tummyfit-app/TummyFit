@@ -9,4 +9,5 @@ import javax.inject.Inject
 @HiltViewModel
 class SplashScreenViewModel @Inject constructor(private val authRepository: AuthRepository) : ViewModel() {
     val session = authRepository.getToken().asLiveData()
+    val getOnBoarding = authRepository.getOnBoarding().asLiveData()
 }
