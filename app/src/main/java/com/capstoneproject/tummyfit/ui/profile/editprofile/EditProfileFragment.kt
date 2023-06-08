@@ -1,4 +1,4 @@
-@file:Suppress("BlockingMethodInNonBlockingContext", "BlockingMethodInNonBlockingContext",
+@file:Suppress(
     "BlockingMethodInNonBlockingContext"
 )
 
@@ -47,7 +47,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
 
-@Suppress("BlockingMethodInNonBlockingContext", "BlockingMethodInNonBlockingContext",
+@Suppress(
     "BlockingMethodInNonBlockingContext"
 )
 @AndroidEntryPoint

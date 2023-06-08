@@ -1,23 +1,18 @@
 package com.capstoneproject.tummyfit.ui.search
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.capstoneproject.tummyfit.R
 import com.capstoneproject.tummyfit.data.remote.model.food.FoodsItem
-import com.capstoneproject.tummyfit.databinding.FragmentProfileBinding
 import com.capstoneproject.tummyfit.databinding.FragmentSearchMealsBinding
-import com.capstoneproject.tummyfit.ui.home.HomeFragmentDirections
-import com.capstoneproject.tummyfit.ui.home.adapter.TryItAdapter
-import com.capstoneproject.tummyfit.ui.profile.ProfileViewModel
 import com.capstoneproject.tummyfit.ui.search.adapter.SearchAdapter
 import com.capstoneproject.tummyfit.utils.showSnackbar
 import com.capstoneproject.tummyfit.wrapper.Resource

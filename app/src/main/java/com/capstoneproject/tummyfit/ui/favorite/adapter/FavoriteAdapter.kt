@@ -19,9 +19,9 @@ class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.ListViewHolder>() {
 
     val differ = AsyncListDiffer(this, callbackFavoriteMealEntityDiffUtil)
 
-    private lateinit var listener: FavoriteAdapter.OnItemClickListener
+    private lateinit var listener: OnItemClickListener
 
-    fun setOnClickListener(listener: FavoriteAdapter.OnItemClickListener) {
+    fun setOnClickListener(listener: OnItemClickListener) {
         this.listener = listener
     }
 

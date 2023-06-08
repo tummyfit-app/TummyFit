@@ -6,7 +6,6 @@ import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodPredictRespons
 import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodResponse
 import com.capstoneproject.tummyfit.wrapper.Resource
 import com.capstoneproject.tummyfit.wrapper.proceed
-import retrofit2.http.Header
 import javax.inject.Inject
 
 /**

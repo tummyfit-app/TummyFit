@@ -1,8 +1,6 @@
 package com.capstoneproject.tummyfit.ui.home
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +15,6 @@ import com.bumptech.glide.Glide
 import com.capstoneproject.tummyfit.R
 import com.capstoneproject.tummyfit.data.remote.model.food.FoodsItem
 import com.capstoneproject.tummyfit.data.remote.model.food.MenuItem
-import com.capstoneproject.tummyfit.data.remote.model.food.PredictionItem
 import com.capstoneproject.tummyfit.data.remote.model.user.UserDescription
 import com.capstoneproject.tummyfit.databinding.FragmentHomeBinding
 import com.capstoneproject.tummyfit.ui.home.adapter.TodayMealAdapter

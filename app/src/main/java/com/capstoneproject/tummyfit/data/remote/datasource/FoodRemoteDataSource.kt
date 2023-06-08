@@ -4,8 +4,6 @@ import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodDetailResponse
 import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodPredictResponse
 import com.capstoneproject.tummyfit.data.remote.model.food.GetFoodResponse
 import com.capstoneproject.tummyfit.data.remote.service.FoodApiService
-import retrofit2.http.Header
-import retrofit2.http.Query
 import javax.inject.Inject
 
 /**

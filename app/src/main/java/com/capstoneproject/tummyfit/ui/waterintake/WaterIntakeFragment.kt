@@ -12,12 +12,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.capstoneproject.tummyfit.R
 import com.capstoneproject.tummyfit.databinding.FragmentWaterIntakeBinding
-import com.capstoneproject.tummyfit.ui.home.adapter.TryItAdapter
 import com.capstoneproject.tummyfit.ui.waterintake.adapter.WaterIntakeAdapter
 import com.capstoneproject.tummyfit.utils.showSnackbar
 import com.capstoneproject.tummyfit.utils.showTimePickerNotification

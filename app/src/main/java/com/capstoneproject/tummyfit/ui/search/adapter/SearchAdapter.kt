@@ -19,8 +19,8 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.ListViewHolder>() {
 
     val differ = AsyncListDiffer(this, callbackFoodDiffUtil)
 
-    private lateinit var listener: SearchAdapter.OnItemClickListener
-    fun setOnClickListener(listener: SearchAdapter.OnItemClickListener) {
+    private lateinit var listener: OnItemClickListener
+    fun setOnClickListener(listener: OnItemClickListener) {
         this.listener = listener
     }
 

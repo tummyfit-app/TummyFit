@@ -1,36 +1,20 @@
 package com.capstoneproject.tummyfit.ui.home.profilesetup
 
-import android.app.Dialog
-import android.content.DialogInterface
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.DisplayMetrics
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
-import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.capstoneproject.tummyfit.R
 import com.capstoneproject.tummyfit.data.remote.model.user.PostUserDescRequestBody
-import com.capstoneproject.tummyfit.databinding.FragmentHomeBinding
 import com.capstoneproject.tummyfit.databinding.FragmentProfileSetupBottomSheetBinding
-import com.capstoneproject.tummyfit.databinding.FragmentRegisterBinding
-import com.capstoneproject.tummyfit.ui.register.RegisterViewModel
 import com.capstoneproject.tummyfit.utils.showDatePicker
 import com.capstoneproject.tummyfit.utils.showSnackbar
 import com.capstoneproject.tummyfit.wrapper.Resource
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.datepicker.MaterialDatePicker
 import com.shashank.sony.fancytoastlib.FancyToast
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.SimpleDateFormat
-import java.util.*
 
 @AndroidEntryPoint
 class ProfileSetupBottomSheetDialogFragment : BottomSheetDialogFragment() {

@@ -1,21 +1,18 @@
 package com.capstoneproject.tummyfit.ui.profile.updatedataprofile
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.capstoneproject.tummyfit.R
 import com.capstoneproject.tummyfit.data.remote.model.user.UpdateUserDescRequestBody
 import com.capstoneproject.tummyfit.data.remote.model.user.UserDescription
-import com.capstoneproject.tummyfit.databinding.FragmentEditProfileBinding
 import com.capstoneproject.tummyfit.databinding.FragmentUpdateDataProfileBinding
-import com.capstoneproject.tummyfit.ui.profile.ProfileViewModel
 import com.capstoneproject.tummyfit.utils.showDatePicker
 import com.capstoneproject.tummyfit.utils.showSnackbar
 import com.capstoneproject.tummyfit.wrapper.Resource

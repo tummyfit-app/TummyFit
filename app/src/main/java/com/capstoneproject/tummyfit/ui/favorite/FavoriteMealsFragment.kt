@@ -1,26 +1,18 @@
 package com.capstoneproject.tummyfit.ui.favorite
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.capstoneproject.tummyfit.R
 import com.capstoneproject.tummyfit.data.local.database.entity.FavoriteMealEntity
-import com.capstoneproject.tummyfit.data.remote.model.food.FoodsItem
 import com.capstoneproject.tummyfit.databinding.FragmentFavoriteMealsBinding
-import com.capstoneproject.tummyfit.databinding.FragmentOnBoardingBinding
 import com.capstoneproject.tummyfit.ui.favorite.adapter.FavoriteAdapter
-import com.capstoneproject.tummyfit.ui.home.HomeFragmentDirections
-import com.capstoneproject.tummyfit.ui.home.adapter.TryItAdapter
-import com.capstoneproject.tummyfit.ui.onboarding.OnBoardingViewModel
 import com.capstoneproject.tummyfit.utils.showSnackbar
 import com.capstoneproject.tummyfit.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint

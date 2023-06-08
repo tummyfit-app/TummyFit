@@ -1,6 +1,5 @@
 package com.capstoneproject.tummyfit.ui.home.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -8,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.capstoneproject.tummyfit.R
 import com.capstoneproject.tummyfit.data.remote.model.food.MenuItem
-import com.capstoneproject.tummyfit.data.remote.model.food.PredictionItem
 import com.capstoneproject.tummyfit.databinding.ItemListMealHorizontalBinding
 import com.capstoneproject.tummyfit.utils.callbackFoodPredictionDiffUtil
 

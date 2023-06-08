@@ -8,7 +8,6 @@ import com.bumptech.glide.Glide
 import com.capstoneproject.tummyfit.R
 import com.capstoneproject.tummyfit.data.remote.model.food.FoodsItem
 import com.capstoneproject.tummyfit.databinding.ItemListMealHorizontalBinding
-import com.capstoneproject.tummyfit.databinding.ItemListMealVerticalBinding
 import com.capstoneproject.tummyfit.utils.callbackFoodDiffUtil
 
 /**
