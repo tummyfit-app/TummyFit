@@ -79,5 +79,8 @@ data class User(
 data class Data(
 
     @field:SerializedName("UserDescription")
-    val userDescription: UserDescription
+    val userDescription: UserDescription,
+
+    @field:SerializedName("Calorie")
+    val calorie: Int
 )

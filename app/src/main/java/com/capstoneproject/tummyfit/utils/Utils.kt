@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import com.capstoneproject.tummyfit.data.local.database.entity.FavoriteMealEntity
 import com.capstoneproject.tummyfit.data.local.database.entity.WaterIntakeEntity
 import com.capstoneproject.tummyfit.data.remote.model.food.FoodsItem
-import com.capstoneproject.tummyfit.data.remote.model.food.MenuItem
+import com.capstoneproject.tummyfit.data.remote.model.food.MealItem
 import com.capstoneproject.tummyfit.utils.receiver.AlarmReceiver
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.snackbar.Snackbar
@@ -27,7 +27,9 @@ import java.io.OutputStream
 import java.text.DateFormat
 import java.text.DateFormatSymbols
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 import kotlin.math.roundToInt
 
 /**
@@ -113,18 +115,11 @@ fun String.withDateFormat(): String {
     return DateFormat.getDateInstance(DateFormat.FULL).format(date)
 }
 
-fun getDayFormat(): Int {
+fun getDayFormat(): String {
     val dayNames: Array<String> = DateFormatSymbols().weekdays
     val date = Calendar.getInstance()
     val dayNow = dayNames[date[Calendar.DAY_OF_WEEK]]
-    if (dayNow.equals("Monday", true)) return 0
-    else if (dayNow.equals("Tuesday", true)) return 1
-    else if (dayNow.equals("Wednesday", true)) return 2
-    else if (dayNow.equals("Thursday", true)) return 3
-    else if (dayNow.equals("Friday", true)) return 4
-    else if (dayNow.equals("Saturday", true)) return 5
-    else if (dayNow.equals("Sunday", true)) return 6
-    return 0
+    return dayNow
 }
 
 fun getChipDayFormat(): String {
@@ -179,16 +174,16 @@ val callbackFoodDiffUtil = object : DiffUtil.ItemCallback<FoodsItem>() {
         oldItem == newItem
 }
 
-val callbackFoodPredictionDiffUtil = object : DiffUtil.ItemCallback<MenuItem>() {
+val callbackFoodPredictionDiffUtil = object : DiffUtil.ItemCallback<MealItem>() {
     override fun areItemsTheSame(
-        oldItem: MenuItem,
-        newItem: MenuItem
+        oldItem: MealItem,
+        newItem: MealItem
     ): Boolean =
         oldItem == newItem
 
     override fun areContentsTheSame(
-        oldItem: MenuItem,
-        newItem: MenuItem
+        oldItem: MealItem,
+        newItem: MealItem
     ): Boolean =
         oldItem == newItem
 }

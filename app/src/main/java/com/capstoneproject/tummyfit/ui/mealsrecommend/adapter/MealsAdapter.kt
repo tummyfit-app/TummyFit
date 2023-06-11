@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.capstoneproject.tummyfit.R
-import com.capstoneproject.tummyfit.data.remote.model.food.MenuItem
+import com.capstoneproject.tummyfit.data.remote.model.food.MealItem
 import com.capstoneproject.tummyfit.databinding.ItemMealRecommendBinding
 import com.capstoneproject.tummyfit.utils.callbackFoodPredictionDiffUtil
 
@@ -43,11 +43,11 @@ class MealsAdapter : RecyclerView.Adapter<MealsAdapter.ListViewHolder>() {
 
     inner class ListViewHolder(private val binding: ItemMealRecommendBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: MenuItem) {
+        fun bind(item: MealItem) {
             binding.apply {
-                Glide.with(imageMeal).load(item.image).error(R.drawable.load_img_error)
+                Glide.with(imageMeal).load(item.imageUrl).error(R.drawable.load_img_error)
                     .optionalCenterCrop().into(imageMeal)
-                titleMeal.text = item.recipeTitle
+                titleMeal.text = item.foodName
                 buttonMeal.text = String.format(
                     itemView.resources.getString(R.string.kcal_template),
                     item.calories
@@ -61,7 +61,7 @@ class MealsAdapter : RecyclerView.Adapter<MealsAdapter.ListViewHolder>() {
     }
 
     interface OnItemClickListener {
-        fun onItemClicked(item: MenuItem)
+        fun onItemClicked(item: MealItem)
     }
 
 }

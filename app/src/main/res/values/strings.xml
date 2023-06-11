@@ -118,6 +118,7 @@
     <string name="cheap_meals">Cheap Meals</string>
     <string name="halal_meals">Halal Meals</string>
     <string name="popular_meals">Popular Meals</string>
+    <string name="meals_recommendations">Meals Recommendations</string>
     <string-array name="purpose_item">
         <item>Maintain weight</item>
         <item>Weight loss</item>

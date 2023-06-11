@@ -20,9 +20,10 @@ interface FoodApiService {
         @Header("Authorization") token: String
     ): GetFoodResponse
 
-    @GET("/api/v1/foods/predict")
+    @GET("/api/v1/foods/predict?")
     suspend fun getFoodPredict(
-        @Header("Authorization") token: String
+        @Header("Authorization") token: String,
+        @Query("day") day: String? = null,
     ): GetFoodPredictResponse
 
     @GET("/api/v1/foods?")

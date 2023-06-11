@@ -53,9 +53,9 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun getFoodPredict() = viewModelScope.launch(Dispatchers.IO) {
+    fun getFoodPredict(day: String? = null) = viewModelScope.launch(Dispatchers.IO) {
         _foodPredict.postValue(Resource.Loading())
-        val data = foodRepository.getFoodPredict(authRepository.getToken().first())
+        val data = foodRepository.getFoodPredict(authRepository.getToken().first(), day)
         viewModelScope.launch(Dispatchers.Main) {
             _foodPredict.postValue(data)
         }

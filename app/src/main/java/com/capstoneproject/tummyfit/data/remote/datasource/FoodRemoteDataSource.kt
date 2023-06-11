@@ -26,7 +26,8 @@ interface FoodRemoteDataSource {
     ): GetFoodResponse
 
     suspend fun getFoodPredict(
-        token: String
+        token: String,
+        day: String?
     ): GetFoodPredictResponse
 
     suspend fun recipeFoodsByCategory(
@@ -52,8 +53,8 @@ class FoodRemoteDataSourceImpl @Inject constructor(private val apiService: FoodA
         category: String?
     ): GetFoodResponse = apiService.searchFoodsByCategory(token, q, category)
 
-    override suspend fun getFoodPredict(token: String): GetFoodPredictResponse =
-        apiService.getFoodPredict(token)
+    override suspend fun getFoodPredict(token: String, day: String?): GetFoodPredictResponse =
+        apiService.getFoodPredict(token, day)
 
     override suspend fun recipeFoodsByCategory(
         token: String,

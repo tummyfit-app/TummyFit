@@ -4,63 +4,54 @@ import com.google.gson.annotations.SerializedName
 
 data class GetFoodPredictResponse(
 
-	@field:SerializedName("Prediction")
-	val prediction: List<PredictionItem>,
+	@field:SerializedName("data")
+	val data: DataMeals,
 
 	@field:SerializedName("message")
 	val message: String,
 
 	@field:SerializedName("status")
-	val status: String
+	val status: String,
+
+	@field:SerializedName("statusCode")
+	val statusCode: String
 )
 
-data class MenuItem(
+data class MealItem(
 
-	@field:SerializedName("Category")
+	@field:SerializedName("date")
+	val date: String,
+
+	@field:SerializedName("dateUpdatedUser")
+	val dateUpdatedUser: String,
+
+	@field:SerializedName("food_name")
+	val foodName: String,
+
+	@field:SerializedName("image_url")
+	val imageUrl: String,
+
+	@field:SerializedName("id")
+	val id: String,
+
+	@field:SerializedName("calories")
+	val calories: String,
+
+	@field:SerializedName("category")
 	val category: String,
 
-	@field:SerializedName("Vegetarian")
-	val vegetarian: String,
-
-	@field:SerializedName("Ingredients")
-	val ingredients: String,
-
-	@field:SerializedName("Gluten Free")
-	val glutenFree: String,
-
-	@field:SerializedName("Dairy Free")
-	val dairyFree: String,
-
-	@field:SerializedName("Recipe Title")
-	val recipeTitle: String,
-
-	@field:SerializedName("Halal")
-	val halal: String,
-
-	@field:SerializedName("Instructions")
-	val instructions: String,
-
-	@field:SerializedName("Image")
-	val image: String,
-
-	@field:SerializedName("Calories")
-	val calories: Double,
-
-	@field:SerializedName("Vegan")
-	val vegan: String
-)
-
-data class PredictionItem(
-
-	@field:SerializedName("Menu")
-	val menu: List<MenuItem>,
-
-	@field:SerializedName("Total Calories")
-	val totalCalories: Int,
-
-	@field:SerializedName("Day")
+	@field:SerializedName("day")
 	val day: String,
 
-	@field:SerializedName("requirement")
-	val requirement: Int
+	@field:SerializedName("userId")
+	val userId: String
+)
+
+data class DataMeals(
+
+	@field:SerializedName("Calorie")
+	val calorie: Int,
+
+	@field:SerializedName("Meal")
+	val meal: List<MealItem>
 )

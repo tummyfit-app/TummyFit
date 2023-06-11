@@ -14,12 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.capstoneproject.tummyfit.R
 import com.capstoneproject.tummyfit.data.remote.model.food.FoodsItem
-import com.capstoneproject.tummyfit.data.remote.model.food.MenuItem
+import com.capstoneproject.tummyfit.data.remote.model.food.MealItem
 import com.capstoneproject.tummyfit.data.remote.model.user.UserDescription
 import com.capstoneproject.tummyfit.databinding.FragmentHomeBinding
 import com.capstoneproject.tummyfit.ui.home.adapter.TodayMealAdapter
 import com.capstoneproject.tummyfit.ui.home.adapter.TryItAdapter
-import com.capstoneproject.tummyfit.utils.getDayFormat
 import com.capstoneproject.tummyfit.utils.scoreIbm
 import com.capstoneproject.tummyfit.utils.showSnackbar
 import com.capstoneproject.tummyfit.wrapper.Resource
@@ -81,6 +80,8 @@ class HomeFragment : Fragment() {
                 }
 
                 is Resource.Success -> {
+                    showLoading(false)
+                    binding.cardData.totalKcal.text = it.data?.data?.calorie.toString()
                     it.data?.data?.userDescription?.let { it1 ->
                         bindToView(it1)
                     }
@@ -107,12 +108,9 @@ class HomeFragment : Fragment() {
                 is Resource.Empty -> {}
 
                 is Resource.Success -> {
-                    showLoading(false)
                     binding.listTodayMeals.shimmerTodayMeals.isVisible = false
                     binding.listTodayMeals.rvTodayMeals.isVisible = true
-                    todayMealAdapter.differ.submitList(it.data?.prediction?.get(getDayFormat())?.menu)
-                    binding.cardData.totalKcal.text =
-                        it.data?.prediction?.get(7)?.requirement.toString()
+                    todayMealAdapter.differ.submitList(it.data?.data?.meal)
                 }
 
                 is Resource.Error -> {
@@ -212,9 +210,9 @@ class HomeFragment : Fragment() {
         }
 
         todayMealAdapter.setOnClickListener(object : TodayMealAdapter.OnItemClickListener {
-            override fun onItemClicked(item: MenuItem) {
+            override fun onItemClicked(item: MealItem) {
                 val directions =
-                    HomeFragmentDirections.actionHomeFragmentToDetailMealFragment(item.recipeTitle)
+                    HomeFragmentDirections.actionHomeFragmentToDetailMealFragment(item.foodName)
                 findNavController().navigate(directions)
             }
         })

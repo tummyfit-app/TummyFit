@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.capstoneproject.tummyfit.data.remote.model.food.MenuItem
+import com.capstoneproject.tummyfit.data.remote.model.food.MealItem
 import com.capstoneproject.tummyfit.databinding.FragmentMealsRecommendBinding
 import com.capstoneproject.tummyfit.ui.mealsrecommend.adapter.MealsAdapter
 import com.capstoneproject.tummyfit.utils.getChipDayFormat
@@ -43,7 +43,7 @@ class MealsRecommendFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.getFoodPredict()
+        viewModel.getFoodPredict(getDayFormat())
     }
 
     private fun setUpChip() {
@@ -76,7 +76,7 @@ class MealsRecommendFragment : Fragment() {
                 is Resource.Success -> {
                     binding.listMealsRecommend.rvTodayMeals.isVisible = true
                     binding.listMealsRecommend.shimmerTodayMeals.isVisible = false
-                    mealsAdapter.differ.submitList(it.data?.prediction?.get(getDayFormat())?.menu)
+                    mealsAdapter.differ.submitList(it.data?.data?.meal)
                 }
 
                 is Resource.Error -> {
@@ -98,8 +98,8 @@ class MealsRecommendFragment : Fragment() {
         }
 
         mealsAdapter.setOnClickListener(object : MealsAdapter.OnItemClickListener {
-            override fun onItemClicked(item: MenuItem) {
-                val directions = MealsRecommendFragmentDirections.actionMealsRecommendFragmentToDetailMealFragment(item.recipeTitle)
+            override fun onItemClicked(item: MealItem) {
+                val directions = MealsRecommendFragmentDirections.actionMealsRecommendFragmentToDetailMealFragment(item.foodName)
                 findNavController().navigate(directions)
             }
         })
