@@ -35,7 +35,7 @@ class RecipeViewModel @Inject constructor(
         _popular.postValue(Resource.Loading())
         val data = foodRepository.recipeFoodsByCategory(
             authRepository.getToken().first(),
-            "True",
+            "1",
             null,
             null,
             null
@@ -50,7 +50,7 @@ class RecipeViewModel @Inject constructor(
         val data = foodRepository.recipeFoodsByCategory(
             authRepository.getToken().first(),
             null,
-            "True",
+            "1",
             null,
             null
         )

@@ -118,8 +118,7 @@ fun String.withDateFormat(): String {
 fun getDayFormat(): String {
     val dayNames: Array<String> = DateFormatSymbols().weekdays
     val date = Calendar.getInstance()
-    val dayNow = dayNames[date[Calendar.DAY_OF_WEEK]]
-    return dayNow
+    return dayNames[date[Calendar.DAY_OF_WEEK]]
 }
 
 fun getChipDayFormat(): String {
