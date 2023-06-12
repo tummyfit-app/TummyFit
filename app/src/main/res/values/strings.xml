@@ -33,9 +33,9 @@
     <string name="kg">kg</string>
     <string name="complete_your_account">Complete your Account</string>
     <string name="desc1_profile_setup">to ensure that the recommendation we made for you are correct, please fill this form</string>
-    <string name="title_menu1">Get your daily Meals Plan and run a healthy Life</string>
-    <string name="title_menu2">Fulfill your daily needs by Cooking your own Meals</string>
-    <string name="title_menu3">Buy Groceries Easier with our Grocery Generator</string>
+    <string name="title_menu1">get your meal recommendations and fulfill your daily needs with the easiest way</string>
+    <string name="title_menu2">more than 1000+ healthy Recipes for you to try Everyday!</string>
+    <string name="title_menu3">tracks your daily water intake to keep you hydrated</string>
     <string name="cm">cm</string>
     <string name="cm_template">%1$s cm</string>
     <string name="kg_template">%1$s kg</string>
