@@ -45,7 +45,7 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ListViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: FoodsItem) {
             binding.apply {
-                Glide.with(itemView).load(item.image).error(R.drawable.load_img_error)
+                Glide.with(itemView).load(item.image).placeholder(R.drawable.load_img_error).error(R.drawable.load_img_error)
                     .optionalCenterCrop().into(imageMeal)
                 buttonMeal.text = String.format(
                     itemView.resources.getString(R.string.kcal_template),
@@ -53,7 +53,7 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ListViewHolder>() {
                 )
                 titleMeal.text = item.name
                 descOneMeal.text = item.dishType
-                descTwoMeal.text = if (item.popular.equals("True", true)) "popular" else "non-popular"
+                descTwoMeal.text = "Popular Meals"
                 root.setOnClickListener {
                     listener.onItemClicked(item)
                 }

@@ -45,7 +45,7 @@ class FastFoodAdapter : RecyclerView.Adapter<FastFoodAdapter.ListViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: FoodsItem) {
             binding.apply {
-                Glide.with(itemView).load(item.image).error(R.drawable.load_img_error)
+                Glide.with(itemView).load(item.image).placeholder(R.drawable.load_img_error).error(R.drawable.load_img_error)
                     .optionalCenterCrop().into(imageMeal)
                 buttonMeal.text = String.format(
                     itemView.resources.getString(R.string.kcal_template),

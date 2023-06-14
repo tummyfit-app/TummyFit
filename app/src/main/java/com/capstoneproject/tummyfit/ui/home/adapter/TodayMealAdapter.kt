@@ -45,7 +45,7 @@ class TodayMealAdapter : RecyclerView.Adapter<TodayMealAdapter.ListViewHolder>()
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: MealItem) {
             binding.apply {
-                Glide.with(imageMeal).load(item.imageUrl).error(R.drawable.load_img_error).optionalCenterCrop().into(imageMeal)
+                Glide.with(imageMeal).load(item.imageUrl).placeholder(R.drawable.load_img_error).error(R.drawable.load_img_error).optionalCenterCrop().into(imageMeal)
                 titleMeal.text = item.foodName
                 buttonMeal.text = String.format(
                     itemView.resources.getString(R.string.kcal_template),

@@ -21,7 +21,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "BASE_URL", '"https://express-ts-production-f6c5.up.railway.app/"')
     }
 
     buildTypes {
@@ -39,6 +38,17 @@ android {
     }
     buildFeatures {
         viewBinding true
+    }
+    def keyPropertiesFile = rootProject.file("key.properties")
+    def keyProperties = new Properties()
+    keyProperties.load(new FileInputStream(keyPropertiesFile))
+
+    flavorDimensions 'default'
+    productFlavors {
+        production {
+            dimension = 'default'
+            buildConfigField("String", "BASE_URL", "\"${keyProperties.getProperty("BASE_URL")}\"")
+        }
     }
 }
 

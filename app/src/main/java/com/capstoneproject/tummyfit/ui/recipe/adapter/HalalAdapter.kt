@@ -45,7 +45,7 @@ class HalalAdapter : RecyclerView.Adapter<HalalAdapter.ListViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: FoodsItem) {
             binding.apply {
-                Glide.with(itemView).load(item.image).error(R.drawable.load_img_error)
+                Glide.with(itemView).load(item.image).placeholder(R.drawable.load_img_error).error(R.drawable.load_img_error)
                     .optionalCenterCrop().into(imageMeal)
                 buttonMeal.text = String.format(
                     itemView.resources.getString(R.string.kcal_template),
@@ -53,7 +53,7 @@ class HalalAdapter : RecyclerView.Adapter<HalalAdapter.ListViewHolder>() {
                 )
                 titleMeal.text = item.name
                 descOneMeal.text = item.dishType
-                descTwoMeal.text = if (item.halal.equals("True", true)) "halal" else "non-halal"
+                descTwoMeal.text = "Halal meals"
                 root.setOnClickListener {
                     listener.onItemClicked(item)
                 }
