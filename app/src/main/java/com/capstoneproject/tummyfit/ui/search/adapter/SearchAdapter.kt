@@ -52,7 +52,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.ListViewHolder>() {
                 )
                 titleMeal.text = item.name
                 descOneMeal.text = item.dishType
-                descTwoMeal.text = if (item.halal.equals("True", true)) "halal" else "non-halal"
+                descTwoMeal.text = if (item.halal.equals("1", true)) "halal" else "non-halal"
                 root.setOnClickListener {
                     listener.onItemClicked(item)
                 }
