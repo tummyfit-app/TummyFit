@@ -1,0 +1,142 @@
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="?attr/colorOnPrimary"
+    style="@style/CustomCardViewStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/total_kcal"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:background="@color/background"
+            android:fontFamily="@font/roboto_medium"
+            android:textSize="35sp"
+            app:layout_constraintBottom_toTopOf="@id/day"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/day"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="26dp"
+            android:background="@color/background"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/total_kcal"
+            app:layout_constraintStart_toStartOf="@id/total_kcal"
+            app:layout_constraintTop_toBottomOf="@id/total_kcal" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/kcal"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-5dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/background"
+            android:fontFamily="@font/roboto_medium"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/total_kcal"
+            app:layout_constraintEnd_toStartOf="@id/spacer"
+            app:layout_constraintStart_toEndOf="@id/total_kcal"
+            app:layout_constraintTop_toTopOf="@id/total_kcal" />
+
+        <View
+            android:id="@+id/spacer"
+            android:layout_width="0.6dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="@color/background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/height"
+            app:layout_constraintStart_toEndOf="@id/kcal"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/height"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@color/background"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/result_height"
+            app:layout_constraintEnd_toStartOf="@id/ibm"
+            app:layout_constraintStart_toEndOf="@id/spacer"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/result_height"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:background="@color/background"
+            android:fontFamily="@font/roboto_medium"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/height"
+            app:layout_constraintStart_toStartOf="@id/height"
+            app:layout_constraintTop_toBottomOf="@id/height" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/ibm"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@color/background"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/result_ibm"
+            app:layout_constraintEnd_toStartOf="@id/weight"
+            app:layout_constraintStart_toEndOf="@id/height"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/result_ibm"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:background="@color/background"
+            android:fontFamily="@font/roboto_medium"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/ibm"
+            app:layout_constraintStart_toStartOf="@id/ibm"
+            app:layout_constraintTop_toBottomOf="@id/ibm" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/weight"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@color/background"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/result_weight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ibm"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/result_weight"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:background="@color/background"
+            android:fontFamily="@font/roboto_medium"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/weight"
+            app:layout_constraintStart_toStartOf="@id/weight"
+            app:layout_constraintTop_toBottomOf="@id/weight" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/recipe"
+        android:layout_width="62dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="30dp"
+        android:clickable="true"
+        android:elevation="20dp"
+        android:focusable="true"
+        android:padding="22dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/recipe"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_groceries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/recipes"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/recipe"
+        app:layout_constraintStart_toStartOf="@id/recipe"
+        app:layout_constraintTop_toBottomOf="@id/recipe" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/water_intake"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:clickable="true"
+        android:elevation="20dp"
+        android:focusable="true"
+        android:padding="20dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/water_intake"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintStart_toEndOf="@id/recipe"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_water_intake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/water_intake"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/water_intake"
+        app:layout_constraintStart_toStartOf="@id/water_intake"
+        app:layout_constraintTop_toBottomOf="@id/water_intake" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/favorite"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:clickable="true"
+        android:elevation="20dp"
+        android:focusable="true"
+        android:padding="23dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/favorite"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintStart_toEndOf="@id/water_intake"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/favorite"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/favorite"
+        app:layout_constraintStart_toStartOf="@id/favorite"
+        app:layout_constraintTop_toBottomOf="@id/favorite" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

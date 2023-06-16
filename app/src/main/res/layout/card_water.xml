@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_water"
+    style="@style/Widget.Material3.CardView.Outlined"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="4dp"
+    app:cardCornerRadius="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_50ml"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_water_glass"
+            app:layout_constraintEnd_toStartOf="@id/ic_100ml"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider_vertical_1"
+            style="@style/DividerVertical"
+            app:layout_constraintBottom_toBottomOf="@id/ic_200ml"
+            app:layout_constraintEnd_toStartOf="@id/ic_100ml"
+            app:layout_constraintStart_toEndOf="@id/ic_50ml" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_100ml"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_coffee_cup"
+            app:layout_constraintEnd_toStartOf="@id/ic_150ml"
+            app:layout_constraintStart_toEndOf="@id/ic_50ml"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider_vertical_2"
+            style="@style/DividerVertical"
+            app:layout_constraintBottom_toBottomOf="@id/ic_250ml"
+            app:layout_constraintEnd_toStartOf="@id/ic_150ml"
+            app:layout_constraintStart_toEndOf="@id/ic_100ml" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_150ml"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_tea"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ic_100ml"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider_horizontal_1"
+            style="@style/DividerHorizontal"
+            app:layout_constraintBottom_toTopOf="@id/ic_250ml"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ic_100ml" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_200ml"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_cola"
+            app:layout_constraintEnd_toStartOf="@id/ic_250ml"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ic_50ml" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_250ml"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_juice"
+            app:layout_constraintEnd_toStartOf="@id/ic_custom_ml"
+            app:layout_constraintStart_toEndOf="@id/ic_200ml"
+            app:layout_constraintTop_toBottomOf="@id/ic_100ml" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ic_custom_ml"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_milk"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ic_250ml"
+            app:layout_constraintTop_toBottomOf="@id/ic_150ml" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_50ml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/_50_ml"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/ic_50ml"
+            app:layout_constraintEnd_toEndOf="@id/ic_50ml"
+            app:layout_constraintStart_toStartOf="@+id/ic_50ml" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_100ml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/_100_ml"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/ic_100ml"
+            app:layout_constraintEnd_toEndOf="@id/ic_100ml"
+            app:layout_constraintStart_toStartOf="@id/ic_100ml" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_150ml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/_150_ml"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/ic_150ml"
+            app:layout_constraintEnd_toEndOf="@id/ic_150ml"
+            app:layout_constraintStart_toStartOf="@id/ic_150ml" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_200ml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/_200_ml"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/ic_200ml"
+            app:layout_constraintEnd_toEndOf="@id/ic_200ml"
+            app:layout_constraintStart_toStartOf="@id/ic_200ml" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_250ml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/_250_ml"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/ic_250ml"
+            app:layout_constraintEnd_toEndOf="@id/ic_250ml"
+            app:layout_constraintStart_toStartOf="@id/ic_250ml" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_custom_ml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/custom"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/ic_custom_ml"
+            app:layout_constraintEnd_toEndOf="@id/ic_custom_ml"
+            app:layout_constraintStart_toStartOf="@id/ic_custom_ml" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
